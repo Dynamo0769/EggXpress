@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EggXpress - Fresh, Free-Range Eggs</title>
+    <style>
+    
+        :root {
+            --primary-yellow: #FFCC00;  
+            --primary-red:    #D40511;  
+            --accent-black:   #000000;  
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333333;
+            background-color: var(--primary-yellow); 
+        }
+
+        h1 {
+            color: var(--accent-black);
+        }
+
+        h2, h3 {
+            color: var(--primary-red);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-red);
+        }
+
+        a:hover {
+            color: #660000;
+        }
+
+        header {
+            background-color: var(--primary-red); 
+            padding: 1rem;
+            color: white;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0 0;
+        }
+
+        nav {
+            background: white;
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            /* Black accent for the border-bottom: */
+            border-bottom: 3px solid var(--accent-black);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            width: 100px;
+            height: auto;
+            margin-right: 14rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        /* Make nav links black by default, then turn red on hover */
+        .nav-links a {
+            color: var(--accent-black);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            padding: 2rem 10%;
+            min-height: 50vh;
+            /* Use DHL Yellow as the background for sections */
+            background-color: var(--primary-yellow);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 0.6rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .cta-button {
+            background: var(--primary-red);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #B00000;
+        }
+
+        #cartDropdown {
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            width: 300px;
+            background: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+            padding: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 9999;
+        }
+
+        #cartDropdown.show {
+            display: block;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-content img {
+            width: 300px;
+            border-radius: 8px;
+        }
+
+        .checkout-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        footer {
+            background: var(--primary-red);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .social-icons {
+            margin: 1rem 0;
+        }
+
+        .social-icon {
+            width: 32px;
+            height: 32px;
+            margin: 0 0.5rem;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EggXpress</h1>
+        <p>Fresh, Free-Range Eggs from Happy Hens</p>
+    </header>
+    
+    <nav>
+        <img src="logo.png" alt="EggXpress Logo" class="nav-logo">
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+            <a href="javascript:void(0)" id="cartIcon" onclick="toggleCartDropdown()">🥚Cart</a>
+        </div>
+    </nav>
+   
+    <div id="cartDropdown">
+        <h3>Your Cart</h3>
+        <div id="cartItems"></div>
+        <button class="cta-button">Checkout</button>
+    </div>
+ 
+    <section id="home">
+        <h2>Welcome to EggXpress</h2>
+        <p>At EggXpress, we deliver the freshest free-range eggs straight from our farm to your table. Our hens are raised with care, ensuring the highest quality eggs for you and your family.</p>
+        <img src="farm.jpg" alt="Our Happy Hens" style="width:100%; height:400px; object-fit:cover; border-radius:8px;">
+        <img src="freerange.jpg" alt="Our Happy Hens" style="width:100%; height:400px; object-fit:cover; border-radius:8px;">
+    </section>
+    
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="small.jpg" alt="Small Eggs" class="product-img">
+                <h3>Small</h3>
+                <p>₱210</p>
+                <button class="cta-button" onclick="addToCart('Small Eggs')">Add to Cart</button>
+                <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF; font-size:11px;">Order via Messenger</a>
+            </div>
+            <div class="product-card">
+                <img src="medium.jpg" alt="Medium Eggs" class="product-img">
+                <h3>Medium</h3>
+                <p>₱220</p>
+                <button class="cta-button" onclick="addToCart('Medium Eggs')">Add to Cart</button>
+                <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF; font-size:11px;">Order via Messenger</a>
+            </div>
+            <div class="product-card">
+                <img src="large.jpg" alt="Large Eggs" class="product-img">
+                <h3>Large</h3>
+                <p>₱230</p>
+                <button class="cta-button" onclick="addToCart('Large Eggs')">Add to Cart</button>
+                <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF; font-size:11px;">Order via Messenger</a>
+            </div>
+            <div class="product-card">
+                <img src="xl.jpg" alt="XL Eggs" class="product-img">
+                <h3>XL</h3>
+                <p>₱240</p>
+                <button class="cta-button" onclick="addToCart('XL Eggs')">Add to Cart</button>
+                <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF; font-size:11px;">Order via Messenger</a>
+            </div>
+            <div class="product-card">
+                <img src="jumbo.jpg" alt="Jumbo Eggs" class="product-img">
+                <h3>Jumbo</h3>
+                <p>₱250</p>
+                <button class="cta-button" onclick="addToCart('Jumbo Eggs')">Add to Cart</button>
+                <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF; font-size:11px;">Order via Messenger</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <img src="farm-family.jpg" alt="Our Family">
+            <div>
+                <p>Founded in 2024, EggXpress is a family-owned farm dedicated to sustainable and ethical farming practices. Our mission is to provide fresh, high-quality eggs while ensuring the well-being of our hens.</p>
+                <h3>Meet the Team</h3>
+                <p>
+                    Project Manager: Abdul Rafi P. Biyala<br>
+                    UI/UX Designers: Sanny N. Villaganas & Ruben Manuel Gallareta<br>
+                    Development Team: Reymart D. Casquejo, Peter Fredliam A. Fermo, Kyle Briones
+                </p>
+            </div>
+        </div>
+    </section>
+ 
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="checkout-form">
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <textarea placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+ 
+    <footer>
+        <div class="social-icons">
+            <a href="https://facebook.com/EggXpress" target="_blank">
+                <img src="facebook-logo.png" alt="Facebook Logo" class="social-icon">
+            </a>
+            <a href="https://instagram.com/EggXpress" target="_blank">
+                <img src="instagram-logo.png" alt="Instagram Logo" class="social-icon">
+            </a>
+            <a href="https://twitter.com/EggXpress" target="_blank">
+                <img src="twitter-logo.png" alt="Twitter Logo" class="social-icon">
+            </a>
+        </div>
+        <p>📞 Call: (123) 456-7890 | ✉️ Email: fresh@eggxpress.com</p>
+        <p>123 Farm Road, Poultry City</p>
+        <p>&copy; 2025 EggXpress - All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let cartItems = [];
+
+        function addToCart(item) {
+            cartItems.push(item);
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartDropdown = document.getElementById('cartDropdown');
+            let cartItemsContainer = document.getElementById('cartItems');
+            cartItemsContainer.innerHTML = '';
+
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
+            } else {
+                cartItems.forEach((item, index) => {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+                    cartItem.innerHTML = `
+                        <span>${item}</span>
+                        <button onclick="removeFromCart(${index})">Remove</button>
+                    `;
+                    cartItemsContainer.appendChild(cartItem);
+                });
+            }
+        }
+
+        function removeFromCart(index) {
+            cartItems.splice(index, 1);
+            updateCart();
+        }
+
+        function toggleCartDropdown() {
+            document.getElementById('cartDropdown').classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
