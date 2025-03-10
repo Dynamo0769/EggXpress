@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <title>EggXpress - Fresh, Free-Range Eggs</title>
+    <style>
+    
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2E7D32;
+        }
+        a {
+            text-decoration: none;
+            color: #2E7D32;
+        }
+        a:hover {
+            color: #4CAF50;
+        }
+
+       
+        header {
+            background-color: #4CAF50;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0 0;
+        }
+
+       
+        nav {
+            background: #388E3C;
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            margin: 0 1.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        nav a:hover {
+            color: #C8E6C9;
+        }
+
+        
+        section {
+            padding: 3rem 10%;
+            min-height: 50vh;
+        }
+        #home {
+            background: #F1F8E9;
+        }
+        #products {
+            background: white;
+        }
+        #about {
+            background: #E8F5E9;
+        }
+        #contact {
+            background: #F1F8E9;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .cta-button {
+            background: #4CAF50;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: #388E3C;
+        }
+
+
+        #cartDropdown {
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            width: 300px;
+            background: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+            padding: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 9999;
+        }
+
+        #cartDropdown.show {
+            display: block;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+        }
+
+        
+        .about-content {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .about-content img {
+            width: 300px;
+            border-radius: 8px;
+        }
+
+       
+        .checkout-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .social-links {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .social-links a {
+            margin: 0 1rem;
+            color: #2E7D32;
+            font-size: 1.5rem;
+        }
+        .social-links a:hover {
+            color: #4CAF50;
+        }
+
+     
+        footer {
+            background: #2E7D32;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        footer p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🥚 EggXpress</h1>
+        <p>Fresh, Free-Range Eggs from Happy Hens</p>
+    </header>
+    
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+        <a href="javascript:void(0)" id="cartIcon" onclick="toggleCartDropdown()">🛒 Cart</a>
+    </nav>
+
+ 
+    <div id="cartDropdown">
+        <h3>Your Cart</h3>
+        <div id="cartItems"></div>
+        <button class="cta-button">Checkout</button>
+    </div>
+
+
+    <section id="home">
+        <h2>Welcome to EggXpress</h2>
+        <p>At EggXpress, we deliver the freshest free-range eggs straight from our farm to your table. Our hens are raised with care, ensuring the highest quality eggs for you and your family.</p>
+        <img src="farm-banner.jpg" alt="Our Happy Hens" style="width:100%; height:400px; object-fit:cover; border-radius:8px;">
+    </section>
+
+
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="free-range-eggs.jpg" alt="Free Range Eggs" class="product-img">
+                <h3>Free-Range Eggs</h3>
+                <p>💰 $5/dozen</p>
+                <button class="cta-button" onclick="addToCart('Free-Range Eggs')">Add to Cart</button>
+                <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF">Order via Messenger</a>
+            </div>
+            <div class="product-card">
+                <img src="organic-eggs.jpg" alt="Organic Eggs" class="product-img">
+                <h3>Organic Eggs</h3>
+                <p>💰 $7/dozen</p>
+                <button class="cta-button" onclick="addToCart('Organic Eggs')">Add to Cart</button>
+                <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF">Order via Messenger</a>
+            </div>
+            <div class="product-card">
+                <img src="jumbo-eggs.jpg" alt="Jumbo Eggs" class="product-img">
+                <h3>Jumbo Eggs</h3>
+                <p>💰 $6/dozen</p>
+                <button class="cta-button" onclick="addToCart('Jumbo Eggs')">Add to Cart</button>
+                <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF">Order via Messenger</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <img src="farm-family.jpg" alt="Our Family">
+            <div>
+                <p>Founded in 2024, EggXpress is a family-owned farm dedicated to sustainable and ethical farming practices. Our mission is to provide fresh, high-quality eggs while ensuring the well-being of our hens.</p>
+                <h3>Meet the Team</h3>
+                <p>Project Manager: Abdul Rafi P. Biyala<br>
+                UI/UX Designers: Sanny N. Villaganas & Ruben Manuel Gallareta<br>
+                Development Team: Reymart D. Casquejo, Peter Fredliam A. Fermo, Kyle Briones</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="checkout-form">
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <textarea placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+        <div class="social-links">
+            <h3>Follow Us</h3>
+            <a href="https://facebook.com/EggXpress" target="_blank">Facebook</a>
+            <a href="https://instagram.com/EggXpress" target="_blank">Instagram</a>
+            <a href="https://twitter.com/EggXpress" target="_blank">Twitter</a>
+        </div>
+    </section>
+
+ 
+    <footer>
+        <p>📍 Visit Us: 123 Farm Road, Poultry City<br>
+        📞 Call: (123) 456-7890 | ✉️ Email: fresh@eggxpress.com</p>
+        <p>© 2024 EggXpress - Sustainable Farming Champions</p>
+    </footer>
+
+    <script>
+        let cartItems = [];
+
+        function addToCart(item) {
+            cartItems.push(item);
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartDropdown = document.getElementById('cartDropdown');
+            let cartItemsContainer = document.getElementById('cartItems');
+            cartItemsContainer.innerHTML = ''; // Clear existing items
+
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
+            } else {
+                cartItems.forEach((item, index) => {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+                    cartItem.innerHTML = `<span>${item}</span><button onclick="removeFromCart(${index})">Remove</button>`;
+                    cartItemsContainer.appendChild(cartItem);
+                });
+            }
+        }
+
+        function removeFromCart(index) {
+            cartItems.splice(index, 1);
+            updateCart();
+        }
+
+        function toggleCartDropdown() {
+            document.getElementById('cartDropdown').classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
