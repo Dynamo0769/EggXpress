@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XL Eggs - EggXpress</title>
+    <style>
+        :root {
+            --primary-yellow: #FFCC00;  
+            --primary-red:    #D40511;  
+            --accent-black:   #000000;  
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333333;
+            background-color: var(--primary-yellow); 
+        }
+
+        h1 {
+            color: var(--accent-black);
+        }
+
+        h2, h3 {
+            color: var(--primary-red);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-red);
+        }
+
+        a:hover {
+            color: #660000;
+        }
+
+        header {
+            background-color: var(--primary-red); 
+            padding: 1rem;
+            color: white;
+            text-align: center;
+        }
+
+        nav {
+            background: white;
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--accent-black);
+        }
+
+        .nav-logo {
+            width: 100px;
+            height: auto;
+            margin-right: 24rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .cta-button {
+            background: var(--primary-red);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .product-details {
+            padding: 2rem 10%;
+            min-height: 50vh;
+            background-color: var(--primary-yellow);
+        }
+
+        footer {
+            background: var(--primary-red);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EggXpress</h1>
+        <p>Fresh, Free-Range Eggs from Happy Hens</p>
+    </header>
+    
+    <nav>
+        <img src="logo.png" alt="EggXpress Logo" class="nav-logo">
+        <div class="nav-links">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#products">Products</a>
+            <a href="index.html#about">About Us</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="javascript:void(0)" id="cartIcon" onclick="toggleCartDropdown()">🥚Cart</a>
+        </div>
+    </nav>
+
+    <div id="cartDropdown">
+        <h3>Your Cart</h3>
+        <div id="cartItems"></div>
+        <button class="cta-button">Checkout</button>
+    </div>
+
+    <main class="product-details">
+        <section>
+            <h2>XL Eggs</h2>
+            <div class="product-content">
+                <img src="xl.png" alt="XL Eggs" style="width:100%; max-width:500px; border-radius:8px;">
+                <div class="product-info">
+                    <p class="price">₱240 per tray</p>
+                    <h3>Product Details</h3>
+                    <ul>
+                        <li>Weight: 55-60g per egg</li>
+                        <li>Quantity: 30 eggs per tray</li>
+                        <li>Freshness: Laid within 24 hours</li>
+                        <li>Storage: Keep refrigerated</li>
+                    </ul>
+                    <button class="cta-button" onclick="addToCart('XL Eggs')">Add to Cart</button>
+                    <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF; font-size:11px;">Order via Messenger</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+       <footer>
+        <div class="social-icons">
+            <a href="https://facebook.com/EggXpress" target="_blank">
+                <img src="facebook-logo.png" alt="Facebook Logo" class="social-icon">
+            </a>
+            <a href="https://instagram.com/EggXpress" target="_blank">
+                <img src="instagram-logo.jpg" alt="Instagram Logo" class="social-icon">
+            </a>
+            <a href="https://twitter.com/EggXpress" target="_blank">
+                <img src="twitter-logo.png" alt="Twitter Logo" class="social-icon">
+            </a>
+        </div>
+        <p>📞 Call: (123) 456-7890 | ✉️ Email: fresh@eggxpress.com</p>
+        <p>123 Farm Road, Poultry City</p>
+        <p>&copy; 2025 EggXpress - All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let cartItems = [];
+
+        function addToCart(item) {
+            cartItems.push(item);
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartDropdown = document.getElementById('cartDropdown');
+            let cartItemsContainer = document.getElementById('cartItems');
+            cartItemsContainer.innerHTML = '';
+
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
+            } else {
+                cartItems.forEach((item, index) => {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+                    cartItem.innerHTML = `
+                        <span>${item}</span>
+                        <button onclick="removeFromCart(${index})">Remove</button>
+                    `;
+                    cartItemsContainer.appendChild(cartItem);
+                });
+            }
+        }
+
+        function removeFromCart(index) {
+            cartItems.splice(index, 1);
+            updateCart();
+        }
+
+        function toggleCartDropdown() {
+            document.getElementById('cartDropdown').classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
