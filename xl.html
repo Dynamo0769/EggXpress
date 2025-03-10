@@ -91,6 +91,25 @@
             padding: 2rem;
             text-align: center;
         }
+
+        /* Social Icons Styling */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icon {
+            width: 30px; /* Set a fixed width */
+            height: 30px; /* Set a fixed height */
+            border-radius: 50%; /* Optional: Make icons circular */
+            transition: transform 0.3s ease; /* Optional: Add hover effect */
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1); /* Optional: Slightly enlarge on hover */
+        }
     </style>
 </head>
 <body>
@@ -137,7 +156,7 @@
         </section>
     </main>
 
-       <footer>
+    <footer>
         <div class="social-icons">
             <a href="https://facebook.com/EggXpress" target="_blank">
                 <img src="facebook-logo.png" alt="Facebook Logo" class="social-icon">
