@@ -42,6 +42,7 @@
             text-align: center;
         }
 
+     
         nav {
             background: white;
             padding: 0.5rem 2rem;
@@ -55,10 +56,18 @@
             border-bottom: 3px solid var(--accent-black);
         }
 
+        .nav-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .nav-logo {
             width: 100px;
             height: auto;
-            margin-right: 24rem;
+            margin-right: 22rem;
         }
 
         .nav-links {
@@ -68,6 +77,33 @@
             flex-grow: 1;
         }
 
+        .nav-links a {
+            color: var(--accent-black);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
         .cta-button {
             background: var(--primary-red);
             color: white;
