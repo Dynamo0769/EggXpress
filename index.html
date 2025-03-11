@@ -10,8 +10,9 @@
             --vivid-red:      #FF1A1A;
         }
 
+        /* Header Styling */
         header {
-            background: linear-gradient(135deg, #1a1a1a 0%, var(--accent-black) 100%);
+            background: var(--accent-black); /* Solid black background */
             padding: 1rem 1rem;
             text-align: center;
             position: relative;
@@ -20,7 +21,6 @@
 
         header::before {
             content: '';
-			
             position: absolute;
             top: -50%;
             left: -50%;
@@ -47,29 +47,48 @@
             text-shadow: 0 0 1px rgba(255,26,26,0.7);
             position: relative;
             letter-spacing: -2px;
-            font-family: TAN-HEADLINE;
+            font-family: 'TAN-HEADLINE', sans-serif;
             transform: skew(-5deg);
             display: inline-block;
             padding: 0 1rem;
-            background: white;
+            background: white; /* Solid white background */
             border: 3px solid var(--vivid-red);
             border-radius: 25px;
             box-shadow: 0 0 25px rgba(255,26,26,0.5);
-        
         }
-	    h2 {
-		     font-family: TAN-HEADLINE;
-	    }
+
+        h2 {
+            font-family: 'TAN-HEADLINE', sans-serif;
+        }
 
         body {
             font-family: system-ui, sans-serif;
             background: linear-gradient(45deg, 
                 var(--primary-yellow) 0%, 
                 #FFE066 100%);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigation Styling */
+        nav {
+            background: white;
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--accent-black);
         }
 
         .nav-logo {
-            width: 120px;
+            width: 100px;
+            height: auto;
+            margin-right: 22rem;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
             transition: transform 0.3s ease;
         }
@@ -77,7 +96,43 @@
         .nav-logo:hover {
             transform: rotate(-10deg) scale(1.1);
         }
-.product-grid {
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .nav-links a {
+            color: var(--accent-black);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Product Grid Styling */
+        .product-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem; /* Increased gap between product cards */
@@ -117,111 +172,20 @@
         .cta-button {
             background: var(--primary-red);
             color: white;
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
+            border: none;
             border-radius: 50px;
             font-weight: bold;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: background 0.3s;
         }
 
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-           
+        .cta-button:hover {
+            background: #B00000;
         }
 
-        @keyframes button-glow {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-
-        .product-img {
-            position: relative;
-            height: 200px;
-            background: #fff;
-            border-radius: 15px 15px 0 0;
-            object-fit: cover;
-        }
-
-
-        nav {
-            background: white;
-            padding: 0.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-bottom: 3px solid var(--accent-black);
-        }
-
-        .nav-container {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-logo {
-            width: 100px;
-            height: auto;
-            margin-right: 32rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-grow: 1;
-        }
-
-        .nav-links a {
-            color: var(--accent-black);
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-red);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-red);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        section {
-            padding: 2rem 10%;
-            min-height: 50vh;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
+        /* Footer Styling */
         footer {
             background: var(--primary-red);
             color: white;
@@ -247,6 +211,7 @@
             transform: scale(1.1);
         }
 
+        /* Cart Dropdown */
         #cartDropdown {
             position: absolute;
             top: 60px;
@@ -262,6 +227,17 @@
             z-index: 9999;
         }
 
+        #cartDropdown.show {
+            display: block;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+        }
+
+        /* Form Styling */
         .checkout-form {
             max-width: 500px;
             margin: 0 auto;
@@ -277,7 +253,6 @@
     </style>
 </head>
 <body>
-    <!-- Keep all your original HTML content here -->
     <header>
         <h1>eggxpress!</h1>
         <p>Fresh, Free-Range Eggs from Happy Hens</p>
