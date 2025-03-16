@@ -1,445 +1,387 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>eggxpress! - Fresh, Free-Range Eggs</title>
-    <style>
-        :root {
-            --primary-yellow: #FFCC00;  
-            --primary-red:    #D40511;  
-            --accent-black:   #000000;  
-            --vivid-red:      #FF1A1A;
-        }
+  
 
-        header {
-            background: linear-gradient(135deg, #1a1a1a 0%, var(--accent-black) 100%);
-            padding: 1rem 1rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+  <title>eggxpress! - Premium Free-Range Eggs</title>
+  <style>
+    :root {
+      --primary-yellow: #FFE600;
+      --primary-red: #D40511;
+      --accent-black: #2D2D2D;
+      --pure-white: #FFFFFF;
+    }
 
-        header::before {
-            content: '';
-			
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, 
-                rgba(255,26,26,0.4) 0%, 
-                rgba(255,26,26,0.1) 20%, 
-                transparent 70%);
-            transform: rotate(45deg);
-            animation: cosmic-pulse 20s infinite linear;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        @keyframes cosmic-pulse {
-            0% { opacity: 0.3; transform: rotate(45deg) scale(1); }
-            50% { opacity: 0.6; transform: rotate(45deg) scale(1.2); }
-            100% { opacity: 0.3; transform: rotate(45deg) scale(1); }
-        }
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: var(--accent-black);
+      background-color: #fdfdfd;
+    }
 
-        header h1 {
-            font-size: 4rem;
-            margin: 0;
-            color: var(--vivid-red);
-            text-shadow: 0 0 1px rgba(255,26,26,0.7);
-            position: relative;
-            letter-spacing: -2px;
-            font-family: TAN-HEADLINE;
-            transform: skew(-5deg);
-            display: inline-block;
-            padding: 0 1rem;
-            background: white;
-            border: 3px solid var(--vivid-red);
-            border-radius: 25px;
-            box-shadow: 0 0 25px rgba(255,26,26,0.5);
-        
-        }
-	    h2 {
-		     font-family: TAN-HEADLINE;
-	    }
-
-        body {
-            font-family: system-ui, sans-serif;
-            background: linear-gradient(45deg, 
-                var(--primary-yellow) 0%, 
-                #FFE066 100%);
-        }
-
-        .nav-logo {
-            width: 120px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-            transition: transform 0.3s ease;
-        }
-
-        .nav-logo:hover {
-            transform: rotate(-10deg) scale(1.1);
-        }
-.product-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem; /* Increased gap between product cards */
-            margin: 2rem 10%; /* Added margin to the sides */
-        }
-
-        .product-card {
-            background: transparent; /* Removed white background */
-            border: none;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            text-align: center;
-            padding: 1.5rem; /* Added padding inside the card */
-            margin: 1rem; /* Added margin around the card */
-        }
-
-        .product-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 15px;
-        }
-
-        .product-card h3 {
-            margin: 1rem 0 0.5rem;
-            color: var(--accent-black);
-            font-size: 1.5rem;
-        }
-
-        .product-card p {
-            color: var(--accent-black);
-            font-size: 1.2rem;
-            margin: 0.5rem 0;
-        }
-
-        .cta-button {
-            background: var(--primary-red);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: bold;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-           
-        }
-
-        @keyframes button-glow {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-
-        .product-img {
-            position: relative;
-            height: 200px;
-            background: #fff;
-            border-radius: 15px 15px 0 0;
-            object-fit: cover;
-        }
+  
+    .main-header {
+      background: var(--pure-white);
+      padding: 1rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 3px solid var(--primary-red);
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+    .brand-logo {
+      width: 180px;
+      transition: transform 0.3s ease;
+    }
+    .brand-logo:hover {
+      transform: scale(1.05);
+    }
 
 
-        nav {
-            background: white;
-            padding: 0.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-bottom: 3px solid var(--accent-black);
-        }
+    .main-nav {
+      display: flex;
+      gap: 2.5rem;
+    }
+    .nav-link {
+      color: var(--accent-black);
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-red);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
 
-        .nav-container {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+ 
+    .hero-section {
+      background: var(--primary-yellow);
+      padding: 4rem 1rem;
+      text-align: center;
+      border-bottom: 3px solid var(--primary-red);
+      position: relative;
+    }
+    .hero-section::before {
+     
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('hero-farm.jpg') center/cover no-repeat;
+      opacity: 0.15; 
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1; 
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .hero-title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--accent-black);
+    }
+    .hero-subtitle {
+      font-size: 1.4rem;
+      color: var(--accent-black);
+      margin-bottom: 2rem;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--primary-red);
+      color: var(--pure-white);
+      padding: 0.8rem 2rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .hero-cta:hover {
+      background: #b00000;
+    }
 
-        .nav-logo {
-            width: 100px;
-            height: auto;
-            margin-right: 34rem;
-        }
+   
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-grow: 1;
-        }
+    .products-section {
+      padding: 5rem 2rem;
+      background: var(--pure-white);
+    }
+    .section-heading {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+      color: var(--accent-black);
+    }
+    .product-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+    .product-card {
+      background: var(--pure-white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-image {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .product-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent-black);
+    }
+    .product-price {
+      color: var(--primary-red);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+    .messenger-btn {
+      display: inline-block;
+      background: #0084FF;
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .messenger-btn:hover {
+      background: #0066CC;
+    }
 
-        .nav-links a {
-            color: var(--accent-black);
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
 
-        .nav-links a:hover {
-            color: var(--primary-red);
-        }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-red);
-            transition: width 0.3s ease;
-        }
+    .main-footer {
+      background: var(--accent-black);
+      color: var(--pure-white);
+      padding: 4rem 2rem 2rem;
+      position: relative;
+      margin-top: 2rem;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding-bottom: 4rem;
+    }
+    .footer-section h3 {
+      margin-bottom: 1.5rem;
+      color: var(--primary-yellow);
+    }
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+    .footer-links a {
+      color: var(--pure-white);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-links a:hover {
+      color: var(--primary-yellow);
+    }
+    .footer-logo-section {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-logo {
+      width: 150px;
+      margin: 0 auto 1rem;
+    }
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+    .social-icon {
+      width: 35px;
+      height: 35px;
+      transition: transform 0.3s ease;
+    }
+    .social-icon:hover {
+      transform: scale(1.1);
+    }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        section {
-            padding: 2rem 10%;
-            min-height: 50vh;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        footer {
-            background: var(--primary-red);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-        }
-
-        .social-icon:hover {
-            transform: scale(2);
-        }
-
-        #cartDropdown {
-            position: absolute;
-            top: 60px;
-            right: 10px;
-            width: 300px;
-            background: #fff;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: none;
-            padding: 1rem;
-            max-height: 400px;
-            overflow-y: auto;
-            z-index: 9999;
-        }
-
-        .checkout-form {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 0.8rem;
-            margin: 0.5rem 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-    </style>
+    
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .main-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Keep all your original HTML content here -->
-    <header>
-        <h1>eggxpress!</h1>
-        <p>Fresh, Free-Range Eggs from Happy Hens</p>
-    </header>
-   
-    <nav>
-        <img src="logo.png" alt="eggxpress! Logo" class="nav-logo">
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#products">Products</a>
-            <a href="#about">About Us</a>
-            <a href="#contact">Contact</a>
-            <a href="javascript:void(0)" id="cartIcon" onclick="toggleCartDropdown()">🥚Cart</a>
-        </div>
-    </nav>
-   
-    <div id="cartDropdown">
-        <h3>Your Cart</h3>
-        <div id="cartItems"></div>
-        <button class="cta-button">Checkout</button>
+  
+  <header class="main-header">
+    <div class="header-content">
+      <img src="logo.png" alt="eggxpress logo" class="brand-logo" />
+      <nav class="main-nav">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
     </div>
+  </header>
+
+  
+  <section class="hero-section" id="home">
+    <div class="hero-content">
+      <h1 class="hero-title">Fresh, Free-Range Eggs</h1>
+      <p class="hero-subtitle">Delivered from Happy Hens Straight to Your Doorstep</p>
+      <a href="#products" class="hero-cta">Shop Now</a>
+    </div>
+  </section>
+
+  <section class="products-section" id="products">
+    <h2 class="section-heading">Our Products</h2>
+    <div class="product-grid">
+      
+      <div class="product-card">
+        <img src="small.jpg" alt="Small Eggs" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">Small Eggs (30pcs)</h3>
+          <p class="product-price">₱210</p>
+          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">
+            Order via Messenger
+          </a>
+        </div>
+      </div>
+      
+      <div class="product-card">
+        <img src="medium.jpg" alt="Medium Eggs" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">Medium Eggs (30pcs)</h3>
+          <p class="product-price">₱220</p>
+          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">
+            Order via Messenger
+          </a>
+        </div>
+      </div>
+      
+      <div class="product-card">
+        <img src="large.jpg" alt="Large Eggs" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">Large Eggs (30pcs)</h3>
+          <p class="product-price">₱230</p>
+          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">
+            Order via Messenger
+          </a>
+        </div>
+      </div>
  
-    <section id="home">
-        <h2>Welcome to eggxpress!</h2>
-        <p>At eggxpress! We deliver the freshest free-range eggs straight from our farm to your table. Our hens are raised with care, ensuring the highest quality eggs for you and your family.</p>
-        <img src="farm.jpg" alt="Our Happy Hens" style="width:100%; height:400px; object-fit:cover; border-radius:8px;">
-        <img src="freerange.jpg" alt="Our Happy Hens" style="width:100%; height:400px; object-fit:cover; border-radius:8px;">
-    </section>
+      <div class="product-card">
+        <img src="xl.jpg" alt="XL Eggs" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">XL Eggs (30pcs)</h3>
+          <p class="product-price">₱240</p>
+          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">
+            Order via Messenger
+          </a>
+        </div>
+      </div>
    
-    <section id="products">
-        <h2>Our Products</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <a href="small.html">
-                    <img src="small.jpg" alt="Small Eggs" class="product-img">
-                    <h3>Small</h3>
-                    <p>₱210</p>
-                </a>
-                <button class="cta-button" onclick="addToCart('Small Eggs')">Add to Cart</button>
-                <a href="https://m.me/eggxpress" target="_blank" class="cta-button" style="background:#0084FF; font-size:11px;">Order via Messenger</a>
-            </div>
-            <div class="product-card">
-                <a href="medium.html">
-                    <img src="medium.jpg" alt="Medium Eggs" class="product-img">
-                    <h3>Medium</h3>
-                    <p>₱220</p>
-                </a>
-                <button class="cta-button" onclick="addToCart('Medium Eggs')">Add to Cart</button>
-                <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF; font-size:11px;">Order via Messenger</a>
-            </div>
-            <div class="product-card">
-                <a href="large.html">
-                    <img src="large.jpg" alt="Large Eggs" class="product-img">
-                    <h3>Large</h3>
-                    <p>₱230</p>
-                </a>
-                <button class="cta-button" onclick="addToCart('Large Eggs')">Add to Cart</button>
-                <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF; font-size:11px;">Order via Messenger</a>
-            </div>
-            <div class="product-card">
-                <a href="xl.html">
-                    <img src="xl.jpg" alt="XL Eggs" class="product-img">
-                    <h3>XL</h3>
-                    <p>₱240</p>
-                </a>
-                <button class="cta-button" onclick="addToCart('XL Eggs')">Add to Cart</button>
-                <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF; font-size:11px;">Order via Messenger</a>
-            </div>
-            <div class="product-card">
-                <a href="jumbo.html">
-                    <img src="jumbo.png" alt="Jumbo Eggs" class="product-img">
-                    <h3>Jumbo</h3>
-                    <p>₱250</p>
-                </a>
-                <button class="cta-button" onclick="addToCart('Jumbo Eggs')">Add to Cart</button>
-                <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF; font-size:11px;">Order via Messenger</a>
-            </div>
+      <div class="product-card">
+        <img src="jumbo.png" alt="Jumbo Eggs" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">Jumbo Eggs (30pcs)</h3>
+          <p class="product-price">₱250</p>
+          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">
+            Order via Messenger
+          </a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="about">
-        <h2>About Us</h2>
-        <div class="about-content">
-            <img src="farm-family.jpg" alt="Our Family">
-            <div>
-                <p>Founded in 2024, eggxpress! is a family-owned farm dedicated to sustainable and ethical farming practices. Our mission is to provide fresh, high-quality eggs while ensuring the well-being of our hens.</p>
-                <h3>Meet the Team</h3>
-                <p>
-                    Project Manager: Abdul Rafi P. Biyala<br>
-                    UI/UX Designers: Sanny N. Villaganas & Ruben Manuel Gallareta<br>
-                    Development Team: Reymart D. Casquejo, Peter Fredliam A. Fermo, Kyle Briones
-                </p>
-            </div>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>📞 (123) 456-7890</p>
+        <p>✉️ fresh@eggxpress.com</p>
+        <p>📍 123 Farm Road, Poultry City</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="#"><img src="facebook-icon.svg" alt="Facebook" class="social-icon"></a>
+          <a href="#"><img src="instagram-icon.svg" alt="Instagram" class="social-icon"></a>
+          <a href="#"><img src="twitter-icon.svg" alt="Twitter" class="social-icon"></a>
         </div>
-    </section>
- 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <div class="checkout-form">
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <input type="tel" placeholder="Phone Number" required>
-                <textarea placeholder="Your Message" rows="4" required></textarea>
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
-        </div>
-    </section>
- 
-    <footer>
-        <div class="social-icons">
-            <a href="https://facebook.com/EggXpress" target="_blank">
-                <img src="facebook-logo.png" alt="Facebook Logo" class="social-icon">
-            </a>
-            <a href="https://instagram.com/EggXpress" target="_blank">
-                <img src="instagram-logo.jpg" alt="Instagram Logo" class="social-icon">
-            </a>
-            <a href="https://twitter.com/EggXpress" target="_blank">
-                <img src="twitter-logo.png" alt="Twitter Logo" class="social-icon">
-            </a>
-        </div>
-        <p>📞 Call: (123) 456-7890 | ✉️ Email: fresh@eggxpress.com</p>
-        <p>123 Farm Road, Poultry City</p>
-        <p>&copy; 2025 eggxpress! - All Rights Reserved.</p>
-    </footer>
-
-    <script>
-        let cartItems = [];
-
-        function addToCart(item) {
-            cartItems.push(item);
-            updateCart();
-        }
-
-        function updateCart() {
-            let cartDropdown = document.getElementById('cartDropdown');
-            let cartItemsContainer = document.getElementById('cartItems');
-            cartItemsContainer.innerHTML = '';
-
-            if (cartItems.length === 0) {
-                cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
-            } else {
-                cartItems.forEach((item, index) => {
-                    const cartItem = document.createElement('div');
-                    cartItem.classList.add('cart-item');
-                    cartItem.innerHTML = `
-                        <span>${item}</span>
-                        <button onclick="removeFromCart(${index})">Remove</button>
-                    `;
-                    cartItemsContainer.appendChild(cartItem);
-                });
-            }
-        }
-
-        function removeFromCart(index) {
-            cartItems.splice(index, 1);
-            updateCart();
-        }
-
-        function toggleCartDropdown() {
-            document.getElementById('cartDropdown').classList.toggle('show');
-        }
-    </script>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
