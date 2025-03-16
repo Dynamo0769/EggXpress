@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>eggxpress! - Premium Free-Range Eggs</title>
   <style>
     :root {
@@ -11,24 +10,20 @@
       --accent-black: #2D2D2D;
       --pure-white: #FFFFFF;
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Arial', sans-serif;
       line-height: 1.6;
       color: var(--accent-black);
       background-color: #fdfdfd;
     }
-
-  
     .main-header {
       background: var(--pure-white);
-      padding: 1rem 0;
+      padding: 0.1rem 0;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
@@ -39,29 +34,32 @@
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      position: relative;
       padding: 0 2rem;
     }
     .brand-logo {
-      width: 180px;
+      width: 110px;
       transition: transform 0.3s ease;
     }
     .brand-logo:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
-
-
     .main-nav {
+      margin: 0 auto;
       display: flex;
       gap: 2.5rem;
     }
     .nav-link {
       color: var(--accent-black);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 750;
       position: relative;
       padding: 0.5rem 0;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #e6a200;
     }
     .nav-link::after {
       content: '';
@@ -76,17 +74,14 @@
     .nav-link:hover::after {
       width: 100%;
     }
-
- 
     .hero-section {
-      background: var(--primary-yellow);
+      background: #f3bd3d;
       padding: 4rem 1rem;
       text-align: center;
       border-bottom: 3px solid var(--primary-red);
       position: relative;
     }
     .hero-section::before {
-     
       content: "";
       position: absolute;
       top: 0;
@@ -94,12 +89,12 @@
       width: 100%;
       height: 100%;
       background: url('hero-farm.jpg') center/cover no-repeat;
-      opacity: 0.15; 
+      opacity: 0.15;
       z-index: 0;
     }
     .hero-content {
       position: relative;
-      z-index: 1; 
+      z-index: 1;
       max-width: 700px;
       margin: 0 auto;
     }
@@ -126,12 +121,9 @@
     .hero-cta:hover {
       background: #b00000;
     }
-
-   
-
     .products-section {
       padding: 5rem 2rem;
-      background: var(--pure-white);
+      background: #f9f9f9;
     }
     .section-heading {
       text-align: center;
@@ -189,27 +181,41 @@
     .messenger-btn:hover {
       background: #0066CC;
     }
-
-
-
     .main-footer {
-      background: var(--accent-black);
-      color: var(--pure-white);
+      background: var(--pure-white);
+      color: var(--accent-black);
       padding: 4rem 2rem 2rem;
       position: relative;
       margin-top: 2rem;
+      border-top: 3px solid var(--primary-red);
     }
-    .footer-content {
+    .footer-container {
       max-width: 1200px;
       margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .footer-left {
+      flex: 1;
+      min-width: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .footer-right {
+      flex: 3;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
-      padding-bottom: 4rem;
+    }
+    .footer-logo {
+      width: 150px;
     }
     .footer-section h3 {
       margin-bottom: 1.5rem;
-      color: var(--primary-yellow);
+      color: var(--primary-red);
     }
     .footer-links {
       list-style: none;
@@ -218,21 +224,12 @@
       margin-bottom: 0.8rem;
     }
     .footer-links a {
-      color: var(--pure-white);
+      color: var(--accent-black);
       text-decoration: none;
       transition: color 0.3s ease;
     }
     .footer-links a:hover {
-      color: var(--primary-yellow);
-    }
-    .footer-logo-section {
-      text-align: center;
-      padding: 2rem 0;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-    .footer-logo {
-      width: 150px;
-      margin: 0 auto 1rem;
+      color: var(--primary-red);
     }
     .social-links {
       display: flex;
@@ -248,15 +245,13 @@
     .social-icon:hover {
       transform: scale(1.1);
     }
-
-    
     @media (max-width: 768px) {
       .header-content {
         flex-direction: column;
         gap: 1.5rem;
       }
       .main-nav {
-        flex-wrap: wrap;
+        margin: 0;
         justify-content: center;
       }
       .hero-title {
@@ -268,11 +263,21 @@
       .product-grid {
         grid-template-columns: 1fr;
       }
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer-left, .footer-right {
+        width: 100%;
+        text-align: center;
+      }
+      .footer-right {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  
   <header class="main-header">
     <div class="header-content">
       <img src="logo.png" alt="eggxpress logo" class="brand-logo" />
@@ -284,101 +289,86 @@
       </nav>
     </div>
   </header>
-
-  
   <section class="hero-section" id="home">
     <div class="hero-content">
       <h1 class="hero-title">Fresh, Free-Range Eggs</h1>
-      <p class="hero-subtitle">Delivered from Happy Hens Straight to Your Doorstep</p>
+      <p class="hero-subtitle">Delivered from our Farm Straight to Your Doorstep</p>
       <a href="#products" class="hero-cta">Shop Now</a>
     </div>
   </section>
-
   <section class="products-section" id="products">
     <h2 class="section-heading">Our Products</h2>
     <div class="product-grid">
-      
       <div class="product-card">
         <img src="small.jpg" alt="Small Eggs" class="product-image" />
         <div class="product-info">
           <h3 class="product-title">Small Eggs (30pcs)</h3>
           <p class="product-price">₱210</p>
-          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">
-            Order via Messenger
-          </a>
+          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">Order via Messenger</a>
         </div>
       </div>
-      
       <div class="product-card">
         <img src="medium.jpg" alt="Medium Eggs" class="product-image" />
         <div class="product-info">
           <h3 class="product-title">Medium Eggs (30pcs)</h3>
           <p class="product-price">₱220</p>
-          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">
-            Order via Messenger
-          </a>
+          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">Order via Messenger</a>
         </div>
       </div>
-      
       <div class="product-card">
         <img src="large.jpg" alt="Large Eggs" class="product-image" />
         <div class="product-info">
           <h3 class="product-title">Large Eggs (30pcs)</h3>
           <p class="product-price">₱230</p>
-          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">
-            Order via Messenger
-          </a>
+          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">Order via Messenger</a>
         </div>
       </div>
- 
       <div class="product-card">
         <img src="xl.jpg" alt="XL Eggs" class="product-image" />
         <div class="product-info">
           <h3 class="product-title">XL Eggs (30pcs)</h3>
           <p class="product-price">₱240</p>
-          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">
-            Order via Messenger
-          </a>
+          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">Order via Messenger</a>
         </div>
       </div>
-   
       <div class="product-card">
         <img src="jumbo.png" alt="Jumbo Eggs" class="product-image" />
         <div class="product-info">
           <h3 class="product-title">Jumbo Eggs (30pcs)</h3>
           <p class="product-price">₱250</p>
-          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">
-            Order via Messenger
-          </a>
+          <a href="https://m.me/eggxpress" class="messenger-btn" target="_blank">Order via Messenger</a>
         </div>
       </div>
     </div>
   </section>
-
-
   <footer class="main-footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>Contact Us</h3>
-        <p>📞 (123) 456-7890</p>
-        <p>✉️ fresh@eggxpress.com</p>
-        <p>📍 123 Farm Road, Poultry City</p>
+    <div class="footer-container">
+      <div class="footer-left">
+        <img src="logo.png" alt="eggxpress logo" class="footer-logo" />
       </div>
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <ul class="footer-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Follow Us</h3>
-        <div class="social-links">
-          <a href="#"><img src="facebook-icon.svg" alt="Facebook" class="social-icon"></a>
-          <a href="#"><img src="instagram-icon.svg" alt="Instagram" class="social-icon"></a>
-          <a href="#"><img src="twitter-icon.svg" alt="Twitter" class="social-icon"></a>
+      <div class="footer-right">
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>📞 (123) 456-7890</p>
+          <p>✉️ fresh@eggxpress.com</p>
+          <p>📍 123 Farm Road, Poultry City</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="#"><img src="facebook-logo.png" alt="Facebook" class="social-icon"></a>
+            <a href="#"><img src="instagram-logo.png" alt="Instagram" class="social-icon"></a>
+            <a href="#"><img src="twitter-logo.png" alt="Twitter" class="social-icon"></a>
+          </div>
         </div>
       </div>
     </div>
