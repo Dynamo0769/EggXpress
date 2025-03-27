@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>eggxpress! - Premium Farm Fresh Eggs</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/logo-180x180.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/logo-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/logo-16x16.png">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <!-- Google Font Montserrat for a bold, modern look -->
+  <!-- Google Font for bold typography -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -61,7 +61,6 @@
       transform: scale(1.1);
     }
     .main-nav {
-      margin: 0 auto;
       display: flex;
       gap: 2.5rem;
     }
@@ -89,7 +88,7 @@
     .nav-link:hover::after {
       width: 100%;
     }
-    /* Hero Section (Keep the tan headline intact) */
+    /* Hero Section */
     .hero-section {
       position: relative;
       background: var(--primary-yellow) center/cover no-repeat;
@@ -161,7 +160,6 @@
     }
     .product-info {
       padding: 1.5rem;
-      text-align: center;
     }
     .product-title {
       font-size: 1.4rem;
@@ -209,7 +207,6 @@
       background: var(--pure-white);
       color: var(--accent-black);
       padding: 4rem 2rem 2rem;
-      position: relative;
       margin-top: 2rem;
     }
     .footer-container {
@@ -268,13 +265,28 @@
     .social-icon:hover {
       transform: scale(1.5);
     }
+    /* Privacy Consent Checkbox in Footer */
+    .privacy-consent {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .privacy-consent input {
+      margin-right: 0.5rem;
+    }
+    .privacy-consent a {
+      color: var(--primary-red);
+      text-decoration: none;
+    }
+    .privacy-consent a:hover {
+      text-decoration: underline;
+    }
     @media (max-width: 768px) {
       .header-content {
         flex-direction: column;
         gap: 1.5rem;
       }
       .main-nav {
-        margin: 0;
         justify-content: center;
       }
       .hero-title {
@@ -298,68 +310,9 @@
         grid-template-columns: 1fr;
       }
     }
-    /* Privacy/Terms Modal */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 3000;
-    }
-    .modal {
-      background: var(--pure-white);
-      padding: 2rem;
-      border-radius: 10px;
-      max-width: 500px;
-      width: 90%;
-      text-align: center;
-      animation: scaleIn 0.4s ease;
-    }
-    @keyframes scaleIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    .modal h2 {
-      margin-bottom: 1rem;
-      color: var(--primary-red);
-      text-transform: uppercase;
-    }
-    .modal p {
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-      text-align: justify;
-    }
-    .modal .actions {
-      margin-top: 1rem;
-      display: flex;
-      justify-content: space-around;
-    }
-    .modal button {
-      padding: 0.5rem 1.5rem;
-      border: none;
-      border-radius: 5px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .btn-agree {
-      background: var(--primary-red);
-      color: var(--pure-white);
-    }
-    .btn-agree:hover {
-      background: #b00000;
-    }
-    .btn-decline {
-      background: #ccc;
-      color: var(--accent-black);
-    }
-    .btn-decline:hover {
-      background: #bbb;
+    /* Simple fade-in for gallery images */
+    .gallery-image {
+      opacity: 1;
     }
   </style>
 </head>
@@ -367,7 +320,9 @@
   <!-- Header & Navigation -->
   <header class="main-header">
     <div class="header-content">
-      <a href="index.html"><img src="logo.png" alt="eggxpress logo" class="brand-logo"></a>
+      <a href="index.html">
+        <img src="logo.png" alt="eggxpress logo" class="brand-logo">
+      </a>
       <nav class="main-nav">
         <a href="index.html" class="nav-link">Home</a>
         <a href="products.html" class="nav-link">Products</a>
@@ -472,21 +427,14 @@
         </div>
       </div>
     </div>
-  </footer>
-
-  <!-- Privacy / Terms Modal -->
-  <div id="privacyModal" class="modal-overlay" style="display:none;">
-    <div class="modal">
-      <h2>Privacy & Terms</h2>
-      <p>
-        By using this website, you agree to our Privacy Policy and Terms and Conditions. We value your privacy and strive to ensure your data is secure and used responsibly.
-      </p>
-      <div class="actions">
-        <button class="btn-decline" onclick="declinePrivacy()">Decline</button>
-        <button class="btn-agree" onclick="acceptPrivacy()">I Agree</button>
-      </div>
+    <!-- Privacy Consent Checkbox -->
+    <div class="privacy-consent">
+      <input type="checkbox" id="privacyConsent" name="privacyConsent">
+      <label for="privacyConsent">
+        I agree to the <a href="privacy.html" target="_blank">Privacy Policy and Terms &amp; Conditions</a>
+      </label>
     </div>
-  </div>
+  </footer>
 
   <script>
     // Gallery functionality
@@ -502,21 +450,14 @@
       }, 400);
     });
 
-    // Privacy Modal handling
-    function acceptPrivacy() {
-      localStorage.setItem('privacyAccepted', 'true');
-      document.getElementById('privacyModal').style.display = 'none';
-    }
-    function declinePrivacy() {
-      // For now, if user declines, simply redirect them to an external page (or re-show modal)
-      window.location.href = 'https://www.google.com';
-    }
-    function checkPrivacy() {
-      if (!localStorage.getItem('privacyAccepted')) {
-        document.getElementById('privacyModal').style.display = 'flex';
+    // Example: Checkout validation with privacy consent
+    function checkout() {
+      if (!document.getElementById('privacyConsent').checked) {
+        alert("Please agree to the Privacy Policy and Terms & Conditions before proceeding.");
+        return;
       }
+      // Continue with checkout process...
     }
-    window.onload = checkPrivacy;
   </script>
 </body>
 </html>
