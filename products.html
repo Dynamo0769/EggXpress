@@ -478,11 +478,11 @@
         return;
       }
       // Prepare order summary (if needed, for demonstration we'll simply alert it)
-      let orderSummary = "Order Details:\\n";
+      let orderSummary = "Order Details:";
       cartItems.forEach((item, index) => {
         orderSummary += `${index + 1}. ${item.name} - ${item.price}\\n`;
       });
-      orderSummary += "\\nPlease complete your order on Messenger.";
+      orderSummary += "Please Click OK to complete your order on messenger.";
       alert(orderSummary);
       // Then open Messenger to complete the order
       window.open("https://m.me/600629409797130", "_blank");
