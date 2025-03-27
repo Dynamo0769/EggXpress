@@ -9,11 +9,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/logo-16x16.png">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <!-- Google Font for bold typography -->
+  <!-- Google Font for general text -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* Include Tan-Headline font (ensure you have the font files in your project) */
+    @font-face {
+      font-family: 'Tan-Headline';
+      src: url('TanHeadline.woff2') format('woff2'),
+           url('TanHeadline.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
     :root {
-      --primary-yellow: #f3bd3d; /* Tan/Yellow */
+      --primary-yellow: #f3bd3d;
       --primary-red: #D40511;
       --accent-black: #2D2D2D;
       --pure-white: #FFFFFF;
@@ -53,11 +62,6 @@
       padding: 0 2rem;
       justify-content: space-between;
     }
-    .hero-title {
-  font-family: TAN-HEADLINE; /* Optional, if you want a different font */
-
-  font-size: 4rem; /* Keep the size as desired */
-}
     .brand-logo {
       width: 110px;
       transition: transform 0.3s ease;
@@ -107,11 +111,10 @@
       margin: 0 auto;
     }
     .hero-title {
+      font-family: 'Tan-Headline', serif; /* Use the Tan-Headline font */
       font-size: 3rem;
       margin-bottom: 1rem;
-      /* Set headline color to tan (you can adjust this value) */
-      color: #f3bd3d;
-      /* Add a subtle text shadow for contrast */
+      /* No explicit color set */
       text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
     .hero-subtitle {
@@ -518,7 +521,7 @@
       }, 400);
     });
 
-    // Privacy Modal Handling: show modal 5 seconds after page load
+    // Privacy Modal Handling: show immediately on page load if not accepted
     function acceptPrivacy() {
       localStorage.setItem('privacyAccepted', 'true');
       document.getElementById('privacyModal').style.display = 'none';
@@ -530,9 +533,8 @@
       document.getElementById('privacyModal').style.display = 'flex';
     }
     window.onload = function() {
-      // Show modal after 5 seconds if not already accepted
       if (!localStorage.getItem('privacyAccepted')) {
-        setTimeout(showPrivacyModal, 5000);
+        showPrivacyModal();
       }
     };
   </script>
