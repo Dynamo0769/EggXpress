@@ -1,248 +1,532 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Small Eggs - EggXpress</title>
-    <style>
-        :root {
-            --primary-yellow: #FFCC00;  
-            --primary-red:    #D40511;  
-            --accent-black:   #000000;  
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            color: #333333;
-            background-color: var(--primary-yellow); 
-        }
-
-        h1 {
-            color: var(--accent-black);
-        }
-
-        h2, h3 {
-            color: var(--primary-red);
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--primary-red);
-        }
-
-        a:hover {
-            color: #660000;
-        }
-
-        header {
-            background-color: var(--primary-red); 
-            padding: 1rem;
-            color: white;
-            text-align: center;
-        }
-
-     
-        nav {
-            background: white;
-            padding: 0.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-bottom: 3px solid var(--accent-black);
-        }
-
-        .nav-container {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-logo {
-            width: 100px;
-            height: auto;
-            margin-right: 22rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-grow: 1;
-        }
-
-        .nav-links a {
-            color: var(--accent-black);
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-red);
-            transform: translateY(-2px);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-red);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        .cta-button {
-            background: var(--primary-red);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 0.5rem;
-            transition: background 0.3s;
-        }
-
-        .product-details {
-            padding: 2rem 10%;
-            min-height: 50vh;
-            background-color: var(--primary-yellow);
-        }
-
-        footer {
-            background: var(--primary-red);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-icon {
-            width: 30px; /* Set a fixed width */
-            height: 30px; /* Set a fixed height */
-            border-radius: 50%; /* Optional: Make icons circular */
-            transition: transform 0.3s ease; /* Optional: Add hover effect */
-        }
-
-        .social-icon:hover {
-            transform: scale(1.1); /* Optional: Slightly enlarge on hover */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Small Eggs - EggXpress</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/logo-16x16.png">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-yellow: #f3bd3d;
+      --primary-red: #D40511;
+      --accent-black: #2D2D2D;
+      --pure-white: #FFFFFF;
+    }
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      color: var(--accent-black);
+      background-color: #fdfdfd;
+    }
+    /* Header & Navigation */
+    .main-header {
+      background: var(--pure-white);
+      padding: 0.1rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 3px solid var(--primary-red);
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand-logo {
+      width: 110px;
+      transition: transform 0.3s ease;
+    }
+    .brand-logo:hover {
+      transform: scale(1.1);
+    }
+    nav.main-nav {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .nav-link {
+      color: var(--accent-black);
+      text-decoration: none;
+      font-weight: 750;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #e6a200;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-red);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    /* Cart Link in Nav */
+    .cart-link {
+      cursor: pointer;
+      position: relative;
+    }
+    .cart-icon {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+    /* Cart Dropdown */
+    #cartDropdown {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      width: 320px;
+      background: var(--pure-white);
+      border: 1px solid #ddd;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: none;
+      z-index: 2000;
+      border-radius: 8px;
+    }
+    #cartDropdown.show {
+      display: block;
+      animation: fadeIn 0.3s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    .remove-btn {
+      background: transparent;
+      border: none;
+      color: var(--primary-red);
+      cursor: pointer;
+    }
+    /* Product Details Section */
+    .product-details {
+      padding: 2rem 10%;
+      min-height: 50vh;
+      background-color: var(--primary-yellow);
+    }
+    .product-details img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .product-details ul {
+      text-align: left;
+      margin: 1rem 0;
+      list-style: disc inside;
+    }
+    .product-details .price {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--primary-red);
+      font-weight: bold;
+    }
+    .cta-button {
+      background: var(--primary-red);
+      color: var(--pure-white);
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 0.5rem;
+      transition: background 0.3s;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .cta-button:hover {
+      background: #b00000;
+    }
+    /* Gallery Section */
+    .gallery-section {
+      padding: 3rem 1rem;
+      text-align: center;
+      background: var(--primary-yellow);
+    }
+    .gallery-container {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .gallery-image {
+      width: 100%;
+      border-radius: 8px;
+      transition: opacity 0.5s ease-in-out;
+      cursor: pointer;
+    }
+    /* Footer */
+    footer.main-footer {
+      background: var(--pure-white);
+      color: var(--accent-black);
+      padding: 4rem 2rem 2rem;
+      margin-top: 2rem;
+      border-top: 3px solid var(--primary-red);
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .footer-left {
+      flex: 1;
+      min-width: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .footer-right {
+      flex: 3;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .footer-logo {
+      width: 150px;
+    }
+    .footer-section h3 {
+      margin-bottom: 1.5rem;
+      color: var(--primary-red);
+    }
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+    .footer-links a {
+      color: var(--accent-black);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-links a:hover {
+      color: var(--primary-red);
+    }
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+    .social-icon {
+      width: 35px;
+      height: 35px;
+      transition: transform 0.3s ease;
+    }
+    .social-icon:hover {
+      transform: scale(1.5);
+    }
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .main-nav {
+        justify-content: center;
+      }
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer-right {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* Privacy Policy & Terms Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 3000;
+    }
+    .modal {
+      background: var(--pure-white);
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80%;
+      overflow-y: auto;
+      animation: scaleIn 0.4s ease;
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal h2 {
+      margin-bottom: 1rem;
+      color: var(--primary-red);
+      text-transform: uppercase;
+    }
+    .modal p {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      text-align: justify;
+    }
+    .modal .actions {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: space-around;
+    }
+    .modal button {
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn-agree {
+      background: var(--primary-red);
+      color: var(--pure-white);
+    }
+    .btn-agree:hover {
+      background: #b00000;
+    }
+    .btn-decline {
+      background: #ccc;
+      color: var(--accent-black);
+    }
+    .btn-decline:hover {
+      background: #bbb;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>EggXpress</h1>
-        <p>Fresh, Free-Range Eggs from Happy Hens</p>
-    </header>
-    
-    <nav>
-        <img src="logo.png" alt="EggXpress Logo" class="nav-logo">
-        <div class="nav-links">
-            <a href="index.html#home">Home</a>
-            <a href="index.html#products">Products</a>
-            <a href="index.html#about">About Us</a>
-            <a href="index.html#contact">Contact</a>
-            <a href="javascript:void(0)" id="cartIcon" onclick="toggleCartDropdown()">🥚Cart</a>
-        </div>
-    </nav>
-
-    <div id="cartDropdown">
-        <h3>Your Cart</h3>
-        <div id="cartItems"></div>
-        <button class="cta-button">Checkout</button>
+  <!-- Header & Navigation -->
+  <header class="main-header">
+    <div class="header-content">
+      <a href="index.html">
+        <img src="logo.png" alt="eggxpress logo" class="brand-logo">
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a class="nav-link cart-link" onclick="toggleCartDropdown()"><img src="cart-icon.png" alt="Cart" class="cart-icon">Cart</a>
+      </nav>
     </div>
-
-    <main class="product-details">
-        <section>
-            <h2>Small Eggs</h2>
-            <div class="product-content">
-                <img src="small.jpg" alt="Small Eggs" style="width:100%; max-width:500px; border-radius:8px;">
-                <div class="product-info">
-                    <p class="price">₱210 per tray</p>
-                    <h3>Product Details</h3>
-                    <ul>
-                        <li>Weight: 40-45g per egg</li>
-                        <li>Quantity: 30 eggs per tray</li>
-                        <li>Freshness: Laid within 24 hours</li>
-                        <li>Storage: Keep refrigerated</li>
-                    </ul>
-                    <button class="cta-button" onclick="addToCart('Small Eggs')">Add to Cart</button>
-                    <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF; font-size:11px;">Order via Messenger</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-       <footer>
-        <div class="social-icons">
-            <a href="https://facebook.com/EggXpress" target="_blank">
-                <img src="facebook-logo.png" alt="Facebook Logo" class="social-icon">
-            </a>
-            <a href="https://instagram.com/EggXpress" target="_blank">
-                <img src="instagram-logo.jpg" alt="Instagram Logo" class="social-icon">
-            </a>
-            <a href="https://twitter.com/EggXpress" target="_blank">
-                <img src="twitter-logo.png" alt="Twitter Logo" class="social-icon">
-            </a>
+  </header>
+  
+  <!-- Cart Dropdown -->
+  <div id="cartDropdown">
+    <h3>Shopping Cart</h3>
+    <div id="cartItems">
+      <p>Your cart is empty.</p>
+    </div>
+    <button class="cta-button" onclick="checkout()">Checkout</button>
+  </div>
+  
+  <!-- Product Details Section -->
+  <main class="product-details">
+    <h2>Small Eggs</h2>
+    <img src="small.jpg" alt="Small Eggs" style="width:100%; max-width:500px; border-radius:8px;">
+    <div class="product-info">
+      <p class="price">₱210 per tray</p>
+      <h3>Product Details</h3>
+      <ul>
+        <li>Weight: 40-45g per egg</li>
+        <li>Quantity: 30 eggs per tray</li>
+        <li>Freshness: Laid within 24 hours</li>
+        <li>Storage: Keep refrigerated</li>
+      </ul>
+      <button class="cta-button" onclick="addToCart('Small Eggs (30pcs)', '₱210')">Add to Cart</button>
+    </div>
+  </main>
+  
+  <!-- Gallery Section -->
+  <section class="gallery-section" id="gallery">
+    <div class="gallery-container">
+      <img id="gallery-image" src="gallery1.jpg" alt="Gallery Image" class="gallery-image">
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <img src="logo.png" alt="eggxpress logo" class="footer-logo">
+      </div>
+      <div class="footer-right">
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>📞 (0966) 700-4825</p>
+          <p>✉️ eggxpress4@gmail.com</p>
+          <p>📍 Upper, Ground Floor, Alfredo Y. Lua (AYL) Premises, Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
         </div>
-        <p>📞 Call: (123) 456-7890 | ✉️ Email: fresh@eggxpress.com</p>
-        <p>123 Farm Road, Poultry City</p>
-        <p>&copy; 2025 EggXpress - All Rights Reserved.</p>
-    </footer>
-
-    <script>
-        let cartItems = [];
-
-        function addToCart(item) {
-            cartItems.push(item);
-            updateCart();
-        }
-
-        function updateCart() {
-            let cartDropdown = document.getElementById('cartDropdown');
-            let cartItemsContainer = document.getElementById('cartItems');
-            cartItemsContainer.innerHTML = '';
-
-            if (cartItems.length === 0) {
-                cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
-            } else {
-                cartItems.forEach((item, index) => {
-                    const cartItem = document.createElement('div');
-                    cartItem.classList.add('cart-item');
-                    cartItem.innerHTML = `
-                        <span>${item}</span>
-                        <button onclick="removeFromCart(${index})">Remove</button>
-                    `;
-                    cartItemsContainer.appendChild(cartItem);
-                });
-            }
-        }
-
-        function removeFromCart(index) {
-            cartItems.splice(index, 1);
-            updateCart();
-        }
-
-        function toggleCartDropdown() {
-            document.getElementById('cartDropdown').classList.toggle('show');
-        }
-    </script>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="javascript:void(0)" onclick="showPrivacyModal()">Privacy Policy &amp; Terms</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="https://www.facebook.com/eggxpressfarms" target="_blank"><img src="facebook-logo.png" alt="Facebook" class="social-icon"></a>
+            <a href="https://www.instagram.com/xpressegg/" target="_blank"><img src="instagram-logo.jpg" alt="Instagram" class="social-icon"></a>
+            <a href="https://x.com/XpressEgg" target="_blank"><img src="twitter-logo.png" alt="Twitter" class="social-icon"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Privacy Policy & Terms Modal (Shown only when triggered) -->
+  <div id="privacyModal" class="modal-overlay" style="display: none;">
+    <div class="modal">
+      <h2>Privacy Policy &amp; Terms &amp; Conditions</h2>
+      <p>
+        Welcome to eggxpress!. We value your privacy and are committed to protecting your personal information. This Privacy Policy and Terms &amp; Conditions outline how we collect, use, disclose, and safeguard your data when you visit our website.
+      </p>
+      <p>
+        <strong>Privacy Policy:</strong> We collect only the information necessary to provide our services, and we use secure methods to store and manage your data. We will never share your personal information with third parties without your explicit consent, except as required by law.
+      </p>
+      <p>
+        <strong>Terms &amp; Conditions:</strong> By using our website, you agree to our terms regarding the use of our services, including our policies on returns, refunds, and delivery. We reserve the right to modify these terms at any time, and your continued use of our website will constitute acceptance of any changes.
+      </p>
+      <p>
+        Please read these terms carefully. If you do not agree with our Privacy Policy and Terms &amp; Conditions, you must not use our website.
+      </p>
+      <div class="actions">
+        <button class="btn-decline" onclick="declinePrivacy()">Decline</button>
+        <button class="btn-agree" onclick="acceptPrivacy()">I Agree</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Cart functionality using localStorage
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    
+    function addToCart(item, price) {
+      const product = { name: item, price: price };
+      cartItems.push(product);
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      updateCart();
+      alert(item + ' has been added to your cart.');
+    }
+    
+    function updateCart() {
+      const cartContainer = document.getElementById('cartItems');
+      if (!cartContainer) return;
+      cartContainer.innerHTML = '';
+      if (cartItems.length === 0) {
+        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+      } else {
+        cartItems.forEach((item, index) => {
+          const div = document.createElement('div');
+          div.className = 'cart-item';
+          div.innerHTML = `${item.name} (${item.price}) <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>`;
+          cartContainer.appendChild(div);
+        });
+      }
+    }
+    
+    function removeFromCart(index) {
+      cartItems.splice(index, 1);
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      updateCart();
+    }
+    
+    function toggleCartDropdown() {
+      document.getElementById('cartDropdown').classList.toggle('show');
+    }
+    
+    function checkout() {
+      if (cartItems.length === 0) {
+        alert("Your cart is empty.");
+        return;
+      }
+      // Prepare order summary for Messenger
+      let orderSummary = "Order Details:%0A";
+      cartItems.forEach((item, index) => {
+        orderSummary += `${index + 1}. ${item.name} - ${item.price}%0A`;
+      });
+      orderSummary += "%0APlease complete your order on Messenger.";
+      alert("Your order details have been sent to Messenger. Please complete your order there.");
+      window.open("https://m.me/600629409797130?ref=" + encodeURIComponent(orderSummary), "_blank");
+      // Clear cart after checkout simulation
+      cartItems = [];
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      updateCart();
+    }
+    
+    // Initialize cart on load
+    updateCart();
+    
+    // Gallery image click-to-cycle
+    const galleryImages = ['gallery1.jpg', 'gallery2.jpg', 'gallery3.jpg', 'gallery4.jpg', 'gallery5.jpg'];
+    let currentIndex = 0;
+    const galleryImg = document.getElementById('gallery-image');
+    galleryImg.addEventListener('click', () => {
+      galleryImg.style.opacity = 0;
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % galleryImages.length;
+        galleryImg.src = galleryImages[currentIndex];
+        galleryImg.style.opacity = 1;
+      }, 400);
+    });
+    
+    // Privacy Modal Handling: show only when triggered via footer link
+    function acceptPrivacy() {
+      document.getElementById('privacyModal').style.display = 'none';
+    }
+    function declinePrivacy() {
+      window.location.href = 'https://www.google.com';
+    }
+    function showPrivacyModal() {
+      document.getElementById('privacyModal').style.display = 'flex';
+    }
+  </script>
 </body>
 </html>
