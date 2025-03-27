@@ -28,9 +28,10 @@
       line-height: 1.6;
       color: var(--accent-black);
       background: var(--pure-white);
+      overflow-x: hidden;
     }
     /* Header & Navigation */
-    .main-header {
+    header.main-header {
       background: var(--pure-white);
       padding: 0.5rem 0;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -54,7 +55,7 @@
     .brand-logo:hover {
       transform: scale(1.1);
     }
-    .main-nav {
+    nav.main-nav {
       display: flex;
       gap: 2.5rem;
     }
@@ -83,10 +84,9 @@
       width: 100%;
     }
     /* Hero Section with custom background image */
-   .hero-section {
-  position: relative;
-  background-image: url("heroimage1.jpg"); 
-  background-position: center;
+    .hero-section {
+      position: relative;
+      background: url('https://via.placeholder.com/1600x600?text=Your+Background+Image') center/cover no-repeat;
       height: 400px;
       display: flex;
       align-items: center;
@@ -107,21 +107,43 @@
       position: relative;
       z-index: 1;
     }
-    /* Hero title using default tan-headline font (system default) */
+    /* Hero title uses the default "tan-headline" font family */
     .hero h1 {
       font-family: "tan-headline", sans-serif;
       font-size: 3rem;
       text-transform: uppercase;
-      color: var(--pure-white);
       text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
+    /* About Content */
+    .about-container {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 20px;
+      text-align: center;
+      animation: fadeInUp 1s ease-out;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .about-container h2 {
+      font-size: 2rem;
+      color: var(--primary-yellow);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    .about-container p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
     /* Footer */
-    .main-footer {
+    footer.main-footer {
       background: var(--pure-white);
       color: var(--accent-black);
       padding: 4rem 2rem 2rem;
-      border-top: 3px solid var(--primary-red);
       margin-top: 3rem;
+      border-top: 3px solid var(--primary-red);
     }
     .footer-container {
       max-width: 1200px;
@@ -191,6 +213,9 @@
       .hero h1 {
         font-size: 2.5rem;
       }
+      .about-container p {
+        font-size: 1rem;
+      }
       .footer-container {
         flex-direction: column;
         align-items: center;
@@ -199,7 +224,7 @@
         grid-template-columns: 1fr;
       }
     }
-    /* Modal Styles for Privacy Policy & Terms */
+    /* Modal Overlay Styles for Privacy Policy & Terms */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -207,156 +232,4 @@
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 3000;
-    }
-    .modal {
-      background: var(--pure-white);
-      padding: 2rem;
-      border-radius: 10px;
-      max-width: 600px;
-      width: 90%;
-      max-height: 80%;
-      overflow-y: auto;
-    }
-    .modal h2 {
-      margin-bottom: 1rem;
-      color: var(--primary-red);
-      text-transform: uppercase;
-    }
-    .modal p {
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-      text-align: justify;
-    }
-    .modal .actions {
-      margin-top: 1.5rem;
-      display: flex;
-      justify-content: space-around;
-    }
-    .modal button {
-      padding: 0.5rem 1.5rem;
-      border: none;
-      border-radius: 5px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .btn-agree {
-      background: var(--primary-red);
-      color: var(--pure-white);
-    }
-    .btn-agree:hover {
-      background: #b00000;
-    }
-    .btn-decline {
-      background: #ccc;
-      color: var(--accent-black);
-    }
-    .btn-decline:hover {
-      background: #bbb;
-    }
-  </style>
-</head>
-<body>
-  <!-- Header & Navigation -->
-  <header class="main-header">
-    <div class="header-content">
-      <a href="index.html">
-        <img src="logo.png" alt="eggxpress logo" class="brand-logo">
-      </a>
-      <nav class="main-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="products.html" class="nav-link">Products</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </nav>
-    </div>
-  </header>
-  
-  <!-- Hero Section with custom background -->
-  <section class="hero-section" id="home">
-    <div class="hero-content">
-      <h1>eggxpress!</h1>
-    </div>
-  </section>
-  
-  <!-- Footer -->
-  <footer class="main-footer">
-    <div class="footer-container">
-      <div class="footer-left">
-        <img src="logo.png" alt="eggxpress logo" class="footer-logo">
-      </div>
-      <div class="footer-right">
-        <div class="footer-section">
-          <h3>Contact Us</h3>
-          <p>📞 (0966) 700-4825</p>
-          <p>✉️ eggxpress4@gmail.com</p>
-          <p>📍 Upper, Ground Floor, Alfredo Y. Lua Premises, Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
-        </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="javascript:void(0)" onclick="showPrivacyModal()">Privacy Policy &amp; Terms</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Follow Us</h3>
-          <div class="social-links">
-            <a href="#"><img src="facebook-logo.png" alt="Facebook" class="social-icon"></a>
-            <a href="#"><img src="instagram-logo.jpg" alt="Instagram" class="social-icon"></a>
-            <a href="#"><img src="twitter-logo.png" alt="Twitter" class="social-icon"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-  
-  <!-- Privacy Policy & Terms Modal -->
-  <div id="privacyModal" class="modal-overlay" style="display: flex;">
-    <div class="modal">
-      <h2>Privacy Policy &amp; Terms &amp; Conditions</h2>
-      <p>
-        Welcome to eggxpress!. We value your privacy and are committed to protecting your personal information. This Privacy Policy and Terms &amp; Conditions outline how we collect, use, disclose, and safeguard your data when you visit our website.
-      </p>
-      <p>
-        <strong>Privacy Policy:</strong> We collect only the information necessary to provide our services, and we use secure methods to store and manage your data. We will never share your personal information with third parties without your explicit consent, except as required by law.
-      </p>
-      <p>
-        <strong>Terms &amp; Conditions:</strong> By using our website, you agree to our terms regarding the use of our services, including our policies on returns, refunds, and delivery. We reserve the right to modify these terms at any time, and your continued use of our website will constitute acceptance of any changes.
-      </p>
-      <p>
-        Please read these terms carefully. If you do not agree with our Privacy Policy and Terms &amp; Conditions, you must not use our website.
-      </p>
-      <div class="actions">
-        <button class="btn-decline" onclick="declinePrivacy()">Decline</button>
-        <button class="btn-agree" onclick="acceptPrivacy()">I Agree</button>
-      </div>
-    </div>
-  </div>
-  
-  <script>
-    // Privacy Modal Handling: Always show immediately on page load
-    function acceptPrivacy() {
-      localStorage.setItem('privacyAccepted', 'true');
-      document.getElementById('privacyModal').style.display = 'none';
-    }
-    function declinePrivacy() {
-      window.location.href = 'https://www.google.com';
-    }
-    function showPrivacyModal() {
-      document.getElementById('privacyModal').style.display = 'flex';
-    }
-    window.onload = function() {
-      // Always show the privacy modal
-      showPrivacyModal();
-    };
-  </script>
-</body>
-</html>
+      display: none; /* Hidden by default; shown when triggered */\n      justify-content: center;\n      align-items: center;\n      z-index: 3000;\n    }\n    .modal {\n      background: var(--pure-white);\n      padding: 2rem;\n      border-radius: 10px;\n      max-width: 600px;\n      width: 90%;\n      max-height: 80%;\n      overflow-y: auto;\n    }\n    .modal h2 {\n      margin-bottom: 1rem;\n      color: var(--primary-red);\n      text-transform: uppercase;\n    }\n    .modal p {\n      margin-bottom: 1rem;\n      font-size: 0.95rem;\n      text-align: justify;\n    }\n    .modal .actions {\n      margin-top: 1.5rem;\n      display: flex;\n      justify-content: space-around;\n    }\n    .modal button {\n      padding: 0.5rem 1.5rem;\n      border: none;\n      border-radius: 5px;\n      font-weight: 600;\n      cursor: pointer;\n      transition: background 0.3s ease;\n    }\n    .btn-agree {\n      background: var(--primary-red);\n      color: var(--pure-white);\n    }\n    .btn-agree:hover {\n      background: #b00000;\n    }\n    .btn-decline {\n      background: #ccc;\n      color: var(--accent-black);\n    }\n    .btn-decline:hover {\n      background: #bbb;\n    }\n  </style>\n</head>\n<body>\n  <!-- Header & Navigation -->\n  <header class=\"main-header\">\n    <div class=\"header-content\">\n      <a href=\"index.html\">\n        <img src=\"logo.png\" alt=\"eggxpress logo\" class=\"brand-logo\">\n      </a>\n      <nav class=\"main-nav\">\n        <a href=\"index.html\" class=\"nav-link\">Home</a>\n        <a href=\"products.html\" class=\"nav-link\">Products</a>\n        <a href=\"about.html\" class=\"nav-link\">About</a>\n        <a href=\"contact.html\" class=\"nav-link\">Contact</a>\n      </nav>\n    </div>\n  </header>\n  \n  <!-- Hero Section -->\n  <section class=\"hero-section\" id=\"home\">\n    <div class=\"hero-content\">\n      <h1>eggxpress!</h1>\n    </div>\n  </section>\n  \n  <!-- About Content -->\n  <div class=\"about-container\">\n    <h2>Our Story</h2>\n    <p>\n      At eggxpress!, we are driven by a passion for quality and sustainability. Our journey began with a simple vision: to bring the freshest, most wholesome eggs directly from our farm to your table. Every egg is a testament to our commitment to ethical farming practices and environmental stewardship.\n    </p>\n    <h2>Our Commitment</h2>\n    <p>\n      We integrate modern technology with traditional farming techniques to ensure that our eggs are produced in an environment that respects nature and nurtures life. Our dedication to transparency and sustainability means that every egg is not only delicious but also a responsible choice.\n    </p>\n    <h2>Join Our Journey</h2>\n    <p>\n      Experience the difference of farm-fresh quality that comes from passion, care, and a commitment to excellence. At eggxpress!, you're not just buying eggs—you're becoming part of a community that values integrity, innovation, and a healthier tomorrow.\n    </p>\n  </div>\n  \n  <!-- Footer -->\n  <footer class=\"main-footer\">\n    <div class=\"footer-container\">\n      <div class=\"footer-left\">\n        <img src=\"logo.png\" alt=\"eggxpress logo\" class=\"footer-logo\">\n      </div>\n      <div class=\"footer-right\">\n        <div class=\"footer-section\">\n          <h3>Contact Us</h3>\n          <p>📞 (0966) 700-4825</p>\n          <p>✉️ eggxpress4@gmail.com</p>\n          <p>📍 Upper, Ground Floor, Alfredo Y. Lua Premises, Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>\n        </div>\n        <div class=\"footer-section\">\n          <h3>Quick Links</h3>\n          <ul class=\"footer-links\">\n            <li><a href=\"index.html\">Home</a></li>\n            <li><a href=\"products.html\">Products</a></li>\n            <li><a href=\"about.html\">About</a></li>\n            <li><a href=\"contact.html\">Contact</a></li>\n            <li><a href=\"javascript:void(0)\" onclick=\"showPrivacyModal()\">Privacy Policy &amp; Terms</a></li>\n          </ul>\n        </div>\n        <div class=\"footer-section\">\n          <h3>Follow Us</h3>\n          <div class=\"social-links\">\n            <a href=\"#\"><img src=\"facebook-logo.png\" alt=\"Facebook\" class=\"social-icon\"></a>\n            <a href=\"#\"><img src=\"instagram-logo.jpg\" alt=\"Instagram\" class=\"social-icon\"></a>\n            <a href=\"#\"><img src=\"twitter-logo.png\" alt=\"Twitter\" class=\"social-icon\"></a>\n          </div>\n        </div>\n      </div>\n    </div>\n  </footer>\n  \n  <!-- Privacy Policy & Terms Modal -->\n  <div id=\"privacyModal\" class=\"modal-overlay\" style=\"display: none;\">\n    <div class=\"modal\">\n      <h2>Privacy Policy &amp; Terms &amp; Conditions</h2>\n      <p>\n        Welcome to eggxpress!. We value your privacy and are committed to protecting your personal information. This Privacy Policy and Terms &amp; Conditions outline how we collect, use, disclose, and safeguard your data when you visit our website.\n      </p>\n      <p>\n        <strong>Privacy Policy:</strong> We collect only the information necessary to provide our services, and we use secure methods to store and manage your data. We will never share your personal information with third parties without your explicit consent, except as required by law.\n      </p>\n      <p>\n        <strong>Terms &amp; Conditions:</strong> By using our website, you agree to our terms regarding the use of our services, including our policies on returns, refunds, and delivery. We reserve the right to modify these terms at any time, and your continued use of our website will constitute acceptance of any changes.\n      </p>\n      <p>\n        Please read
