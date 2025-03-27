@@ -83,10 +83,10 @@
     .nav-link:hover::after {
       width: 100%;
     }
-    /* Cart Icon Style */
+    /* Cart Link in Nav */
     .cart-link {
-      position: relative;
       cursor: pointer;
+      position: relative;
     }
     .cart-icon {
       width: 24px;
@@ -309,7 +309,7 @@
         <a href="products.html" class="nav-link">Products</a>
         <a href="about.html" class="nav-link">About</a>
         <a href="contact.html" class="nav-link">Contact</a>
-        <a class="nav-link cart-link" onclick="toggleCartDropdown()"><img src="cart-icon.png" class="cart-icon">Cart</a>
+        <a class="nav-link cart-link" onclick="toggleCartDropdown()"><img src="cart-icon.png" alt="Cart" class="cart-icon">Cart</a>
       </nav>
     </div>
   </header>
@@ -325,7 +325,7 @@
   
   <!-- Products Section -->
   <section class="products-section" id="products">
-
+    <h2 class="section-heading">Our Products</h2>
     <div class="product-grid">
       <!-- Product Card 1 -->
       <div class="product-card">
@@ -483,14 +483,16 @@
         alert("Your cart is empty.");
         return;
       }
-      // For demo purposes, just alert the order summary.
+      // Prepare order summary (if needed, for demonstration we'll simply alert it)
       let orderSummary = "Order Details:\\n";
       cartItems.forEach((item, index) => {
         orderSummary += `${index + 1}. ${item.name} - ${item.price}\\n`;
       });
-      orderSummary += "Please contact us on messenger to complete your order https://m.me/600629409797130. by";
+      orderSummary += "\\nPlease complete your order on Messenger.";
       alert(orderSummary);
-      // Clear cart after checkout simulation
+      // Then open Messenger to complete the order
+      window.open("https://m.me/600629409797130", "_blank");
+      // Optionally, clear cart after checkout
       cartItems = [];
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
       updateCart();
@@ -512,7 +514,7 @@
       }, 400);
     });
     
-    // Privacy Modal Handling: Show only when triggered
+    // Privacy Modal Handling: show only when triggered via footer link
     function acceptPrivacy() {
       document.getElementById('privacyModal').style.display = 'none';
     }
