@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>eggxpress! - Premium Farm Fresh Eggs</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/logo-180x180.png">
@@ -25,7 +25,7 @@
       box-sizing: border-box;
     }
     body {
-      font-family: tan-headline, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       line-height: 1.6;
       color: var(--accent-black);
       background-color: #fdfdfd;
@@ -53,6 +53,12 @@
       padding: 0 2rem;
       justify-content: space-between;
     }
+    .hero-title {
+  font-family: 'Playfair Display', serif; /* Optional, if you want a different font */
+  color: #f3bd3d; /* Tan color */
+  font-size: 3rem; /* Keep the size as desired */
+}
+
     .brand-logo {
       width: 110px;
       transition: transform 0.3s ease;
@@ -436,6 +442,29 @@
     </div>
   </footer>
 
+  <!-- Privacy Policy & Terms Modal -->
+  <div id="privacyModal" class="modal-overlay" style="display: none;">
+    <div class="modal">
+      <h2>Privacy Policy &amp; Terms &amp; Conditions</h2>
+      <p>
+        Welcome to eggxpress!. We value your privacy and are committed to protecting your personal information. This Privacy Policy and Terms &amp; Conditions outline how we collect, use, disclose, and safeguard your data when you visit our website.
+      </p>
+      <p>
+        <strong>Privacy Policy:</strong> We collect only the information necessary to provide our services, and we use secure methods to store and manage your data. We will never share your personal information with third parties without your explicit consent, except as required by law.
+      </p>
+      <p>
+        <strong>Terms &amp; Conditions:</strong> By using our website, you agree to our terms regarding the use of our services, including our policies on returns, refunds, and delivery. We reserve the right to modify these terms at any time, and your continued use of our website will constitute acceptance of any changes.
+      </p>
+      <p>
+        Please read these terms carefully. If you do not agree with our Privacy Policy and Terms &amp; Conditions, you must not use our website.
+      </p>
+      <div class="actions">
+        <button class="btn-decline" onclick="declinePrivacy()">Decline</button>
+        <button class="btn-agree" onclick="acceptPrivacy()">I Agree</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Gallery functionality
     const galleryImages = ['gallery1.jpg', 'gallery2.jpg', 'gallery3.jpg', 'gallery4.jpg', 'gallery5.jpg'];
@@ -450,14 +479,20 @@
       }, 400);
     });
 
-    // Example: Checkout validation with privacy consent
-    function checkout() {
-      if (!document.getElementById('privacyConsent').checked) {
-        alert("Please agree to the Privacy Policy and Terms & Conditions before proceeding.");
-        return;
+    // Privacy Modal Handling
+    function checkPrivacy() {
+      if (!localStorage.getItem('privacyAccepted')) {
+        document.getElementById('privacyModal').style.display = 'flex';
       }
-      // Continue with checkout process...
     }
+    function acceptPrivacy() {
+      localStorage.setItem('privacyAccepted', 'true');
+      document.getElementById('privacyModal').style.display = 'none';
+    }
+    function declinePrivacy() {
+      window.location.href = 'https://www.google.com';
+    }
+    window.onload = checkPrivacy;
   </script>
 </body>
 </html>
