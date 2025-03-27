@@ -29,7 +29,7 @@
       color: var(--accent-black);
       background-color: #fdfdfd;
     }
-    /* Header & Navigation (same as index) */
+    /* Header & Navigation */
     .main-header {
       background: var(--pure-white);
       padding: 0.1rem 0;
@@ -45,6 +45,7 @@
       display: flex;
       align-items: center;
       padding: 0 2rem;
+      justify-content: space-between;
     }
     .brand-logo {
       width: 110px;
@@ -53,10 +54,10 @@
     .brand-logo:hover {
       transform: scale(1.1);
     }
-    .main-nav {
-      margin: 0 auto;
+    nav.main-nav {
       display: flex;
       gap: 2.5rem;
+      align-items: center;
     }
     .nav-link {
       color: var(--accent-black);
@@ -82,11 +83,21 @@
     .nav-link:hover::after {
       width: 100%;
     }
+    /* Cart Icon Style */
+    .cart-link {
+      position: relative;
+      cursor: pointer;
+    }
+    .cart-icon {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
     /* Products Section */
     .products-section {
       padding: 5rem 2rem;
-      /* Light grey background to highlight the products */
-      background: #f5f5f5;
+      background: #CDCDCD;
     }
     .section-heading {
       text-align: center;
@@ -131,32 +142,23 @@
       font-size: 1.3rem;
       margin-bottom: 1.2rem;
     }
-    .cta-button, .messenger-btn {
+    .cta-button {
       display: inline-block;
+      background: var(--primary-red);
+      color: var(--pure-white);
       padding: 0.8rem 2rem;
       border-radius: 25px;
       text-decoration: none;
       margin: 0.5rem 0;
       transition: background 0.3s ease;
-    }
-    .cta-button {
-      background: var(--primary-red);
-      color: var(--pure-white);
       border: none;
       cursor: pointer;
+      font-weight: bold;
     }
     .cta-button:hover {
       background: #b00000;
     }
-    .messenger-btn {
-      background: #D40511;
-      color: var(--pure-white);
-      font-weight: 600;
-    }
-    .messenger-btn:hover {
-      background: #0066CC;
-    }
-    /* Cart Dropdown (client side cart) */
+    /* Cart Dropdown Styles */
     #cartDropdown {
       position: fixed;
       top: 80px;
@@ -210,8 +212,8 @@
       transition: opacity 0.5s ease-in-out;
       cursor: pointer;
     }
-    /* Footer (from index) */
-    .main-footer {
+    /* Footer */
+    footer.main-footer {
       background: var(--pure-white);
       color: var(--accent-black);
       padding: 4rem 2rem 2rem;
@@ -220,7 +222,7 @@
     }
     .footer-container {
       max-width: 1200px;
-      margin: 0 auto;
+      margin: auto;
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
@@ -274,7 +276,6 @@
     .social-icon:hover {
       transform: scale(1.5);
     }
-    /* Responsive */
     @media (max-width: 768px) {
       .header-content {
         flex-direction: column;
@@ -300,16 +301,19 @@
   <!-- Header & Navigation -->
   <header class="main-header">
     <div class="header-content">
-      <a href="index.html"><img src="logo.png" alt="eggxpress logo" class="brand-logo"></a>
+      <a href="index.html">
+        <img src="logo.png" alt="eggxpress logo" class="brand-logo">
+      </a>
       <nav class="main-nav">
         <a href="index.html" class="nav-link">Home</a>
         <a href="products.html" class="nav-link">Products</a>
         <a href="about.html" class="nav-link">About</a>
         <a href="contact.html" class="nav-link">Contact</a>
+        <a class="nav-link cart-link" onclick="toggleCartDropdown()"><img src="cart-icon.png" alt="Cart" class="cart-icon">Cart</a>
       </nav>
     </div>
   </header>
-
+  
   <!-- Cart Dropdown -->
   <div id="cartDropdown">
     <h3>Shopping Cart</h3>
@@ -318,10 +322,10 @@
     </div>
     <button class="cta-button" onclick="checkout()">Checkout</button>
   </div>
-
+  
   <!-- Products Section -->
   <section class="products-section" id="products">
-
+    <h2 class="section-heading">Our Products</h2>
     <div class="product-grid">
       <!-- Product Card 1 -->
       <div class="product-card">
@@ -330,8 +334,6 @@
           <h3 class="product-title">Small Eggs (30pcs)</h3>
           <p class="product-price">₱210</p>
           <button class="cta-button" onclick="addToCart('Small Eggs (30pcs)', '₱210')">Add to Cart</button>
-          <br>
-          <a href="https://m.me/600629409797130" class="messenger-btn" target="_blank">Order via Messenger</a>
         </div>
       </div>
       <!-- Product Card 2 -->
@@ -341,8 +343,6 @@
           <h3 class="product-title">Medium Eggs (30pcs)</h3>
           <p class="product-price">₱220</p>
           <button class="cta-button" onclick="addToCart('Medium Eggs (30pcs)', '₱220')">Add to Cart</button>
-          <br>
-          <a href="https://m.me/600629409797130" class="messenger-btn" target="_blank">Order via Messenger</a>
         </div>
       </div>
       <!-- Product Card 3 -->
@@ -352,8 +352,6 @@
           <h3 class="product-title">Large Eggs (30pcs)</h3>
           <p class="product-price">₱230</p>
           <button class="cta-button" onclick="addToCart('Large Eggs (30pcs)', '₱230')">Add to Cart</button>
-          <br>
-          <a href="https://m.me/600629409797130" class="messenger-btn" target="_blank">Order via Messenger</a>
         </div>
       </div>
       <!-- Product Card 4 -->
@@ -363,8 +361,6 @@
           <h3 class="product-title">XL Eggs (30pcs)</h3>
           <p class="product-price">₱240</p>
           <button class="cta-button" onclick="addToCart('XL Eggs (30pcs)', '₱240')">Add to Cart</button>
-          <br>
-          <a href="https://m.me/600629409797130" class="messenger-btn" target="_blank">Order via Messenger</a>
         </div>
       </div>
       <!-- Product Card 5 -->
@@ -374,14 +370,18 @@
           <h3 class="product-title">Jumbo Eggs (30pcs)</h3>
           <p class="product-price">₱250</p>
           <button class="cta-button" onclick="addToCart('Jumbo Eggs (30pcs)', '₱250')">Add to Cart</button>
-          <br>
-          <a href="https://m.me/600629409797130" class="messenger-btn" target="_blank">Order via Messenger</a>
         </div>
       </div>
     </div>
   </section>
-
-
+  
+  <!-- Gallery Section -->
+  <section class="gallery-section" id="gallery">
+    <div class="gallery-container">
+      <img id="gallery-image" src="gallery1.jpg" alt="Gallery Image" class="gallery-image">
+    </div>
+  </section>
+  
   <!-- Footer -->
   <footer class="main-footer">
     <div class="footer-container">
@@ -393,15 +393,16 @@
           <h3>Contact Us</h3>
           <p>📞 (0966) 700-4825</p>
           <p>✉️ eggxpress4@gmail.com</p>
-          <p>📍 Upper, Ground Floor, Alfredo Y. Lua (AYL) Premises, Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
+          <p>📍 Upper, Ground Floor, Alfredo Y. Lua Premises, Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
         </div>
         <div class="footer-section">
           <h3>Quick Links</h3>
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="products.html">Products</a></li>
-            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="javascript:void(0)" onclick="showPrivacyModal()">Privacy Policy &amp; Terms</a></li>
           </ul>
         </div>
         <div class="footer-section">
@@ -415,7 +416,30 @@
       </div>
     </div>
   </footer>
-
+  
+  <!-- Privacy Policy & Terms Modal (Shown only when triggered) -->
+  <div id="privacyModal" class="modal-overlay" style="display: none;">
+    <div class="modal">
+      <h2>Privacy Policy &amp; Terms &amp; Conditions</h2>
+      <p>
+        Welcome to eggxpress!. We value your privacy and are committed to protecting your personal information. This Privacy Policy and Terms &amp; Conditions outline how we collect, use, disclose, and safeguard your data when you visit our website.
+      </p>
+      <p>
+        <strong>Privacy Policy:</strong> We collect only the information necessary to provide our services, and we use secure methods to store and manage your data. We will never share your personal information with third parties without your explicit consent, except as required by law.
+      </p>
+      <p>
+        <strong>Terms &amp; Conditions:</strong> By using our website, you agree to our terms regarding the use of our services, including our policies on returns, refunds, and delivery. We reserve the right to modify these terms at any time, and your continued use of our website will constitute acceptance of any changes.
+      </p>
+      <p>
+        Please read these terms carefully. If you do not agree with our Privacy Policy and Terms &amp; Conditions, you must not use our website.
+      </p>
+      <div class="actions">
+        <button class="btn-decline" onclick="declinePrivacy()">Decline</button>
+        <button class="btn-agree" onclick="acceptPrivacy()">I Agree</button>
+      </div>
+    </div>
+  </div>
+  
   <script>
     // Cart functionality using localStorage
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -430,8 +454,9 @@
     
     function updateCart() {
       const cartContainer = document.getElementById('cartItems');
+      if (!cartContainer) return; // if cart container is not on this page
       cartContainer.innerHTML = '';
-      if(cartItems.length === 0) {
+      if (cartItems.length === 0) {
         cartContainer.innerHTML = '<p>Your cart is empty.</p>';
       } else {
         cartItems.forEach((item, index) => {
@@ -454,19 +479,24 @@
     }
     
     function checkout() {
-      if(cartItems.length === 0) {
+      if (cartItems.length === 0) {
         alert("Your cart is empty.");
         return;
       }
-      let orderSummary = "Order Details:%0A";
+      // For demo purposes, just alert the order summary.
+      let orderSummary = "Order Details:\\n";
       cartItems.forEach((item, index) => {
-        orderSummary += `${index + 1}. ${item.name} - ${item.price}%0A`;
+        orderSummary += `${index + 1}. ${item.name} - ${item.price}\\n`;
       });
-      orderSummary += "%0APlease reply to this message to complete your order.";
-      window.open(`https://m.me/eggxpress?ref=${orderSummary}`, '_blank');
+      orderSummary += "\\nPlease contact us to complete your order.";
+      alert(orderSummary);
+      // Clear cart after checkout simulation
+      cartItems = [];
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      updateCart();
     }
     
-    // Initialize cart on load
+    // Initialize cart on load (if cart exists on the page)
     updateCart();
     
     // Gallery image click-to-cycle
@@ -481,6 +511,17 @@
         galleryImg.style.opacity = 1;
       }, 400);
     });
+    
+    // Privacy Modal Handling: Show only when triggered
+    function acceptPrivacy() {
+      document.getElementById('privacyModal').style.display = 'none';
+    }
+    function declinePrivacy() {
+      window.location.href = 'https://www.google.com';
+    }
+    function showPrivacyModal() {
+      document.getElementById('privacyModal').style.display = 'flex';
+    }
   </script>
 </body>
 </html>
