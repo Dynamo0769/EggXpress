@@ -66,14 +66,13 @@
         .nav-logo {
             width: 100px;
             height: auto;
-            margin-right: 22rem;
+            margin-right: auto;
         }
 
         .nav-links {
             display: flex;
             gap: 2rem;
             align-items: center;
-            flex-grow: 1;
         }
 
         .nav-links a {
@@ -89,21 +88,6 @@
             transform: translateY(-2px);
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-red);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
         .cta-button {
             background: var(--primary-red);
             color: white;
@@ -111,7 +95,6 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin: 0.5rem;
             transition: background 0.3s;
         }
 
@@ -127,25 +110,8 @@
             padding: 2rem;
             text-align: center;
         }
-	    .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-icon {
-            width: 30px; /* Set a fixed width */
-            height: 30px; /* Set a fixed height */
-            border-radius: 50%; /* Optional: Make icons circular */
-            transition: transform 0.3s ease; /* Optional: Add hover effect */
-        }
-
-        .social-icon:hover {
-            transform: scale(1.1); /* Optional: Slightly enlarge on hover */
-        }
     </style>
-	</head>
+</head>
 <body>
     <header>
         <h1>EggXpress</h1>
@@ -159,15 +125,9 @@
             <a href="index.html#products">Products</a>
             <a href="index.html#about">About Us</a>
             <a href="index.html#contact">Contact</a>
-            <a href="javascript:void(0)" id="cartIcon" onclick="toggleCartDropdown()">🥚Cart</a>
+            <a href="javascript:void(0)" id="cartIcon" onclick="toggleCartDropdown()">🥚Cart (<span id="cartCount">0</span>)</a>
         </div>
     </nav>
-
-    <div id="cartDropdown">
-        <h3>Your Cart</h3>
-        <div id="cartItems"></div>
-        <button class="cta-button">Checkout</button>
-    </div>
 
     <main class="product-details">
         <section>
@@ -183,7 +143,7 @@
                         <li>Freshness: Laid within 24 hours</li>
                         <li>Storage: Keep refrigerated</li>
                     </ul>
-                    <button class="cta-button" onclick="addToCart('Medium Eggs')">Add to Cart</button>
+                    <button class="cta-button" onclick="addToCart('Medium Eggs', 220)">Add to Cart</button>
                     <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background:#0084FF; font-size:11px;">Order via Messenger</a>
                 </div>
             </div>
@@ -191,57 +151,25 @@
     </main>
 
     <footer>
-        <div class="social-icons">
-            <a href="https://facebook.com/EggXpress" target="_blank">
-                <img src="facebook-logo.png" alt="Facebook Logo" class="social-icon">
-            </a>
-            <a href="https://instagram.com/EggXpress" target="_blank">
-                <img src="instagram-logo.jpg" alt="Instagram Logo" class="social-icon">
-            </a>
-            <a href="https://twitter.com/EggXpress" target="_blank">
-                <img src="twitter-logo.png" alt="Twitter Logo" class="social-icon">
-            </a>
-        </div>
         <p>📞 Call: (123) 456-7890 | ✉️ Email: fresh@eggxpress.com</p>
         <p>123 Farm Road, Poultry City</p>
         <p>&copy; 2025 EggXpress - All Rights Reserved.</p>
     </footer>
 
     <script>
-        let cartItems = [];
+        let cart = [];
 
-        function addToCart(item) {
-            cartItems.push(item);
+        function addToCart(item, price) {
+            cart.push({ name: item, price: price });
             updateCart();
         }
 
         function updateCart() {
-            let cartDropdown = document.getElementById('cartDropdown');
-            let cartItemsContainer = document.getElementById('cartItems');
-            cartItemsContainer.innerHTML = '';
-
-            if (cartItems.length === 0) {
-                cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
-            } else {
-                cartItems.forEach((item, index) => {
-                    const cartItem = document.createElement('div');
-                    cartItem.classList.add('cart-item');
-                    cartItem.innerHTML = `
-                        <span>${item}</span>
-                        <button onclick="removeFromCart(${index})">Remove</button>
-                    `;
-                    cartItemsContainer.appendChild(cartItem);
-                });
-            }
-        }
-
-        function removeFromCart(index) {
-            cartItems.splice(index, 1);
-            updateCart();
+            document.getElementById('cartCount').textContent = cart.length;
         }
 
         function toggleCartDropdown() {
-            document.getElementById('cartDropdown').classList.toggle('show');
+            alert('Cart feature coming soon!');
         }
     </script>
 </body>
