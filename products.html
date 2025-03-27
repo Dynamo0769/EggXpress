@@ -375,7 +375,13 @@
     </div>
   </section>
   
-
+  <!-- Gallery Section -->
+  <section class="gallery-section" id="gallery">
+    <div class="gallery-container">
+      <img id="gallery-image" src="gallery1.jpg" alt="Gallery Image" class="gallery-image">
+    </div>
+  </section>
+  
   <!-- Footer -->
   <footer class="main-footer">
     <div class="footer-container">
@@ -477,16 +483,17 @@
         alert("Your cart is empty.");
         return;
       }
-      // Prepare order summary (if needed, for demonstration we'll simply alert it)
-      let orderSummary = "Order Details:";
+      // Prepare order summary to be sent to Messenger
+      let orderSummary = "Order Details:%0A";
       cartItems.forEach((item, index) => {
-        orderSummary += `${index + 1}. ${item.name} - ${item.price}\\n`;
+        orderSummary += `${index + 1}. ${item.name} - ${item.price}%0A`;
       });
-      orderSummary += "Please Click OK to complete your order on messenger.";
-      alert(orderSummary);
-      // Then open Messenger to complete the order
-      window.open("https://m.me/600629409797130", "_blank");
-      // Optionally, clear cart after checkout
+      orderSummary += "%0APlease complete your order on Messenger.";
+      // Show an alert notification for the user
+      alert("Your order details have been sent to Messenger. Please complete your order there.");
+      // Open Messenger with the order summary as a ref parameter
+      window.open("https://m.me/600629409797130?ref=" + encodeURIComponent(orderSummary), "_blank");
+      // Optionally, clear cart after checkout simulation
       cartItems = [];
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
       updateCart();
