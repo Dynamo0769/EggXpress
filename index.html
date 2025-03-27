@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-yellow: #f3bd3d;
+      --primary-yellow: #f3bd3d; /* Tan/Yellow */
       --primary-red: #D40511;
       --accent-black: #2D2D2D;
       --pure-white: #FFFFFF;
@@ -52,11 +52,6 @@
       align-items: center;
       padding: 0 2rem;
       justify-content: space-between;
-      .hero-title {
-  font-family: tan-headline ; /* Optional, if you want a different font */
- 
-  font-size: 3rem; /* Keep the size as desired */
-}
     }
     .brand-logo {
       width: 110px;
@@ -109,7 +104,10 @@
     .hero-title {
       font-size: 3rem;
       margin-bottom: 1rem;
-      color: var(--accent-black);
+      /* Set headline color to tan (you can adjust this value) */
+      color: #f3bd3d;
+      /* Add a subtle text shadow for contrast */
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
     .hero-subtitle {
       font-size: 1.4rem;
@@ -269,23 +267,6 @@
     }
     .social-icon:hover {
       transform: scale(1.5);
-    }
-    /* Privacy Consent Checkbox in Footer */
-    .privacy-consent {
-      margin-top: 1.5rem;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-    .privacy-consent input {
-      margin-right: 0.5rem;
-    }
-    .privacy-consent a {
-      color: var(--primary-red);
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .privacy-consent a:hover {
-      text-decoration: underline;
     }
     @media (max-width: 768px) {
       .header-content {
@@ -493,13 +474,6 @@
         </div>
       </div>
     </div>
-    <!-- Privacy Consent Checkbox -->
-    <div class="privacy-consent">
-      <input type="checkbox" id="privacyConsent" name="privacyConsent">
-      <label for="privacyConsent">
-        I agree to the <a href="javascript:void(0)" onclick="showPrivacyModal()">Privacy Policy and Terms &amp; Conditions</a>
-      </label>
-    </div>
   </footer>
 
   <!-- Privacy Policy & Terms Modal -->
@@ -539,12 +513,7 @@
       }, 400);
     });
 
-    // Privacy Modal Handling
-    function checkPrivacy() {
-      if (!localStorage.getItem('privacyAccepted')) {
-        document.getElementById('privacyModal').style.display = 'flex';
-      }
-    }
+    // Privacy Modal Handling: show modal 5 seconds after page load
     function acceptPrivacy() {
       localStorage.setItem('privacyAccepted', 'true');
       document.getElementById('privacyModal').style.display = 'none';
@@ -555,7 +524,12 @@
     function showPrivacyModal() {
       document.getElementById('privacyModal').style.display = 'flex';
     }
-    window.onload = checkPrivacy;
+    window.onload = function() {
+      // Show modal after 5 seconds if not already accepted
+      if (!localStorage.getItem('privacyAccepted')) {
+        setTimeout(showPrivacyModal, 5000);
+      }
+    };
   </script>
 </body>
 </html>
