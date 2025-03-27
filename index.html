@@ -41,7 +41,6 @@
       margin: 0 auto;
       display: flex;
       align-items: center;
-      position: relative;
       padding: 0 2rem;
     }
     .brand-logo {
@@ -80,10 +79,13 @@
     .nav-link:hover::after {
       width: 100%;
     }
-    /* Improved Hero Section with Transparent Overlay */
+    /* Hero Section with Yellow Background (or optional image) */
     .hero-section {
       position: relative;
-      background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('hero-farm.jpg') center/cover no-repeat;
+      /* Default Yellow Background */
+      background: var(--primary-yellow);
+      /* Uncomment the line below to use a background image instead (just replace 'hero-image.jpg' with your file) */
+      /* background: var(--primary-yellow) url('hero-image.jpg') center/cover no-repeat; */
       padding: 4rem 1rem;
       text-align: center;
     }
@@ -301,7 +303,7 @@
     </div>
   </header>
 
-  <!-- Hero Section with Transparent Overlay -->
+  <!-- Hero Section -->
   <section class="hero-section" id="home">
     <div class="hero-content">
       <h1 class="hero-title">Farm-Fresh Quality Eggs</h1>
@@ -357,12 +359,11 @@
     </div>
   </section>
 
-  <!-- Gallery Section with Click-to-Next Animation -->
+  <!-- Gallery Section -->
   <section class="gallery-section" id="gallery">
     <h2 class="section-heading">Gallery</h2>
     <div class="gallery-container">
       <img id="gallery-image" src="gallery1.jpg" alt="Gallery Image" class="gallery-image">
-      <p>Click the image to view more</p>
     </div>
   </section>
 
@@ -399,9 +400,8 @@
     </div>
   </footer>
 
-  <!-- JavaScript for Gallery Carousel -->
   <script>
-    const galleryImages = ['gallery1.jpg', 'gallery2.jpg', 'gallery3.jpg','gallery4.jpg']; // Replace with your own image paths
+    const galleryImages = ['gallery1.jpg', 'gallery2.jpg', 'gallery3.jpg', 'gallery4.jpg']; // Replace with your own image paths
     let currentIndex = 0;
     const galleryImg = document.getElementById('gallery-image');
 
@@ -411,7 +411,7 @@
         currentIndex = (currentIndex + 1) % galleryImages.length;
         galleryImg.src = galleryImages[currentIndex];
         galleryImg.style.opacity = 1;
-      }, 500); // Match transition duration in CSS
+      }, 400); 
     });
   </script>
 </body>
