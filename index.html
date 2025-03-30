@@ -190,15 +190,26 @@
     .more-info-btn:hover {
       background: #b00000;
     }
-    /* Gallery Section - Fullscreen */
-    .gallery-section {
+    /* Side-by-Side Map & Gallery */
+    .side-by-side {
+      display: flex;
       width: 100%;
       height: 100vh;
       overflow: hidden;
-      position: relative;
+    }
+    .side-by-side > div {
+      flex: 1;
+    }
+    .map-container {
+      height: 100%;
+    }
+    .map-container iframe {
+      border: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
     }
     .gallery-container {
-      width: 100%;
       height: 100%;
     }
     .gallery-image {
@@ -207,23 +218,6 @@
       object-fit: cover;
       transition: opacity 0.5s ease-in-out;
       cursor: pointer;
-    }
-    /* Google Maps Section - Seamless */
-    .map-section {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      overflow: hidden;
-    }
-    .map-container {
-      width: 100%;
-      height: 300px;
-    }
-    .map-container iframe {
-      border: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
     }
     /* Footer */
     .main-footer {
@@ -318,6 +312,13 @@
       .footer-right {
         grid-template-columns: 1fr;
       }
+      .side-by-side {
+        flex-direction: column;
+        height: auto;
+      }
+      .side-by-side > div {
+        height: 300px;
+      }
     }
     /* Modal Styles for Product Info */
     .modal-overlay {
@@ -382,10 +383,6 @@
     }
     .btn-decline:hover {
       background: #bbb;
-    }
-    /* Modal for Privacy Policy (if needed) */
-    .privacy-modal {
-      /* You can reuse modal styles if the privacy modal is similar */
     }
   </style>
 </head>
@@ -462,17 +459,16 @@
     </div>
   </section>
 
-  <!-- Gallery Section (Fullscreen) -->
-  <section class="gallery-section" id="gallery">
+  <!-- Side-by-Side Map & Gallery Section -->
+  <section class="side-by-side">
+    <!-- Google Maps -->
+    <div class="map-container">
+      <!-- Replace with your full Google Maps embed URL -->
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d600.9901233769588!2d123.96652733953573!3d10.267689091462076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99a731d65ca11%3A0xb7c2fff72b347d93!2sSITIO%20SUBA%20PANAS%20Beside%20Pacific%20grand%20villa%20and%20back%20of%20Fairchild%20Villas!5e1!3m2!1sen!2sph!4v1743296151045!5m2!1sen!2sph" allowfullscreen></iframe>
+    </div>
+    <!-- Gallery -->
     <div class="gallery-container">
       <img id="gallery-image" src="gallery1.jpg" alt="Gallery Image" class="gallery-image">
-    </div>
-  </section>
-
-  <!-- Google Maps Section (Seamless) -->
-  <section class="map-section">
-    <div class="map-container">
-     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d600.9901233769588!2d123.96652733953573!3d10.267689091462076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99a731d65ca11%3A0xb7c2fff72b347d93!2sSITIO%20SUBA%20PANAS%20Beside%20Pacific%20grand%20villa%20and%20back%20of%20Fairchild%20Villas!5e1!3m2!1sen!2sph!4v1743296151045!5m2!1sen!2sph" width="2222" height="699" frameborder="0" style="border:0;" allowfullscreen="yes" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
 
@@ -523,20 +519,28 @@
   </div>
 
   <!-- Privacy Policy & Terms Modal -->
-  <div id="privacyModal" class="modal-overlay" style="display: flex;">
+  <div id="privacyModal" class="modal-overlay">
     <div class="modal">
       <h2>Privacy Policy &amp; Terms &amp; Conditions</h2>
       <p>
-        Welcome to eggxpress!. We value your privacy and are committed to protecting your personal information. This Privacy Policy and Terms &amp; Conditions outline how we collect, use, disclose, and safeguard your data when you visit our website.
+        Welcome to eggxpress!. We value your privacy and are committed to protecting your personal information.
+        This Privacy Policy and Terms &amp; Conditions outlines how we collect, use, and safeguard your data,
+        as well as our policies on returns, product freshness, and age restrictions.
       </p>
       <p>
-        <strong>Privacy Policy:</strong> We collect only the information necessary to provide our services, and we use secure methods to store and manage your data. We will never share your personal information with third parties without your explicit consent, except as required by law.
+        <strong>Privacy Policy:</strong> We only collect the information necessary to provide our services.
+        All data is stored securely and will not be shared with third parties without your explicit consent, except as required by law.
       </p>
       <p>
-        <strong>Terms &amp; Conditions:</strong> By using our website, you agree to our terms regarding the use of our services, including our policies on returns, refunds, and delivery. We reserve the right to modify these terms at any time, and your continued use of our website will constitute acceptance of any changes.
+        <strong>Returns &amp; Freshness:</strong> All eggs are farm-fresh and inspected daily.
+        Returns are accepted within 24 hours if the product does not meet quality standards.
       </p>
       <p>
-        Please read these terms carefully. If you do not agree with our Privacy Policy and Terms &amp; Conditions, you must not use our website.
+        <strong>Age Restriction:</strong> By using our website, you confirm that you are at least 13 years old.
+      </p>
+      <p>
+        <strong>Terms &amp; Conditions:</strong> Use of our website constitutes acceptance of these terms.
+        We reserve the right to modify these policies as needed, and your continued use of the site indicates your acceptance of any changes.
       </p>
       <div class="actions">
         <button class="btn-decline" onclick="declinePrivacy()">Decline</button>
@@ -546,7 +550,7 @@
   </div>
 
   <script>
-    // Product data can be populated from your small.html, medium.html, etc.
+    // Product data from separate pages (small, medium, large, xl, jumbo)
     const productsData = {
       small: {
         title: "Small Eggs (30pcs)",
@@ -583,7 +587,7 @@
       document.getElementById("productModal").style.display = "none";
     }
 
-    // Gallery functionality: Fullscreen gallery that cycles images on click
+    // Gallery functionality: cycle images on click
     const galleryImages = ['gallery1.jpg', 'gallery2.jpg', 'gallery3.jpg', 'gallery4.jpg', 'gallery5.jpg'];
     let currentIndex = 0;
     const galleryImg = document.getElementById('gallery-image');
@@ -596,7 +600,7 @@
       }, 400);
     });
 
-    // Privacy Modal Handling
+    // Privacy Modal Handling (pop up only once)
     function acceptPrivacy() {
       localStorage.setItem('privacyAccepted', 'true');
       document.getElementById('privacyModal').style.display = 'none';
@@ -608,7 +612,10 @@
       document.getElementById('privacyModal').style.display = 'flex';
     }
     window.onload = function() {
-      showPrivacyModal();
+      // Only show privacy modal if not accepted before
+      if (!localStorage.getItem('privacyAccepted')) {
+        showPrivacyModal();
+      }
     };
 
     // Close modals when clicking outside modal content
@@ -619,7 +626,7 @@
         closeProductModal();
       }
       if (e.target === privacyModal) {
-        document.getElementById("privacyModal").style.display = "none";
+        privacyModal.style.display = "none";
       }
     });
   </script>
