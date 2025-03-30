@@ -8,17 +8,25 @@
   <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-  <!-- Navigation -->
-  <header class="main-header">
-    <div class="header-content">
-      <a href="index.html" class="logo">
-        <img src="assets/images/logo.png" alt="EggXpress Logo" />
-      </a>
-      <nav class="main-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="products.html" class="nav-link">Products</a>
-        <a href="about.html" class="nav-link active">About</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html"><img src="assets/images/logo.png" alt="EggXpress Logo"></a>
+      </div>
+      <nav>
+        <div class="hamburger" onclick="toggleNav()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="javascript:void(0)" onclick="showPrivacyModal()">Privacy Policy</a></li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -28,13 +36,13 @@
     <div class="about-container">
       <h2>About EggXpress</h2>
       <p>
-        EggXpress is dedicated to providing the highest quality, farm-fresh eggs. We follow strict food safety standards and comply with all regulatory guidelines, including Republic Act provisions and age-restriction policies.
+        EggXpress is dedicated to providing the highest quality, farm-fresh eggs. We adhere to strict food safety standards and comply with all regulatory guidelines, including Republic Act provisions and age-restriction policies.
       </p>
       <p>
-        Our mission is to bring you premium, free-range eggs while ensuring quality assurance at every step. We source our eggs from certified farms that maintain high hygiene standards and ethical practices.
+        Our mission is to bring you premium, free-range eggs while ensuring quality assurance at every step. We source our eggs from certified farms that maintain high hygiene and ethical practices.
       </p>
       <p>
-        At EggXpress, freshness is guaranteed. We inspect our eggs daily and ensure they are delivered in optimal condition. Our commitment to quality and customer satisfaction drives us to continually improve our services.
+        At EggXpress, freshness is our promise. Every egg is carefully inspected daily and delivered in optimal condition. Customer satisfaction and product excellence drive us to continually improve our services.
       </p>
     </div>
   </section>
@@ -54,21 +62,35 @@
         </div>
         <div class="footer-section">
           <h3>Legal</h3>
-          <a href="#" id="privacyPolicyLink3">Privacy Policy &amp; Terms</a>
+          <a href="javascript:void(0)" onclick="showPrivacyModal()">Privacy Policy &amp; Terms</a>
         </div>
       </div>
     </div>
+    <div class="copyright">© 2005 EggXpress. All rights reserved.</div>
   </footer>
 
-  <!-- Privacy Policy Modal -->
+  <!-- Privacy Policy & Terms Modal -->
   <div id="privacyModal" class="modal-overlay">
     <div class="modal">
-      <h2>Privacy Policy &amp; Terms</h2>
+      <h2>Privacy Policy &amp; Terms &amp; Conditions</h2>
       <p>
-        This site complies with Republic Act on Food and Age Restricted guidelines. Quality assurance is our priority.
+        Welcome to EggXpress! We are committed to protecting your privacy and ensuring that your personal data is handled responsibly in compliance with Philippine laws.
+      </p>
+      <p>
+        <strong>Privacy Policy:</strong> We collect only the information necessary to provide our egg delivery services. All data is securely stored and will not be shared with third parties without your explicit consent, except as required by law.
+      </p>
+      <p>
+        <strong>Returns &amp; Freshness:</strong> Our eggs are farm-fresh and inspected daily for quality. Returns are accepted within 24 hours if the product fails to meet our quality standards.
+      </p>
+      <p>
+        <strong>Age Restriction:</strong> By using our website, you confirm that you are at least 13 years old.
+      </p>
+      <p>
+        <strong>Terms &amp; Conditions:</strong> Use of our website constitutes acceptance of these terms. We reserve the right to modify these policies as needed; your continued use of the site indicates your acceptance of any changes.
       </p>
       <div class="actions">
-        <button id="closePrivacy" class="btn-decline">Close</button>
+        <button class="btn-decline" onclick="declinePrivacy()">Decline</button>
+        <button class="btn-agree" onclick="acceptPrivacy()">I Agree</button>
       </div>
     </div>
   </div>
