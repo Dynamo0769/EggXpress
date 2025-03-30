@@ -46,11 +46,11 @@
     .header-content {
       max-width: 1200px;
       margin: 0 auto;
-      position: relative;
       padding: 0 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: relative;
     }
     .brand-logo {
       width: 110px;
@@ -70,8 +70,8 @@
       color: var(--accent-black);
       text-decoration: none;
       font-weight: 750;
-      position: relative;
       padding: 0.5rem 0;
+      position: relative;
       transition: color 0.3s ease;
     }
     .nav-link:hover {
@@ -184,25 +184,27 @@
       text-decoration: none;
       font-weight: 600;
       transition: background 0.3s ease;
+      cursor: pointer;
       margin-bottom: 1rem;
     }
     .more-info-btn:hover {
       background: #b00000;
     }
-    /* Gallery Section */
+    /* Gallery Section - Fullscreen */
     .gallery-section {
-      padding: 3rem 1rem;
-      text-align: center;
-      background: #f3bd3d;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
     }
     .gallery-container {
-      max-width: 700px;
-      margin: 0 auto;
-      position: relative;
+      width: 100%;
+      height: 100%;
     }
     .gallery-image {
       width: 100%;
-      border-radius: 8px;
+      height: 100%;
+      object-fit: cover;
       transition: opacity 0.5s ease-in-out;
       cursor: pointer;
     }
@@ -317,7 +319,7 @@
         grid-template-columns: 1fr;
       }
     }
-    /* Modal Overlay Styles for Privacy Policy & Terms */
+    /* Modal Styles for Product Info */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -325,7 +327,7 @@
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.7);
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
       z-index: 3000;
@@ -381,6 +383,10 @@
     .btn-decline:hover {
       background: #bbb;
     }
+    /* Modal for Privacy Policy (if needed) */
+    .privacy-modal {
+      /* You can reuse modal styles if the privacy modal is similar */
+    }
   </style>
 </head>
 <body>
@@ -392,7 +398,7 @@
       </a>
       <nav class="main-nav">
         <a href="index.html" class="nav-link">Home</a>
-        <a href="products.html" class="nav-link">Products</a>
+        <a href="index.html#products" class="nav-link">Products</a>
         <a href="about.html" class="nav-link">About</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </nav>
@@ -404,7 +410,7 @@
     <div class="hero-content">
       <h1 class="hero-title">Farm-Fresh Quality Eggs</h1>
       <p class="hero-subtitle">Delivered from our Farm Straight to Your Table</p>
-      <a href="products.html" class="hero-cta">Shop Now</a>
+      <a href="#products" class="hero-cta">Shop Now</a>
     </div>
   </section>
 
@@ -412,12 +418,13 @@
   <section class="products-section" id="products">
     <h2 class="section-heading">Our Products</h2>
     <div class="product-grid">
+      <!-- Each product card calls showProductModal with a key identifier -->
       <div class="product-card">
         <img src="small.jpg" alt="Small Eggs" class="product-image">
         <div class="product-info">
           <h3 class="product-title">Small Eggs (30pcs)</h3>
           <p class="product-price">₱210</p>
-          <a href="small.html" class="more-info-btn">More Info</a>
+          <div class="more-info-btn" onclick="showProductModal('small')">More Info</div>
         </div>
       </div>
       <div class="product-card">
@@ -425,7 +432,7 @@
         <div class="product-info">
           <h3 class="product-title">Medium Eggs (30pcs)</h3>
           <p class="product-price">₱220</p>
-          <a href="medium.html" class="more-info-btn">More Info</a>
+          <div class="more-info-btn" onclick="showProductModal('medium')">More Info</div>
         </div>
       </div>
       <div class="product-card">
@@ -433,7 +440,7 @@
         <div class="product-info">
           <h3 class="product-title">Large Eggs (30pcs)</h3>
           <p class="product-price">₱230</p>
-          <a href="large.html" class="more-info-btn">More Info</a>
+          <div class="more-info-btn" onclick="showProductModal('large')">More Info</div>
         </div>
       </div>
       <div class="product-card">
@@ -441,7 +448,7 @@
         <div class="product-info">
           <h3 class="product-title">XL Eggs (30pcs)</h3>
           <p class="product-price">₱240</p>
-          <a href="xl.html" class="more-info-btn">More Info</a>
+          <div class="more-info-btn" onclick="showProductModal('xl')">More Info</div>
         </div>
       </div>
       <div class="product-card">
@@ -449,13 +456,13 @@
         <div class="product-info">
           <h3 class="product-title">Jumbo Eggs (30pcs)</h3>
           <p class="product-price">₱250</p>
-          <a href="jumbo.html" class="more-info-btn">More Info</a>
+          <div class="more-info-btn" onclick="showProductModal('jumbo')">More Info</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Gallery Section -->
+  <!-- Gallery Section (Fullscreen) -->
   <section class="gallery-section" id="gallery">
     <div class="gallery-container">
       <img id="gallery-image" src="gallery1.jpg" alt="Gallery Image" class="gallery-image">
@@ -465,8 +472,7 @@
   <!-- Google Maps Section (Seamless) -->
   <section class="map-section">
     <div class="map-container">
-     
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d600.9901233769588!2d123.96652733953573!3d10.267689091462076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99a731d65ca11%3A0xb7c2fff72b347d93!2sSITIO%20SUBA%20PANAS%20Beside%20Pacific%20grand%20villa%20and%20back%20of%20Fairchild%20Villas!5e1!3m2!1sen!2sph!4v1743296151045!5m2!1sen!2sph" width="2222" height="699" frameborder="0" style="border:0;" allowfullscreen="yes" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d600.9901233769588!2d123.96652733953573!3d10.267689091462076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99a731d65ca11%3A0xb7c2fff72b347d93!2sSITIO%20SUBA%20PANAS%20Beside%20Pacific%20grand%20villa%20and%20back%20of%20Fairchild%20Villas!5e1!3m2!1sen!2sph!4v1743296151045!5m2!1sen!2sph" width="2222" height="699" frameborder="0" style="border:0;" allowfullscreen="yes" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
 
@@ -487,7 +493,7 @@
           <h3>Quick Links</h3>
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
+            <li><a href="#products">Products</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="javascript:void(0)" onclick="showPrivacyModal()">Privacy Policy &amp; Terms</a></li>
@@ -504,6 +510,17 @@
       </div>
     </div>
   </footer>
+
+  <!-- Product Info Modal -->
+  <div id="productModal" class="modal-overlay">
+    <div class="modal">
+      <h2 id="modalProductTitle">Product Title</h2>
+      <p id="modalProductDetails">Product details will appear here.</p>
+      <div class="actions">
+        <button class="btn-decline" onclick="closeProductModal()">Close</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Privacy Policy & Terms Modal -->
   <div id="privacyModal" class="modal-overlay" style="display: flex;">
@@ -529,7 +546,44 @@
   </div>
 
   <script>
-    // Gallery functionality
+    // Product data can be populated from your small.html, medium.html, etc.
+    const productsData = {
+      small: {
+        title: "Small Eggs (30pcs)",
+        details: "Small Eggs: Perfect for baking and everyday use. Weight: 45-50g per egg. Freshly laid and refrigerated for optimal quality."
+      },
+      medium: {
+        title: "Medium Eggs (30pcs)",
+        details: "Medium Eggs: Ideal for most recipes. Weight: Approximately 50-55g per egg. Farm fresh and naturally produced."
+      },
+      large: {
+        title: "Large Eggs (30pcs)",
+        details: "Large Eggs: Great for cooking and baking. Weight: Around 60-65g per egg. Sourced from free-range hens."
+      },
+      xl: {
+        title: "XL Eggs (30pcs)",
+        details: "XL Eggs: Perfect for premium recipes. Weight: 55-60g per egg. Offers a richer flavor and texture."
+      },
+      jumbo: {
+        title: "Jumbo Eggs (30pcs)",
+        details: "Jumbo Eggs: Our top quality eggs. Weight: 60-65g per egg. Exceptionally fresh and nutritious."
+      }
+    };
+
+    function showProductModal(key) {
+      const data = productsData[key];
+      if (data) {
+        document.getElementById("modalProductTitle").textContent = data.title;
+        document.getElementById("modalProductDetails").textContent = data.details;
+        document.getElementById("productModal").style.display = "flex";
+      }
+    }
+
+    function closeProductModal() {
+      document.getElementById("productModal").style.display = "none";
+    }
+
+    // Gallery functionality: Fullscreen gallery that cycles images on click
     const galleryImages = ['gallery1.jpg', 'gallery2.jpg', 'gallery3.jpg', 'gallery4.jpg', 'gallery5.jpg'];
     let currentIndex = 0;
     const galleryImg = document.getElementById('gallery-image');
@@ -542,7 +596,7 @@
       }, 400);
     });
 
-    // Privacy Modal Handling: show immediately on page load
+    // Privacy Modal Handling
     function acceptPrivacy() {
       localStorage.setItem('privacyAccepted', 'true');
       document.getElementById('privacyModal').style.display = 'none';
@@ -554,9 +608,20 @@
       document.getElementById('privacyModal').style.display = 'flex';
     }
     window.onload = function() {
-      // Always show modal immediately on load
       showPrivacyModal();
     };
+
+    // Close modals when clicking outside modal content
+    window.addEventListener("click", function(e) {
+      const productModal = document.getElementById("productModal");
+      const privacyModal = document.getElementById("privacyModal");
+      if (e.target === productModal) {
+        closeProductModal();
+      }
+      if (e.target === privacyModal) {
+        document.getElementById("privacyModal").style.display = "none";
+      }
+    });
   </script>
 </body>
 </html>
