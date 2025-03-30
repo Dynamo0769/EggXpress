@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>eggxpress! - Premium Farm Fresh Eggs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EggXpress! - Premium Farm Fresh Eggs</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/logo-180x180.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/logo-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/logo-16x16.png">
@@ -17,387 +17,111 @@
       --accent-black: #2D2D2D;
       --pure-white: #FFFFFF;
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      line-height: 1.6;
-      color: var(--accent-black);
-      background-color: #fdfdfd;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: var(--accent-black); background-color: #fdfdfd; }
+
     /* Header & Navigation */
-    .main-header {
-      background: var(--pure-white);
-      padding: 0.1rem 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 3px solid var(--primary-red);
-      animation: fadeInDown 0.8s ease-out;
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .header-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-    }
-    .brand-logo {
-      width: 110px;
-      transition: transform 0.3s ease;
-    }
-    .brand-logo:hover {
-      transform: scale(1.1);
-    }
-    .main-nav {
-      display: flex;
-      gap: 2.5rem;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .nav-link {
-      color: var(--accent-black);
-      text-decoration: none;
-      font-weight: 750;
-      padding: 0.5rem 0;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-    .nav-link:hover {
-      color: #e6a200;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary-red);
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover::after {
-      width: 100%;
-    }
-    /* Hero Section */
-    .hero-section {
-      position: relative;
-      background: var(--primary-yellow) center/cover no-repeat;
-      padding: 4rem 1rem;
-      text-align: center;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .hero-title {
-      font-family: tan-headline;
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-    }
-    .hero-subtitle {
-      font-size: 1.4rem;
-      color: var(--accent-black);
-      margin-bottom: 2rem;
-    }
-    .hero-cta {
-      display: inline-block;
-      background: var(--primary-red);
-      color: var(--pure-white);
-      padding: 0.8rem 2rem;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s ease;
-    }
-    .hero-cta:hover {
-      background: #b00000;
-    }
-    /* Products Section */
-    .products-section {
-      padding: 5rem 2rem;
-      background: #f9f9f9;
-    }
-    .section-heading {
-      text-align: center;
-      margin-bottom: 3rem;
-      font-size: 2.5rem;
-      color: var(--accent-black);
-    }
-    .product-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-    }
-    .product-card {
-      background: var(--pure-white);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-      text-align: center;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
-    .product-image {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-    .product-info {
-      padding: 1rem;
-    }
-    .product-title {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent-black);
-    }
-    .product-price {
-      color: var(--primary-red);
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-    .more-info-btn {
-      display: inline-block;
-      background: var(--primary-red);
-      color: var(--pure-white);
-      padding: 0.6rem 1.5rem;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s ease;
-      cursor: pointer;
-      margin-bottom: 1rem;
-    }
-    .more-info-btn:hover {
-      background: #b00000;
-    }
-    /* Side-by-Side Map & Gallery */
-    .side-by-side {
-      display: flex;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
-    .side-by-side > div {
-      flex: 1;
-    }
-    .map-container {
-      height: 100%;
-    }
-    .map-container iframe {
-      border: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-    .gallery-container {
-      height: 100%;
-    }
-    .gallery-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: opacity 0.5s ease-in-out;
-      cursor: pointer;
-    }
-    /* Footer */
-    .main-footer {
-      background: var(--pure-white);
-      color: var(--accent-black);
-      padding: 4rem 2rem 2rem;
-      margin-top: 2rem;
-    }
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      align-items: flex-start;
-    }
-    .footer-left {
-      flex: 1;
-      min-width: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-    }
-    .footer-logo {
-      width: 150px;
-    }
-    .footer-right {
-      flex: 3;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    .footer-section h3 {
-      margin-bottom: 1.5rem;
-      color: var(--primary-red);
-    }
-    .footer-links {
-      list-style: none;
-    }
-    .footer-links li {
-      margin-bottom: 0.8rem;
-    }
-    .footer-links a {
-      color: var(--accent-black);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    .footer-links a:hover {
-      color: var(--primary-red);
-    }
-    .social-links {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-      justify-content: center;
-    }
-    .social-icon {
-      width: 35px;
-      height: 35px;
-      transition: transform 0.3s ease;
-    }
-    .social-icon:hover {
-      transform: scale(1.5);
-    }
+    header { background: var(--pure-white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; padding: 0.5rem 2rem; }
+    .header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .logo img { width: 120px; transition: transform 0.3s ease; }
+    .logo img:hover { transform: scale(1.1); }
+    nav { display: flex; align-items: center; }
+    nav ul { list-style: none; display: flex; }
+    nav ul li { margin-left: 2rem; }
+    nav ul li a { text-decoration: none; color: var(--accent-black); font-weight: 600; transition: color 0.3s ease; }
+    nav ul li a:hover { color: #e6a200; }
+    /* Hamburger Menu */
+    .hamburger { display: none; flex-direction: column; cursor: pointer; }
+    .hamburger div { width: 25px; height: 3px; background: var(--accent-black); margin: 4px 0; transition: 0.4s; }
     @media (max-width: 768px) {
-      .header-content {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-      .main-nav {
-        position: static;
-        transform: none;
-        justify-content: center;
-      }
-      .hero-title {
-        font-size: 2.2rem;
-      }
-      .hero-subtitle {
-        font-size: 1.1rem;
-      }
-      .product-grid {
-        grid-template-columns: 1fr;
-      }
-      .footer-container {
-        flex-direction: column;
-        align-items: center;
-      }
-      .footer-left, .footer-right {
-        width: 100%;
-        text-align: center;
-      }
-      .footer-right {
-        grid-template-columns: 1fr;
-      }
-      .side-by-side {
-        flex-direction: column;
-        height: auto;
-      }
-      .side-by-side > div {
-        height: 300px;
-      }
+      nav ul { display: none; flex-direction: column; background: var(--pure-white); position: absolute; right: 0; top: 60px; width: 200px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+      nav ul li { margin: 1rem; }
+      .hamburger { display: flex; }
     }
-    /* Modal Styles for Product Info */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 3000;
+
+    /* Hero Section */
+    .hero-section { background: var(--primary-yellow) center/cover no-repeat; padding: 4rem 1rem; text-align: center; }
+    .hero-content { max-width: 700px; margin: 0 auto; }
+    .hero-title { font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+    .hero-subtitle { font-size: 1.4rem; margin-bottom: 2rem; }
+    .hero-cta { background: var(--primary-red); color: var(--pure-white); padding: 0.8rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; transition: background 0.3s ease; }
+    .hero-cta:hover { background: #b00000; }
+
+    /* Products Section */
+    .products-section { padding: 5rem 2rem; background: #f9f9f9; }
+    .section-heading { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; }
+    .product-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+    .product-card { background: var(--pure-white); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease; }
+    .product-card:hover { transform: translateY(-5px); }
+    .product-image { width: 100%; height: 220px; object-fit: cover; }
+    .product-info { padding: 1rem; }
+    .product-title { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .product-price { color: var(--primary-red); font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; }
+    .more-info-btn { background: var(--primary-red); color: var(--pure-white); padding: 0.6rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: 600; cursor: pointer; transition: background 0.3s ease; }
+    .more-info-btn:hover { background: #b00000; }
+
+    /* Side-by-Side Map & Gallery */
+    .side-by-side { display: flex; width: 100%; height: 100vh; overflow: hidden; }
+    .side-by-side > div { flex: 1; }
+    .map-container, .gallery-container { height: 100%; }
+    .map-container iframe { width: 100%; height: 100%; border: none; display: block; }
+    .gallery-container .gallery-image { width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: opacity 0.5s ease-in-out; }
+
+    /* Footer */
+    .main-footer { background: var(--pure-white); padding: 4rem 2rem 2rem; margin-top: 2rem; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; }
+    .footer-left { flex: 1; display: flex; align-items: center; }
+    .footer-logo { width: 150px; }
+    .footer-right { flex: 3; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .footer-section h3 { margin-bottom: 1.5rem; color: var(--primary-red); }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.8rem; }
+    .footer-links a { text-decoration: none; color: var(--accent-black); transition: color 0.3s ease; }
+    .footer-links a:hover { color: var(--primary-red); }
+    .social-links { display: flex; gap: 1.5rem; margin-top: 1.5rem; }
+    .social-icon { width: 35px; height: 35px; transition: transform 0.3s ease; }
+    .social-icon:hover { transform: scale(1.5); }
+    .copyright { text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--accent-black); }
+
+    @media (max-width: 768px) {
+      .side-by-side { flex-direction: column; height: auto; }
+      .side-by-side > div { height: 300px; }
     }
-    .modal {
-      background: var(--pure-white);
-      padding: 2rem;
-      border-radius: 10px;
-      max-width: 600px;
-      width: 90%;
-      max-height: 80%;
-      overflow-y: auto;
-      animation: scaleIn 0.4s ease;
-    }
-    @keyframes scaleIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    .modal h2 {
-      margin-bottom: 1rem;
-      color: var(--primary-red);
-      text-transform: uppercase;
-    }
-    .modal p {
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-      text-align: justify;
-    }
-    .modal .actions {
-      margin-top: 1.5rem;
-      display: flex;
-      justify-content: space-around;
-    }
-    .modal button {
-      padding: 0.5rem 1.5rem;
-      border: none;
-      border-radius: 5px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .btn-agree {
-      background: var(--primary-red);
-      color: var(--pure-white);
-    }
-    .btn-agree:hover {
-      background: #b00000;
-    }
-    .btn-decline {
-      background: #ccc;
-      color: var(--accent-black);
-    }
-    .btn-decline:hover {
-      background: #bbb;
-    }
+
+    /* Modal Styles */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 3000; }
+    .modal { background: var(--pure-white); padding: 2rem; border-radius: 10px; max-width: 600px; width: 90%; max-height: 80%; overflow-y: auto; animation: scaleIn 0.4s ease; }
+    @keyframes scaleIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .modal h2 { margin-bottom: 1rem; color: var(--primary-red); text-transform: uppercase; }
+    .modal p { margin-bottom: 1rem; font-size: 0.95rem; text-align: justify; }
+    .modal .actions { margin-top: 1.5rem; display: flex; justify-content: space-around; }
+    .modal button { padding: 0.5rem 1.5rem; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background 0.3s ease; }
+    .btn-agree { background: var(--primary-red); color: var(--pure-white); }
+    .btn-agree:hover { background: #b00000; }
+    .btn-decline { background: #ccc; color: var(--accent-black); }
+    .btn-decline:hover { background: #bbb; }
   </style>
 </head>
 <body>
-  <!-- Header & Navigation -->
-  <header class="main-header">
-    <div class="header-content">
-      <a href="index.html">
-        <img src="logo.png" alt="eggxpress logo" class="brand-logo">
-      </a>
-      <nav class="main-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="index.html#products" class="nav-link">Products</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html"><img src="logo.png" alt="EggXpress Logo"></a>
+      </div>
+      <nav>
+        <div class="hamburger" onclick="toggleNav()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#products">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="javascript:void(0)" onclick="showPrivacyModal()">Privacy Policy</a></li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -415,7 +139,6 @@
   <section class="products-section" id="products">
     <h2 class="section-heading">Our Products</h2>
     <div class="product-grid">
-      <!-- Each product card calls showProductModal with a key identifier -->
       <div class="product-card">
         <img src="small.jpg" alt="Small Eggs" class="product-image">
         <div class="product-info">
@@ -463,7 +186,6 @@
   <section class="side-by-side">
     <!-- Google Maps -->
     <div class="map-container">
-      <!-- Replace with your full Google Maps embed URL -->
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d600.9901233769588!2d123.96652733953573!3d10.267689091462076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99a731d65ca11%3A0xb7c2fff72b347d93!2sSITIO%20SUBA%20PANAS%20Beside%20Pacific%20grand%20villa%20and%20back%20of%20Fairchild%20Villas!5e1!3m2!1sen!2sph!4v1743296151045!5m2!1sen!2sph" allowfullscreen></iframe>
     </div>
     <!-- Gallery -->
@@ -476,14 +198,14 @@
   <footer class="main-footer">
     <div class="footer-container">
       <div class="footer-left">
-        <img src="logo.png" alt="eggxpress logo" class="footer-logo">
+        <img src="logo.png" alt="EggXpress Logo" class="footer-logo">
       </div>
       <div class="footer-right">
         <div class="footer-section">
           <h3>Contact Us</h3>
           <p>📞 (0966) 700-4825</p>
           <p>✉️ eggxpress4@gmail.com</p>
-          <p>📍 Upper, Ground Floor, Alfredo Y. Lua (AYL) Premises, Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
+          <p>📍 Upper, Ground Floor, Alfredo Y. Lua (AYL) Premises,<br> Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
         </div>
         <div class="footer-section">
           <h3>Quick Links</h3>
@@ -505,6 +227,7 @@
         </div>
       </div>
     </div>
+    <div class="copyright">© 2005 EggXpress. All rights reserved.</div>
   </footer>
 
   <!-- Product Info Modal -->
@@ -523,24 +246,19 @@
     <div class="modal">
       <h2>Privacy Policy &amp; Terms &amp; Conditions</h2>
       <p>
-        Welcome to eggxpress!. We value your privacy and are committed to protecting your personal information.
-        This Privacy Policy and Terms &amp; Conditions outlines how we collect, use, and safeguard your data,
-        as well as our policies on returns, product freshness, and age restrictions.
+        Welcome to EggXpress! We are committed to protecting your privacy and ensuring that your personal data is handled responsibly, in compliance with Philippine laws and regulations.
       </p>
       <p>
-        <strong>Privacy Policy:</strong> We only collect the information necessary to provide our services.
-        All data is stored securely and will not be shared with third parties without your explicit consent, except as required by law.
+        <strong>Privacy Policy:</strong> We collect only the information necessary to provide our egg delivery services. All data is securely stored and will not be shared with third parties without your explicit consent, except as required by law.
       </p>
       <p>
-        <strong>Returns &amp; Freshness:</strong> All eggs are farm-fresh and inspected daily.
-        Returns are accepted within 24 hours if the product does not meet quality standards.
+        <strong>Returns &amp; Freshness:</strong> Our eggs are farm-fresh and inspected daily for quality. Returns are accepted within 24 hours if the product fails to meet our strict quality standards.
       </p>
       <p>
         <strong>Age Restriction:</strong> By using our website, you confirm that you are at least 13 years old.
       </p>
       <p>
-        <strong>Terms &amp; Conditions:</strong> Use of our website constitutes acceptance of these terms.
-        We reserve the right to modify these policies as needed, and your continued use of the site indicates your acceptance of any changes.
+        <strong>Terms &amp; Conditions:</strong> Use of our website constitutes acceptance of these terms. We reserve the right to modify these policies as needed. Continued use of the site indicates your acceptance of any changes. All services provided are subject to applicable Philippine laws and regulations.
       </p>
       <div class="actions">
         <button class="btn-decline" onclick="declinePrivacy()">Decline</button>
@@ -550,7 +268,7 @@
   </div>
 
   <script>
-    // Product data from separate pages (small, medium, large, xl, jumbo)
+    // Product data for modal popups
     const productsData = {
       small: {
         title: "Small Eggs (30pcs)",
@@ -600,7 +318,7 @@
       }, 400);
     });
 
-    // Privacy Modal Handling (pop up only once)
+    // Privacy Modal Handling (show only once)
     function acceptPrivacy() {
       localStorage.setItem('privacyAccepted', 'true');
       document.getElementById('privacyModal').style.display = 'none';
@@ -612,11 +330,20 @@
       document.getElementById('privacyModal').style.display = 'flex';
     }
     window.onload = function() {
-      // Only show privacy modal if not accepted before
       if (!localStorage.getItem('privacyAccepted')) {
         showPrivacyModal();
       }
     };
+
+    // Toggle navigation for hamburger menu
+    function toggleNav() {
+      const navLinks = document.getElementById("navLinks");
+      if (navLinks.style.display === "flex") {
+        navLinks.style.display = "none";
+      } else {
+        navLinks.style.display = "flex";
+      }
+    }
 
     // Close modals when clicking outside modal content
     window.addEventListener("click", function(e) {
