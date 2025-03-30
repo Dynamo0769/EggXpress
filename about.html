@@ -1,273 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>eggxpress! - About Us</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/logo-180x180.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/logo-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/logo-16x16.png">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-yellow: #f3bd3d;
-      --primary-red: #D40511;
-      --accent-black: #2D2D2D;
-      --pure-white: #FFFFFF;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: var(--pure-white);
-      color: var(--accent-black);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-   
-    header.main-header {
-      background: var(--pure-white);
-      padding: 0.5rem 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 3px solid var(--primary-red);
-      animation: fadeInDown 0.8s ease-out;
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .header-content {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 2rem;
-    }
-    .brand-logo {
-      width: 110px;
-      transition: transform 0.3s ease;
-    }
-    .brand-logo:hover { transform: scale(1.1); }
-    .main-nav {
-      display: flex;
-      gap: 2.5rem;
-    }
-    .nav-link {
-      color: var(--accent-black);
-      text-decoration: none;
-      font-weight: 600;
-      padding: 0.5rem 0;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-    .nav-link:hover { color: #e6a200; }
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background: var(--primary-red);
-      transition: width 0.3s;
-    }
-    .nav-link:hover::after { width: 100%; }
-   
-
-      .hero {
-  position: relative;
-  background: url('hero-image1.jpg') center/cover no-repeat;
-  height: 400px;
-  display: flex;
-  align-items: center;
-      text-align: center;
-      color: var(--pure-white);
-      background-attachment: fixed;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.4);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      padding: 0 20px;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-    /* About Content */
-    .about-container {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 20px;
-      text-align: center;
-      animation: fadeInUp 1s ease-out;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .about-container h2 {
-      font-size: 2rem;
-      color: var(--primary-yellow);
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-    .about-container p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      text-align: justify;
-    }
-    
-    footer.main-footer {
-      background: var(--pure-white);
-      color: var(--accent-black);
-      padding: 4rem 2rem 2rem;
-      margin-top: 3rem;
-      border-top: 3px solid var(--primary-red);
-      animation: fadeInUp 0.8s ease-out;
-    }
-    .footer-container {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-    .footer-left { flex: 1; min-width: 150px; }
-    .footer-right {
-      flex: 3;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    .footer-logo { width: 150px; }
-    .footer-section h3 {
-      margin-bottom: 1.5rem;
-      color: var(--primary-red);
-    }
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 0.8rem; }
-    .footer-links a {
-      color: var(--accent-black);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    .footer-links a:hover { color: var(--primary-red); }
-    .social-links {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-      justify-content: center;
-    }
-    .social-icon {
-      width: 35px;
-      height: 35px;
-      transition: transform 0.3s ease;
-    }
-    .social-icon:hover { transform: scale(1.5); }
-    /* Responsive */
-    @media (max-width: 768px) {
-      .header-content { flex-direction: column; gap: 1.5rem; }
-      .main-nav { justify-content: center; }
-      .hero h1 { font-size: 2.5rem; }
-      .about-container p { font-size: 1rem; }
-      .footer-container { flex-direction: column; align-items: center; }
-      .footer-right { grid-template-columns: 1fr; }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EggXpress! - About Us</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-  
+  <!-- Navigation -->
   <header class="main-header">
     <div class="header-content">
-      <a href="index.html"><img src="logo.png" alt="eggxpress logo" class="brand-logo"></a>
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="EggXpress Logo" /></a>
       <nav class="main-nav">
         <a href="index.html" class="nav-link">Home</a>
         <a href="products.html" class="nav-link">Products</a>
-        <a href="about.html" class="nav-link">About</a>
+        <a href="about.html" class="nav-link active">About</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </nav>
     </div>
   </header>
- 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>About eggxpress!</h1>
-      <p>Pure Passion. Sustainable Farming.</p>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="about-container">
+      <h2>About EggXpress</h2>
+      <p>
+        EggXpress is dedicated to providing the highest quality, farm-fresh eggs. We follow strict food safety standards and comply with all regulatory guidelines including Republic Act provisions and age-restriction policies.
+      </p>
+      <p>
+        Our mission is to bring you premium, free-range eggs while ensuring quality assurance at every step.
+      </p>
     </div>
   </section>
 
-  <div class="about-container">
-    <h2>Our Story</h2>
-    <p>
-      At eggxpress!, we are driven by a passion for quality and sustainability. Our journey began with a simple vision: to bring the freshest, most wholesome eggs directly from our farm to your table. Every egg is a testament to our commitment to ethical farming practices and environmental stewardship.
-    </p>
-    <h2>Our Commitment</h2>
-    <p>
-      We integrate modern technology with traditional farming techniques to ensure that our eggs are produced in an environment that respects nature and nurtures life. Our commitment to transparency and sustainability means that every egg is not only delicious but also a responsible choice.
-    </p>
-    <h2>Join Our Journey</h2>
-    <p>
-      Experience the difference of farm-fresh quality that comes from passion, care, and a dedication to excellence. At eggxpress!, you're not just buying eggs you're becoming part of a community that values integrity, innovation, and a healthier tomorrow.
-    </p>
-  </div>
-  
- 
+  <!-- Footer -->
   <footer class="main-footer">
     <div class="footer-container">
       <div class="footer-left">
-        <img src="logo.png" alt="eggxpress logo" class="footer-logo">
+        <img src="assets/images/logo.png" alt="EggXpress Logo" class="footer-logo" />
       </div>
       <div class="footer-right">
         <div class="footer-section">
-          <h3>Contact Us</h3>
-          <p>📞 (0966) 700-4825</p>
-          <p>✉️ eggxpress4@gmail.com</p>
-          <p>📍 Upper, Ground Floor, Alfredo Y. Lua Premises, Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
+          <h3>Contact</h3>
+          <p>Phone: (0966) 700-4825</p>
+          <p>Email: eggxpress4@gmail.com</p>
+          <p>Address: Upper, Ground Floor, AYL Premises, Sitio Suba Panas, Lapu-Lapu City</p>
         </div>
         <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Follow Us</h3>
-          <div class="social-links">
-            <a href="#"><img src="facebook-logo.png" alt="Facebook" class="social-icon"></a>
-            <a href="#"><img src="instagram-logo.jpg" alt="Instagram" class="social-icon"></a>
-            <a href="#"><img src="twitter-logo.png" alt="Twitter" class="social-icon"></a>
-          </div>
+          <h3>Legal</h3>
+          <a href="#" id="privacyPolicyLink3">Privacy Policy &amp; Terms</a>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Privacy Policy Modal -->
+  <div id="privacyModal" class="modal-overlay">
+    <div class="modal">
+      <h2>Privacy Policy &amp; Terms</h2>
+      <p>
+        This site complies with Republic Act on Food and Age Restricted guidelines. Quality assurance is our priority.
+      </p>
+      <div class="actions">
+        <button id="closePrivacy" class="btn-decline">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/script.js"></script>
 </body>
 </html>
