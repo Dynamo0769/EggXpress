@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EggXpress! - Premium Farm Fresh Eggs</title>
+  <title>EggXpress! - Products</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/logo-180x180.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/logo-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/logo-16x16.png">
@@ -21,43 +21,90 @@
     body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: var(--accent-black); background-color: #fdfdfd; }
 
     /* Header & Navigation */
-    header { background: var(--pure-white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; padding: 0.5rem 2rem; }
-    .header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 2rem;
+    }
     .logo img { width: 120px; transition: transform 0.3s ease; }
     .logo img:hover { transform: scale(1.1); }
     nav { display: flex; align-items: center; }
     nav ul { list-style: none; display: flex; }
     nav ul li { margin-left: 2rem; }
-    nav ul li a { text-decoration: none; color: var(--accent-black); font-weight: 600; transition: color 0.3s ease; }
+    nav ul li a {
+      text-decoration: none;
+      color: var(--accent-black);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
     nav ul li a:hover { color: #e6a200; }
-    /* Hamburger Menu */
+    nav ul li a.active { color: #e6a200; } /* Active link highlight */
+
+    /* Hamburger Menu for Mobile */
     .hamburger { display: none; flex-direction: column; cursor: pointer; }
-    .hamburger div { width: 25px; height: 3px; background: var(--accent-black); margin: 4px 0; transition: 0.4s; }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: var(--accent-black);
+      margin: 4px 0;
+      transition: 0.4s;
+    }
     @media (max-width: 768px) {
-      nav ul { display: none; flex-direction: column; background: var(--pure-white); position: absolute; right: 0; top: 60px; width: 200px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: var(--pure-white);
+        position: absolute;
+        right: 0;
+        top: 60px;
+        width: 200px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
       nav ul li { margin: 1rem; }
       .hamburger { display: flex; }
     }
 
-    /* Hero Section */
-    .hero-section { background: var(--primary-yellow) center/cover no-repeat; padding: 4rem 1rem; text-align: center; }
-    .hero-content { max-width: 700px; margin: 0 auto; }
-    .hero-title { font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
-    .hero-subtitle { font-size: 1.4rem; margin-bottom: 2rem; }
-    .hero-cta { background: var(--primary-red); color: var(--pure-white); padding: 0.8rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; transition: background 0.3s ease; }
-    .hero-cta:hover { background: #b00000; }
-
     /* Products Section */
     .products-section { padding: 5rem 2rem; background: #f9f9f9; }
     .section-heading { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; }
-    .product-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
-    .product-card { background: var(--pure-white); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease; }
+    .product-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      background: var(--pure-white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
     .product-card:hover { transform: translateY(-5px); }
     .product-image { width: 100%; height: 220px; object-fit: cover; }
     .product-info { padding: 1rem; }
     .product-title { font-size: 1.3rem; margin-bottom: 0.5rem; }
-    .product-price { color: var(--primary-red); font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; }
-    .more-info-btn { background: var(--primary-red); color: var(--pure-white); padding: 0.6rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: 600; cursor: pointer; transition: background 0.3s ease; }
+    .product-price {
+      color: var(--primary-red);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .more-info-btn {
+      background: var(--primary-red);
+      color: var(--pure-white);
+      padding: 0.6rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
     .more-info-btn:hover { background: #b00000; }
 
     /* Side-by-Side Map & Gallery */
@@ -65,37 +112,86 @@
     .side-by-side > div { flex: 1; }
     .map-container, .gallery-container { height: 100%; }
     .map-container iframe { width: 100%; height: 100%; border: none; display: block; }
-    .gallery-container .gallery-image { width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: opacity 0.5s ease-in-out; }
+    .gallery-container .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+      transition: opacity 0.5s ease-in-out;
+    }
+    @media (max-width: 768px) {
+      .side-by-side { flex-direction: column; height: auto; }
+      .side-by-side > div { height: 300px; }
+    }
 
     /* Footer */
     .main-footer { background: var(--pure-white); padding: 4rem 2rem 2rem; margin-top: 2rem; }
-    .footer-container { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
     .footer-left { flex: 1; display: flex; align-items: center; }
     .footer-logo { width: 150px; }
-    .footer-right { flex: 3; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .footer-right {
+      flex: 3;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
     .footer-section h3 { margin-bottom: 1.5rem; color: var(--primary-red); }
     .footer-links { list-style: none; }
     .footer-links li { margin-bottom: 0.8rem; }
-    .footer-links a { text-decoration: none; color: var(--accent-black); transition: color 0.3s ease; }
+    .footer-links a {
+      text-decoration: none;
+      color: var(--accent-black);
+      transition: color 0.3s ease;
+    }
     .footer-links a:hover { color: var(--primary-red); }
     .social-links { display: flex; gap: 1.5rem; margin-top: 1.5rem; }
     .social-icon { width: 35px; height: 35px; transition: transform 0.3s ease; }
     .social-icon:hover { transform: scale(1.5); }
     .copyright { text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--accent-black); }
 
-    @media (max-width: 768px) {
-      .side-by-side { flex-direction: column; height: auto; }
-      .side-by-side > div { height: 300px; }
-    }
-
     /* Modal Styles */
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 3000; }
-    .modal { background: var(--pure-white); padding: 2rem; border-radius: 10px; max-width: 600px; width: 90%; max-height: 80%; overflow-y: auto; animation: scaleIn 0.4s ease; }
-    @keyframes scaleIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 3000;
+    }
+    .modal {
+      background: var(--pure-white);
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80%;
+      overflow-y: auto;
+      animation: scaleIn 0.4s ease;
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
     .modal h2 { margin-bottom: 1rem; color: var(--primary-red); text-transform: uppercase; }
     .modal p { margin-bottom: 1rem; font-size: 0.95rem; text-align: justify; }
     .modal .actions { margin-top: 1.5rem; display: flex; justify-content: space-around; }
-    .modal button { padding: 0.5rem 1.5rem; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background 0.3s ease; }
+    .modal button {
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
     .btn-agree { background: var(--primary-red); color: var(--pure-white); }
     .btn-agree:hover { background: #b00000; }
     .btn-decline { background: #ccc; color: var(--accent-black); }
@@ -117,7 +213,7 @@
         </div>
         <ul id="navLinks">
           <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#products">Products</a></li>
+          <li><a href="products.html" class="active">Products</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="javascript:void(0)" onclick="showPrivacyModal()">Privacy Policy</a></li>
@@ -125,15 +221,6 @@
       </nav>
     </div>
   </header>
-
-  <!-- Hero Section -->
-  <section class="hero-section" id="home">
-    <div class="hero-content">
-      <h1 class="hero-title">Farm-Fresh Quality Eggs</h1>
-      <p class="hero-subtitle">Delivered from our Farm Straight to Your Table</p>
-      <a href="#products" class="hero-cta">Shop Now</a>
-    </div>
-  </section>
 
   <!-- Products Section -->
   <section class="products-section" id="products">
@@ -194,42 +281,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="main-footer">
-    <div class="footer-container">
-      <div class="footer-left">
-        <img src="logo.png" alt="EggXpress Logo" class="footer-logo">
-      </div>
-      <div class="footer-right">
-        <div class="footer-section">
-          <h3>Contact Us</h3>
-          <p>📞 (0966) 700-4825</p>
-          <p>✉️ eggxpress4@gmail.com</p>
-          <p>📍 Upper, Ground Floor, Alfredo Y. Lua (AYL) Premises,<br> Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
-        </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="javascript:void(0)" onclick="showPrivacyModal()">Privacy Policy &amp; Terms</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Follow Us</h3>
-          <div class="social-links">
-            <a href="https://www.facebook.com/eggxpressfarms"><img src="facebook-logo.png" alt="Facebook" class="social-icon"></a>
-            <a href="https://www.instagram.com/xpressegg/"><img src="instagram-logo.jpg" alt="Instagram" class="social-icon"></a>
-            <a href="https://x.com/XpressEgg"><img src="twitter-logo.png" alt="Twitter" class="social-icon"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="copyright">© 2005 EggXpress. All rights reserved.</div>
-  </footer>
-
   <!-- Product Info Modal -->
   <div id="productModal" class="modal-overlay">
     <div class="modal">
@@ -258,7 +309,7 @@
         <strong>Age Restriction:</strong> By using our website, you confirm that you are at least 13 years old.
       </p>
       <p>
-        <strong>Terms &amp; Conditions:</strong> Use of our website constitutes acceptance of these terms. We reserve the right to modify these policies as needed. Continued use of the site indicates your acceptance of any changes. All services provided are subject to applicable Philippine laws and regulations.
+        <strong>Terms &amp; Conditions:</strong> Use of our website constitutes acceptance of these terms. We reserve the right to modify these policies as needed; your continued use of the site indicates your acceptance of any changes. All services provided are subject to applicable Philippine laws and regulations.
       </p>
       <div class="actions">
         <button class="btn-decline" onclick="declinePrivacy()">Decline</button>
@@ -267,7 +318,53 @@
     </div>
   </div>
 
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <img src="logo.png" alt="EggXpress Logo" class="footer-logo">
+      </div>
+      <div class="footer-right">
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>📞 (0966) 700-4825</p>
+          <p>✉️ eggxpress4@gmail.com</p>
+          <p>📍 Upper, Ground Floor, Alfredo Y. Lua (AYL) Premises,<br> Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html" class="active">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="javascript:void(0)" onclick="showPrivacyModal()">Privacy Policy &amp; Terms</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="https://www.facebook.com/eggxpressfarms"><img src="facebook-logo.png" alt="Facebook" class="social-icon"></a>
+            <a href="https://www.instagram.com/xpressegg/"><img src="instagram-logo.jpg" alt="Instagram" class="social-icon"></a>
+            <a href="https://x.com/XpressEgg"><img src="twitter-logo.png" alt="Twitter" class="social-icon"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">© 2005 EggXpress. All rights reserved.</div>
+  </footer>
+
   <script>
+    // Toggle navigation for hamburger menu
+    function toggleNav() {
+      const navLinks = document.getElementById("navLinks");
+      if (navLinks.style.display === "flex") {
+        navLinks.style.display = "none";
+      } else {
+        navLinks.style.display = "flex";
+      }
+    }
+
     // Product data for modal popups
     const productsData = {
       small: {
@@ -335,26 +432,12 @@
       }
     };
 
-    // Toggle navigation for hamburger menu
-    function toggleNav() {
-      const navLinks = document.getElementById("navLinks");
-      if (navLinks.style.display === "flex") {
-        navLinks.style.display = "none";
-      } else {
-        navLinks.style.display = "flex";
-      }
-    }
-
     // Close modals when clicking outside modal content
     window.addEventListener("click", function(e) {
       const productModal = document.getElementById("productModal");
       const privacyModal = document.getElementById("privacyModal");
-      if (e.target === productModal) {
-        closeProductModal();
-      }
-      if (e.target === privacyModal) {
-        privacyModal.style.display = "none";
-      }
+      if (e.target === productModal) { closeProductModal(); }
+      if (e.target === privacyModal) { privacyModal.style.display = "none"; }
     });
   </script>
 </body>
