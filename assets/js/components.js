@@ -1,6 +1,4 @@
 // assets/js/components.js
-
-// Header Component
 class MyHeader extends HTMLElement {
   constructor() {
     super();
@@ -10,7 +8,7 @@ class MyHeader extends HTMLElement {
         :host { display: block; }
         header.main-header {
           background: var(--pure-white, #FFFFFF);
-          padding: 0.1rem 0;
+          padding: 0.5rem 0;
           box-shadow: 0 2px 10px rgba(0,0,0,0.1);
           position: sticky;
           top: 0;
@@ -25,7 +23,6 @@ class MyHeader extends HTMLElement {
         .header-content {
           max-width: 1200px;
           margin: 0 auto;
-          position: relative;
           padding: 0 2rem;
           display: flex;
           align-items: center;
@@ -39,17 +36,17 @@ class MyHeader extends HTMLElement {
         .main-nav {
           display: flex;
           gap: 2.5rem;
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
         }
         .nav-link {
           color: var(--accent-black, #2D2D2D);
           text-decoration: none;
-          font-weight: 750;
+          font-weight: 600;
           position: relative;
           padding: 0.5rem 0;
           transition: color 0.3s ease;
+        }
+        .nav-link.active {
+          color: var(--primary-red);
         }
         .nav-link:hover { color: #e6a200; }
         .nav-link::after {
@@ -63,22 +60,40 @@ class MyHeader extends HTMLElement {
           transition: width 0.3s ease;
         }
         .nav-link:hover::after { width: 100%; }
+        .hamburger {
+          display: none;
+          cursor: pointer;
+        }
+        .hamburger div {
+          width: 25px;
+          height: 3px;
+          background: var(--accent-black);
+          margin: 5px;
+          transition: all 0.3s ease;
+        }
         @media (max-width: 768px) {
-          .header-content {
+          .header-content { padding: 0 1rem; }
+          .main-nav {
+            position: fixed;
+            top: 70px;
+            right: -100%;
+            height: calc(100vh - 70px);
+            background: white;
             flex-direction: column;
+            width: 100%;
+            padding: 2rem;
+            transition: right 0.3s ease;
             gap: 1.5rem;
           }
-          .main-nav {
-            position: static;
-            transform: none;
-            justify-content: center;
-          }
+          .main-nav.active { right: 0; }
+          .hamburger { display: block; }
+          .nav-link { font-size: 1.2rem; }
         }
       </style>
       <header class="main-header">
         <div class="header-content">
           <a href="index.html">
-            <img src="logo.png" alt="eggxpress logo" class="brand-logo">
+            <img src="assets/images/logo.png" alt="EggXpress Logo" class="brand-logo">
           </a>
           <nav class="main-nav">
             <a href="index.html" class="nav-link">Home</a>
@@ -86,13 +101,26 @@ class MyHeader extends HTMLElement {
             <a href="about.html" class="nav-link">About</a>
             <a href="contact.html" class="nav-link">Contact</a>
           </nav>
+          <div class="hamburger" onclick="this.parentElement.querySelector('.main-nav').classList.toggle('active')">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
       </header>
     `;
+    
+    // Add active class based on current page
+    const links = shadow.querySelectorAll('.nav-link');
+    const currentPage = window.location.pathname.split('/').pop();
+    links.forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+      }
+    });
   }
 }
 
-// Footer Component
 class MyFooter extends HTMLElement {
   constructor() {
     super();
@@ -104,7 +132,8 @@ class MyFooter extends HTMLElement {
           background: var(--pure-white, #FFFFFF);
           color: var(--accent-black, #2D2D2D);
           padding: 4rem 2rem 2rem;
-          margin-top: 2rem;
+          margin-top: 3rem;
+          border-top: 3px solid var(--primary-red);
         }
         .footer-container {
           max-width: 1200px;
@@ -117,9 +146,6 @@ class MyFooter extends HTMLElement {
         .footer-left {
           flex: 1;
           min-width: 150px;
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
         }
         .footer-right {
           flex: 3;
@@ -144,7 +170,6 @@ class MyFooter extends HTMLElement {
           display: flex;
           gap: 1.5rem;
           margin-top: 1.5rem;
-          justify-content: center;
         }
         .social-icon {
           width: 35px;
@@ -152,54 +177,61 @@ class MyFooter extends HTMLElement {
           transition: transform 0.3s ease;
         }
         .social-icon:hover { transform: scale(1.5); }
+        .copyright {
+          text-align: center;
+          margin-top: 3rem;
+          padding-top: 2rem;
+          border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-          .footer-container {
-            flex-direction: column;
-            align-items: center;
-          }
-          .footer-left, .footer-right {
-            width: 100%;
-            text-align: center;
-          }
+          .footer-container { flex-direction: column; align-items: center; }
           .footer-right { grid-template-columns: 1fr; }
+          .footer-section { text-align: center; }
+          .social-links { justify-content: center; }
         }
       </style>
       <footer class="main-footer">
         <div class="footer-container">
           <div class="footer-left">
-            <img src="logo.png" alt="eggxpress logo" class="footer-logo">
+            <img src="assets/images/logo.png" alt="EggXpress Logo" class="footer-logo">
           </div>
           <div class="footer-right">
             <div class="footer-section">
               <h3>Contact Us</h3>
               <p>📞 (0966) 700-4825</p>
               <p>✉️ eggxpress4@gmail.com</p>
-              <p>📍 Upper, Ground Floor, Alfredo Y. Lua (AYL) Premises,<br> Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
+              <p>📍 Upper, Ground Floor, Alfredo Y. Lua Premises,<br> Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
             </div>
             <div class="footer-section">
               <h3>Quick Links</h3>
               <ul class="footer-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="products.html">Products</a></li>
-                <li><a href="about.html">About Us</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
               </ul>
             </div>
             <div class="footer-section">
               <h3>Follow Us</h3>
               <div class="social-links">
-                <a href="https://www.facebook.com/eggxpressfarms"><img src="facebook-logo.png" alt="Facebook" class="social-icon"></a>
-                <a href="https://www.instagram.com/xpressegg/"><img src="instagram-logo.jpg" alt="Instagram" class="social-icon"></a>
-                <a href="https://x.com/XpressEgg"><img src="twitter-logo.png" alt="Twitter" class="social-icon"></a>
+                <a href="https://www.facebook.com/eggxpressfarms">
+                  <img src="assets/images/facebook-logo.png" alt="Facebook" class="social-icon">
+                </a>
+                <a href="https://www.instagram.com/xpressegg/">
+                  <img src="assets/images/instagram-logo.jpg" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://x.com/XpressEgg">
+                  <img src="assets/images/twitter-logo.png" alt="Twitter" class="social-icon">
+                </a>
               </div>
             </div>
           </div>
         </div>
+        <div class="copyright">© 2005 EggXpress. All rights reserved.</div>
       </footer>
     `;
   }
 }
 
-// Register the components
 customElements.define('my-header', MyHeader);
 customElements.define('my-footer', MyFooter);
