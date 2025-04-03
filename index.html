@@ -58,8 +58,43 @@
   <section class="products-section" id="products">
     <h2 class="section-heading">Our Products</h2>
     <div class="product-grid">
-      <!-- Product Cards (unchanged) -->
-      <!-- ... [keep all product cards exactly as they are] ... -->
+      <!-- Product Cards (same as before) -->
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="testimonials-container">
+      <h2 class="section-heading">What Our Customers Say</h2>
+      <div class="testimonial-cards">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p class="testimonial-text">"The eggs from EggXpress are absolutely amazing – fresh, delicious, and perfect for my morning omelettes!"</p>
+            <div class="rating">
+              <span>★★★★★</span>
+            </div>
+            <p class="testimonial-author">- Maria D.</p>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p class="testimonial-text">"I always trust EggXpress for my baking needs. The quality and freshness are unmatched."</p>
+            <div class="rating">
+              <span>★★★★★</span>
+            </div>
+            <p class="testimonial-author">- Jose R.</p>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p class="testimonial-text">"EggXpress delivers farm-fresh eggs every time. Their freshness guarantee is real – you can taste the difference!"</p>
+            <div class="rating">
+              <span>★★★★★</span>
+            </div>
+            <p class="testimonial-author">- Angela S.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -73,7 +108,7 @@
     </div>
   </section>
 
-  <!-- Updated Product Info Modal -->
+  <!-- Product Info Modal -->
   <div id="productModal" class="modal-overlay">
     <div class="modal">
       <div class="product-modal-content">
@@ -84,7 +119,7 @@
           <h3>Product Details</h3>
           <ul id="modalProductDetails"></ul>
           <div class="modal-actions">
-            <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background: var(--primary-red); color: white; padding: 0.8rem 2rem; border-radius: 25px; text-decoration: none;">Order via Messenger</a>
+            <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background: var(--primary-red); color: white; text-decoration: none; padding: 0.8rem 2rem; border-radius: 25px;">Order via Messenger</a>
           </div>
         </div>
       </div>
@@ -94,25 +129,25 @@
     </div>
   </div>
 
+  <!-- Privacy Modal -->
+  <div id="privacyModal" class="modal-overlay">
+    <div class="modal">
+      <h2>Privacy Policy &amp; Terms</h2>
+      <p>We protect your data in compliance with Philippine laws. Your information is never shared without consent.</p>
+      <p><strong>Freshness Guarantee:</strong> 24-hour returns for quality issues</p>
+      <p><strong>Age Requirement:</strong> Users must be 13+</p>
+      <div class="actions">
+        <button class="btn-decline" onclick="declinePrivacy()">Decline</button>
+        <button class="btn-agree" onclick="acceptPrivacy()">I Agree</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Custom Footer Component -->
   <my-footer></my-footer>
 
   <!-- Scripts -->
   <script src="assets/js/components.js"></script>
-  <script>
-    // Product Modal Data (unchanged)
-    const products = { 
-      small: { /* ... */ },
-      medium: { /* ... */ },
-      large: { /* ... */ },
-      xl: { /* ... */ },
-      jumbo: { /* ... */ }
-    };
-
-    // Keep existing JavaScript functions exactly as they were
-    function showProductModal(type) { /* ... */ }
-    function closeProductModal() { /* ... */ }
-    window.onclick = function(event) { /* ... */ };
-  </script>
+  <script src="assets/js/script.js"></script>
 </body>
 </html>
