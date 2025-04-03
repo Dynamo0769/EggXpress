@@ -248,3 +248,33 @@ body {
 .btn-decline:hover {
   background: #bbb;
 }
+/* Add to style.css */
+.product-modal-content {
+  padding: 2rem;
+  text-align: center;
+}
+
+.modal-product-image {
+  max-width: 500px;
+  border-radius: 8px;
+  margin: 0 auto 1.5rem;
+}
+
+.modal-product-details {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.modal-product-details ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
