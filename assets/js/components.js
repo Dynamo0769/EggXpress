@@ -296,7 +296,7 @@ class MyFooter extends HTMLElement {
             </div>
           </div>
         </div>
-        <div class="copyright">© 2005 EggXpress. All rights reserved.</div>
+         class="copyright">© 2025 EggXpress. All rights reserved.
       </footer>
     `;
   }
