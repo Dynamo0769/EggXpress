@@ -1,6 +1,3 @@
-// assets/js/components.js
-
-// Header Component with Sticky Navigation
 class MyHeader extends HTMLElement {
   constructor() {
     super();
@@ -13,7 +10,7 @@ class MyHeader extends HTMLElement {
           top: 0;
           z-index: 1000;
         }
-
+        
         header.main-header {
           background: var(--pure-white, #FFFFFF);
           padding: 0.5rem 0;
@@ -41,9 +38,7 @@ class MyHeader extends HTMLElement {
           transition: transform 0.3s ease;
         }
 
-        .brand-logo:hover { 
-          transform: scale(1.1); 
-        }
+        .brand-logo:hover { transform: scale(1.1); }
 
         .main-nav {
           display: flex;
@@ -64,9 +59,7 @@ class MyHeader extends HTMLElement {
           color: var(--primary-red);
         }
 
-        .nav-link:hover { 
-          color: #e6a200; 
-        }
+        .nav-link:hover { color: #e6a200; }
 
         .nav-link::after {
           content: '';
@@ -79,9 +72,7 @@ class MyHeader extends HTMLElement {
           transition: width 0.3s ease;
         }
 
-        .nav-link:hover::after { 
-          width: 100%; 
-        }
+        .nav-link:hover::after { width: 100%; }
 
         .hamburger {
           display: none;
@@ -97,9 +88,7 @@ class MyHeader extends HTMLElement {
         }
 
         @media (max-width: 768px) {
-          .header-content { 
-            padding: 0 1rem; 
-          }
+          .header-content { padding: 0 1rem; }
           
           .main-nav {
             position: fixed;
@@ -114,17 +103,9 @@ class MyHeader extends HTMLElement {
             gap: 1.5rem;
           }
 
-          .main-nav.active { 
-            right: 0; 
-          }
-          
-          .hamburger { 
-            display: block; 
-          }
-          
-          .nav-link { 
-            font-size: 1.2rem; 
-          }
+          .main-nav.active { right: 0; }
+          .hamburger { display: block; }
+          .nav-link { font-size: 1.2rem; }
         }
       </style>
       <header class="main-header">
@@ -138,7 +119,7 @@ class MyHeader extends HTMLElement {
             <a href="about.html" class="nav-link">About</a>
             <a href="contact.html" class="nav-link">Contact</a>
           </nav>
-          <div class="hamburger" onclick="this.parentElement.querySelector('.main-nav').classList.toggle('active')">
+          <div class="hamburger">
             <div></div>
             <div></div>
             <div></div>
@@ -147,18 +128,15 @@ class MyHeader extends HTMLElement {
       </header>
     `;
 
-    // Auto-active link detection
-    const links = shadow.querySelectorAll('.nav-link');
-    const currentPage = window.location.pathname.split('/').pop();
-    links.forEach(link => {
-      if (link.getAttribute('href') === currentPage) {
-        link.classList.add('active');
-      }
+    const hamburger = shadow.querySelector('.hamburger');
+    const navLinks = shadow.querySelector('.main-nav');
+    
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
   }
 }
 
-// Footer Component
 class MyFooter extends HTMLElement {
   constructor() {
     super();
@@ -241,6 +219,23 @@ class MyFooter extends HTMLElement {
           transform: scale(1.5); 
         }
 
+        .legal-links {
+          margin-top: 2rem;
+          text-align: center;
+          width: 100%;
+        }
+
+        .legal-links a {
+          color: var(--accent-black);
+          text-decoration: none;
+          margin: 0 1rem;
+          font-size: 0.9rem;
+        }
+
+        .legal-links a:hover {
+          color: var(--primary-red);
+        }
+
         .copyright {
           text-align: center;
           margin-top: 3rem;
@@ -296,12 +291,17 @@ class MyFooter extends HTMLElement {
             </div>
           </div>
         </div>
-         <div class="copyright">© 2025 EggXpress. All rights reserved. </div>
+        <div class="legal-links">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#terms">Terms & Conditions</a>
+          <a href="#safety">Food Safety</a>
+          <a href="#returns">Returns Policy</a>
+        </div>
+        <div class="copyright">© 2025 EggXpress. All rights reserved.</div>
       </footer>
     `;
   }
 }
 
-// Register Components
 customElements.define('my-header', MyHeader);
 customElements.define('my-footer', MyFooter);
