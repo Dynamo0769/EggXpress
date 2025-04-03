@@ -1,4 +1,3 @@
-/* assets/css/style.css */
 :root {
   --primary-yellow: #f3bd3d;
   --primary-red: #D40511;
@@ -6,7 +5,6 @@
   --pure-white: #FFFFFF;
 }
 
-/* Universal Reset */
 * {
   margin: 0;
   padding: 0;
@@ -25,8 +23,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-  background: #f3bd3d; , 
-              url('assets/images/freerange.jpg') center/cover fixed;
+  background: var(--primary-yellow);
   height: 70vh;
   display: flex;
   align-items: center;
@@ -290,20 +287,10 @@ body {
   border-radius: 25px;
   text-decoration: none;
   transition: background 0.3s ease;
-  border: none;
-  cursor: pointer;
-}
-
-.messenger-btn {
-  background: #0084FF !important;
 }
 
 .cta-button:hover {
   background: #b00000;
-}
-
-.messenger-btn:hover {
-  background: #0069d9 !important;
 }
 
 .btn-decline {
@@ -320,37 +307,23 @@ body {
   background: #ccc;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.5rem;
   }
-
-  .hero-subtitle {
-    font-size: 1.2rem;
-  }
-
   .side-by-side {
     flex-direction: column;
     height: auto;
   }
-
   .map-container,
   .gallery-container {
     height: 400px;
   }
-
   .product-grid {
     grid-template-columns: 1fr;
   }
-
   .testimonials-container {
     grid-template-columns: 1fr;
-  }
-
-  .modal-actions {
-    flex-direction: column;
-    align-items: center;
   }
 }
 
@@ -358,17 +331,7 @@ body {
   .hero-title {
     font-size: 2rem;
   }
-
-  .product-price {
-    font-size: 1.1rem;
-  }
-
   .modal {
     padding: 1.5rem;
-  }
-
-  .cta-button {
-    width: 100%;
-    text-align: center;
   }
 }
