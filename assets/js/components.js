@@ -1,25 +1,32 @@
 // assets/js/components.js
+
+// Header Component with Sticky Navigation
 class MyHeader extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.innerHTML = `
       <style>
-        :host { display: block; }
+        :host { 
+          display: block;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+        }
+
         header.main-header {
           background: var(--pure-white, #FFFFFF);
           padding: 0.5rem 0;
           box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-          position: sticky;
-          top: 0;
-          z-index: 1000;
           border-bottom: 3px solid var(--primary-red, #D40511);
           animation: fadeInDown 0.8s ease-out;
         }
+
         @keyframes fadeInDown {
           from { opacity: 0; transform: translateY(-20px); }
           to { opacity: 1; transform: translateY(0); }
         }
+
         .header-content {
           max-width: 1200px;
           margin: 0 auto;
@@ -28,15 +35,22 @@ class MyHeader extends HTMLElement {
           align-items: center;
           justify-content: space-between;
         }
+
         .brand-logo {
           width: 110px;
           transition: transform 0.3s ease;
         }
-        .brand-logo:hover { transform: scale(1.1); }
+
+        .brand-logo:hover { 
+          transform: scale(1.1); 
+        }
+
         .main-nav {
           display: flex;
           gap: 2.5rem;
+          margin-left: auto;
         }
+
         .nav-link {
           color: var(--accent-black, #2D2D2D);
           text-decoration: none;
@@ -45,10 +59,15 @@ class MyHeader extends HTMLElement {
           padding: 0.5rem 0;
           transition: color 0.3s ease;
         }
+
         .nav-link.active {
           color: var(--primary-red);
         }
-        .nav-link:hover { color: #e6a200; }
+
+        .nav-link:hover { 
+          color: #e6a200; 
+        }
+
         .nav-link::after {
           content: '';
           position: absolute;
@@ -59,11 +78,16 @@ class MyHeader extends HTMLElement {
           background: var(--primary-red, #D40511);
           transition: width 0.3s ease;
         }
-        .nav-link:hover::after { width: 100%; }
+
+        .nav-link:hover::after { 
+          width: 100%; 
+        }
+
         .hamburger {
           display: none;
           cursor: pointer;
         }
+
         .hamburger div {
           width: 25px;
           height: 3px;
@@ -71,8 +95,12 @@ class MyHeader extends HTMLElement {
           margin: 5px;
           transition: all 0.3s ease;
         }
+
         @media (max-width: 768px) {
-          .header-content { padding: 0 1rem; }
+          .header-content { 
+            padding: 0 1rem; 
+          }
+          
           .main-nav {
             position: fixed;
             top: 70px;
@@ -85,9 +113,18 @@ class MyHeader extends HTMLElement {
             transition: right 0.3s ease;
             gap: 1.5rem;
           }
-          .main-nav.active { right: 0; }
-          .hamburger { display: block; }
-          .nav-link { font-size: 1.2rem; }
+
+          .main-nav.active { 
+            right: 0; 
+          }
+          
+          .hamburger { 
+            display: block; 
+          }
+          
+          .nav-link { 
+            font-size: 1.2rem; 
+          }
         }
       </style>
       <header class="main-header">
@@ -109,8 +146,8 @@ class MyHeader extends HTMLElement {
         </div>
       </header>
     `;
-    
-    // Add active class based on current page
+
+    // Auto-active link detection
     const links = shadow.querySelectorAll('.nav-link');
     const currentPage = window.location.pathname.split('/').pop();
     links.forEach(link => {
@@ -121,20 +158,25 @@ class MyHeader extends HTMLElement {
   }
 }
 
+// Footer Component
 class MyFooter extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.innerHTML = `
       <style>
-        :host { display: block; }
+        :host { 
+          display: block;
+          margin-top: auto;
+        }
+
         footer.main-footer {
           background: var(--pure-white, #FFFFFF);
           color: var(--accent-black, #2D2D2D);
           padding: 4rem 2rem 2rem;
-          margin-top: 3rem;
           border-top: 3px solid var(--primary-red);
         }
+
         .footer-container {
           max-width: 1200px;
           margin: 0 auto;
@@ -143,51 +185,78 @@ class MyFooter extends HTMLElement {
           gap: 2rem;
           align-items: flex-start;
         }
+
         .footer-left {
           flex: 1;
           min-width: 150px;
         }
+
         .footer-right {
           flex: 3;
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
           gap: 2rem;
         }
-        .footer-logo { width: 150px; }
+
+        .footer-logo { 
+          width: 150px; 
+        }
+
         .footer-section h3 {
           margin-bottom: 1.5rem;
-          color: var(--primary-red, #D40511);
+          color: var(--primary-red);
         }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 0.8rem; }
+
+        .footer-links { 
+          list-style: none; 
+        }
+
+        .footer-links li { 
+          margin-bottom: 0.8rem; 
+        }
+
         .footer-links a {
-          color: var(--accent-black, #2D2D2D);
+          color: var(--accent-black);
           text-decoration: none;
           transition: color 0.3s ease;
         }
-        .footer-links a:hover { color: var(--primary-red, #D40511); }
+
+        .footer-links a:hover { 
+          color: var(--primary-red); 
+        }
+
         .social-links {
           display: flex;
           gap: 1.5rem;
           margin-top: 1.5rem;
         }
+
         .social-icon {
           width: 35px;
           height: 35px;
           transition: transform 0.3s ease;
         }
-        .social-icon:hover { transform: scale(1.5); }
+
+        .social-icon:hover { 
+          transform: scale(1.5); 
+        }
+
         .copyright {
           text-align: center;
           margin-top: 3rem;
           padding-top: 2rem;
           border-top: 1px solid #ddd;
         }
+
         @media (max-width: 768px) {
-          .footer-container { flex-direction: column; align-items: center; }
-          .footer-right { grid-template-columns: 1fr; }
-          .footer-section { text-align: center; }
-          .social-links { justify-content: center; }
+          .footer-container { 
+            flex-direction: column; 
+            align-items: center; 
+          }
+          
+          .footer-right { 
+            grid-template-columns: 1fr; 
+          }
         }
       </style>
       <footer class="main-footer">
@@ -233,5 +302,6 @@ class MyFooter extends HTMLElement {
   }
 }
 
+// Register Components
 customElements.define('my-header', MyHeader);
 customElements.define('my-footer', MyFooter);
