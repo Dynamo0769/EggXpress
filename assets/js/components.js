@@ -130,9 +130,20 @@ class MyHeader extends HTMLElement {
 
     const hamburger = shadow.querySelector('.hamburger');
     const navLinks = shadow.querySelector('.main-nav');
-    
+    const links = shadow.querySelectorAll('.nav-link');
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+
+    // Mobile menu toggle
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
+    });
+
+    // Active link detection
+    links.forEach(link => {
+      const linkPath = link.getAttribute('href');
+      if (currentPath === linkPath) {
+        link.classList.add('active');
+      }
     });
   }
 }
