@@ -23,9 +23,10 @@ body {
   flex-direction: column;
 }
 
-/* Hero Section - Updated Background */
+/* Hero Section */
 .hero-section {
-  background: var(--primary-yellow);
+  background: #f3bd3d; , 
+              url('assets/images/freerange.jpg') center/cover fixed;
   height: 70vh;
   display: flex;
   align-items: center;
@@ -69,7 +70,6 @@ body {
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* Rest of the CSS remains unchanged */
 /* Products Section */
 .products-section {
   padding: 5rem 2rem;
@@ -83,12 +83,292 @@ body {
   color: var(--accent-black);
 }
 
-/* ... rest of your existing CSS rules ... */
+.product-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  background: var(--pure-white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 3px solid var(--primary-red);
+}
+
+.product-info {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.product-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: var(--accent-black);
+}
+
+.product-price {
+  color: var(--primary-red);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+
+.more-info-btn {
+  background: var(--primary-red);
+  color: var(--pure-white);
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.more-info-btn:hover {
+  background: #b00000;
+  transform: scale(1.05);
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  padding: 4rem 2rem;
+  background: #fffefa;
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background: var(--pure-white);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+  color: #555;
+}
+
+.testimonial-rating {
+  color: var(--primary-red);
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: var(--accent-black);
+}
+
+/* Map & Gallery Section */
+.side-by-side {
+  display: flex;
+  width: 100%;
+  height: 70vh;
+}
+
+.map-container,
+.gallery-container {
+  flex: 1;
+  height: 100%;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: var(--pure-white);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90%;
+  animation: modalSlide 0.3s ease;
+}
+
+@keyframes modalSlide {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.product-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.modal-product-image {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.modal-product-details {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.modal-product-details ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.modal-product-details li {
+  margin-bottom: 0.8rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.cta-button {
+  background: var(--primary-red);
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.messenger-btn {
+  background: #0084FF !important;
+}
+
+.cta-button:hover {
+  background: #b00000;
+}
+
+.messenger-btn:hover {
+  background: #0069d9 !important;
+}
+
+.btn-decline {
+  background: #ddd;
+  color: var(--accent-black);
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-decline:hover {
+  background: #ccc;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.5rem;
   }
-  /* ... rest of your media queries ... */
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .side-by-side {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .map-container,
+  .gallery-container {
+    height: 400px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-container {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .product-price {
+    font-size: 1.1rem;
+  }
+
+  .modal {
+    padding: 1.5rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    text-align: center;
+  }
 }
