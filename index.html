@@ -13,8 +13,28 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <!-- Custom Header Component -->
-  <my-header></my-header>
+  <!-- Navigation Bar (from old index) -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html"><img src="assets/images/logo.png" alt="EggXpress Logo"></a>
+      </div>
+      <nav>
+        <div class="hamburger" onclick="toggleNav()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul id="navLinks">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="javascript:void(0)" onclick="showPrivacyModal()">Privacy Policy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
   <!-- Hero Section -->
   <section class="hero-section" id="home">
@@ -77,34 +97,32 @@
   </section>
 
   <!-- Testimonials Section -->
-  <section class="testimonials-section" id="testimonials" style="padding: 4rem 2rem; background: #fffefa; text-align: center;">
+  <section class="testimonials-section" id="testimonials">
     <h2 class="section-heading">What Our Customers Say</h2>
-    <div class="testimonials-container" style="max-width: 800px; margin: 0 auto;">
-      <div class="testimonial" style="margin-bottom: 2rem;">
-        <p style="font-size: 1.1rem; font-style: italic;">"The eggs from EggXpress are absolutely amazing – fresh, delicious, and perfect for my morning omelettes!"</p>
-        <p style="color: var(--primary-red); font-weight: 600;">★★★★★</p>
-        <p style="margin-top: 0.5rem;">- Maria D.</p>
-      </div>
-      <div class="testimonial" style="margin-bottom: 2rem;">
-        <p style="font-size: 1.1rem; font-style: italic;">"I always trust EggXpress for my baking needs. The quality and freshness are unmatched."</p>
-        <p style="color: var(--primary-red); font-weight: 600;">★★★★★</p>
-        <p style="margin-top: 0.5rem;">- Jose R.</p>
+    <div class="testimonials-container">
+      <div class="testimonial">
+        <p>"The eggs from EggXpress are absolutely amazing – fresh, delicious, and perfect for my morning omelettes!"</p>
+        <p>★★★★★</p>
+        <p>- Maria D.</p>
       </div>
       <div class="testimonial">
-        <p style="font-size: 1.1rem; font-style: italic;">"EggXpress delivers farm-fresh eggs every time. Their freshness guarantee is real – you can taste the difference!"</p>
-        <p style="color: var(--primary-red); font-weight: 600;">★★★★★</p>
-        <p style="margin-top: 0.5rem;">- Angela S.</p>
+        <p>"I always trust EggXpress for my baking needs. The quality and freshness are unmatched."</p>
+        <p>★★★★★</p>
+        <p>- Jose R.</p>
+      </div>
+      <div class="testimonial">
+        <p>"EggXpress delivers farm-fresh eggs every time. Their freshness guarantee is real – you can taste the difference!"</p>
+        <p>★★★★★</p>
+        <p>- Angela S.</p>
       </div>
     </div>
   </section>
 
   <!-- Side-by-Side Map & Gallery Section -->
   <section class="side-by-side">
-    <!-- Google Maps -->
     <div class="map-container">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d600.9901233769588!2d123.96652733953573!3d10.267689091462076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99a731d65ca11%3A0xb7c2fff72b347d93!2sSITIO%20SUBA%20PANAS%20Beside%20Pacific%20grand%20villa%20and%20back%20of%20Fairchild%20Villas!5e1!3m2!1sen!2sph!4v1743296151045!5m2!1sen!2sph" allowfullscreen></iframe>
     </div>
-    <!-- Gallery -->
     <div class="gallery-container">
       <img id="gallery-image" src="assets/images/gallery1.jpg" alt="Gallery Image" class="gallery-image">
     </div>
@@ -126,20 +144,9 @@
     <div class="modal">
       <h2>Privacy Policy &amp; Terms &amp; Conditions</h2>
       <p>
-        Welcome to EggXpress! We are committed to protecting your privacy and ensuring that your personal data is handled responsibly in compliance with Philippine laws and regulations.
+        Welcome to EggXpress! We are committed to protecting your privacy and ensuring that your personal data is handled responsibly.
       </p>
-      <p>
-        <strong>Privacy Policy:</strong> We collect only the information necessary to provide our egg delivery services. All data is securely stored and will not be shared with third parties without your explicit consent, except as required by law.
-      </p>
-      <p>
-        <strong>Returns &amp; Freshness:</strong> Our eggs are farm-fresh and inspected daily for quality. Returns are accepted within 24 hours if the product fails to meet our strict quality standards.
-      </p>
-      <p>
-        <strong>Age Restriction:</strong> By using our website, you confirm that you are at least 13 years old.
-      </p>
-      <p>
-        <strong>Terms &amp; Conditions:</strong> Use of our website constitutes acceptance of these terms. We reserve the right to modify these policies as needed; your continued use of the site indicates your acceptance of any changes.
-      </p>
+      <!-- Additional privacy content can go here -->
       <div class="actions">
         <button class="btn-decline" onclick="declinePrivacy()">Decline</button>
         <button class="btn-agree" onclick="acceptPrivacy()">I Agree</button>
@@ -147,8 +154,39 @@
     </div>
   </div>
 
-  <!-- Custom Footer Component -->
-  <my-footer></my-footer>
+  <!-- Footer (from About page) -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <img src="logo.png" alt="eggxpress logo" class="footer-logo">
+      </div>
+      <div class="footer-right">
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>📞 (0966) 700-4825</p>
+          <p>✉️ eggxpress4@gmail.com</p>
+          <p>📍 Upper, Ground Floor, Alfredo Y. Lua Premises, Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="#"><img src="facebook-logo.png" alt="Facebook" class="social-icon"></a>
+            <a href="#"><img src="instagram-logo.jpg" alt="Instagram" class="social-icon"></a>
+            <a href="#"><img src="twitter-logo.png" alt="Twitter" class="social-icon"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script src="assets/js/script.js"></script>
 </body>
