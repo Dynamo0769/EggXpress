@@ -133,12 +133,10 @@ class MyHeader extends HTMLElement {
     const links = shadow.querySelectorAll('.nav-link');
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
 
-    // Mobile menu toggle
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
 
-    // Active link detection
     links.forEach(link => {
       const linkPath = link.getAttribute('href');
       if (currentPath === linkPath) {
@@ -173,45 +171,35 @@ class MyFooter extends HTMLElement {
           flex-wrap: wrap;
           gap: 2rem;
           align-items: flex-start;
+          justify-content: space-between;
         }
 
         .footer-left {
           flex: 1;
-          min-width: 150px;
+          min-width: 250px;
         }
 
         .footer-right {
-          flex: 3;
+          flex: 2;
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 2rem;
+          gap: 3rem;
         }
 
         .footer-logo { 
           width: 150px; 
+          margin-bottom: 1.5rem;
         }
 
         .footer-section h3 {
           margin-bottom: 1.5rem;
           color: var(--primary-red);
+          font-size: 1.25rem;
         }
 
-        .footer-links { 
-          list-style: none; 
-        }
-
-        .footer-links li { 
-          margin-bottom: 0.8rem; 
-        }
-
-        .footer-links a {
-          color: var(--accent-black);
-          text-decoration: none;
-          transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover { 
-          color: var(--primary-red); 
+        .footer-section p {
+          line-height: 1.6;
+          margin: 0.8rem 0;
         }
 
         .social-links {
@@ -231,16 +219,19 @@ class MyFooter extends HTMLElement {
         }
 
         .legal-links {
-          margin-top: 2rem;
+          margin-top: 3rem;
           text-align: center;
           width: 100%;
+          padding: 1rem 0;
+          border-top: 1px solid #eee;
         }
 
         .legal-links a {
           color: var(--accent-black);
           text-decoration: none;
-          margin: 0 1rem;
+          margin: 0 1.5rem;
           font-size: 0.9rem;
+          transition: color 0.3s ease;
         }
 
         .legal-links a:hover {
@@ -249,19 +240,31 @@ class MyFooter extends HTMLElement {
 
         .copyright {
           text-align: center;
-          margin-top: 3rem;
+          margin-top: 2rem;
           padding-top: 2rem;
-          border-top: 1px solid #ddd;
+          color: #666;
+          font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
           .footer-container { 
             flex-direction: column; 
             align-items: center; 
+            text-align: center;
           }
           
           .footer-right { 
             grid-template-columns: 1fr; 
+            text-align: center;
+          }
+          
+          .social-links {
+            justify-content: center;
+          }
+          
+          .legal-links a {
+            display: block;
+            margin: 1rem 0;
           }
         }
       </style>
@@ -269,23 +272,14 @@ class MyFooter extends HTMLElement {
         <div class="footer-container">
           <div class="footer-left">
             <img src="assets/images/logo.png" alt="EggXpress Logo" class="footer-logo">
-          </div>
-          <div class="footer-right">
             <div class="footer-section">
               <h3>Contact Us</h3>
               <p>📞 (0966) 700-4825</p>
               <p>✉️ eggxpress4@gmail.com</p>
               <p>📍 Upper, Ground Floor, Alfredo Y. Lua Premises,<br> Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
             </div>
-            <div class="footer-section">
-              <h3>Quick Links</h3>
-              <ul class="footer-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
-            </div>
+          </div>
+          <div class="footer-right">
             <div class="footer-section">
               <h3>Follow Us</h3>
               <div class="social-links">
