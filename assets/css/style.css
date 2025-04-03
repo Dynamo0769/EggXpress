@@ -25,6 +25,10 @@ body {
   padding: 4rem 1rem;
   text-align: center;
 }
+.hero-title,
+.hero-subtitle {
+  font-family: 'tan-headline', 
+}
 
 .hero-content {
   max-width: 700px;
