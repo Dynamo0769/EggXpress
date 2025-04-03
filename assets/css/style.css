@@ -1,273 +1,347 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EggXpress! - Premium Farm Fresh Eggs</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo-180x180.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo-16x16.png">
-  <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    .product-modal-content {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      padding: 2rem;
-    }
-    .modal-product-image {
-      width: 100%;
-      max-width: 500px;
-      border-radius: 8px;
-      margin: 0 auto;
-    }
-    .modal-product-details {
-      text-align: left;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .modal-product-details ul {
-      list-style: disc;
-      padding-left: 1.5rem;
-      margin: 1rem 0;
-    }
-    .modal-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-  </style>
-</head>
-<body>
-  <!-- Custom Header Component -->
-  <my-header></my-header>
+/* assets/css/style.css */
 
-  <!-- Hero Section -->
-  <section class="hero-section" id="home">
-    <div class="hero-content">
-      <h1 class="hero-title">Farm-Fresh Quality Eggs</h1>
-      <p class="hero-subtitle">Delivered from our Farm Straight to Your Table</p>
-      <a href="products.html" class="hero-cta">Shop Now</a>
-    </div>
-  </section>
+:root {
+  --primary-yellow: #f3bd3d;
+  --primary-red: #D40511;
+  --accent-black: #2D2D2D;
+  --pure-white: #FFFFFF;
+}
 
-  <!-- Product Showcase Section -->
-  <section class="products-section" id="products">
-    <h2 class="section-heading">Our Products</h2>
-    <div class="product-grid">
-      <!-- Product Cards (same as before) -->
-      <!-- Small Eggs Card -->
-      <div class="product-card">
-        <img src="assets/images/small.jpg" alt="Small Eggs" class="product-image">
-        <div class="product-info">
-          <h3 class="product-title">Small Eggs (30pcs)</h3>
-          <p class="product-price">₱210</p>
-          <div class="more-info-btn" onclick="showProductModal('small')">More Info</div>
-        </div>
-      </div>
+/* Universal Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-      <!-- Medium Eggs Card -->
-      <div class="product-card">
-        <img src="assets/images/medium.jpg" alt="Medium Eggs" class="product-image">
-        <div class="product-info">
-          <h3 class="product-title">Medium Eggs (30pcs)</h3>
-          <p class="product-price">₱220</p>
-          <div class="more-info-btn" onclick="showProductModal('medium')">More Info</div>
-        </div>
-      </div>
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  color: var(--accent-black);
+  background-color: #fdfdfd;
+}
 
-      <!-- Large Eggs Card -->
-      <div class="product-card">
-        <img src="assets/images/large.jpg" alt="Large Eggs" class="product-image">
-        <div class="product-info">
-          <h3 class="product-title">Large Eggs (30pcs)</h3>
-          <p class="product-price">₱230</p>
-          <div class="more-info-btn" onclick="showProductModal('large')">More Info</div>
-        </div>
-      </div>
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+              url('assets/images/freerange.jpg') center/cover fixed;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--pure-white);
+  padding: 2rem;
+}
 
-      <!-- XL Eggs Card -->
-      <div class="product-card">
-        <img src="assets/images/xl.jpg" alt="XL Eggs" class="product-image">
-        <div class="product-info">
-          <h3 class="product-title">XL Eggs (30pcs)</h3>
-          <p class="product-price">₱240</p>
-          <div class="more-info-btn" onclick="showProductModal('xl')">More Info</div>
-        </div>
-      </div>
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-      <!-- Jumbo Eggs Card -->
-      <div class="product-card">
-        <img src="assets/images/jumbo.jpg" alt="Jumbo Eggs" class="product-image">
-        <div class="product-info">
-          <h3 class="product-title">Jumbo Eggs (30pcs)</h3>
-          <p class="product-price">₱250</p>
-          <div class="more-info-btn" onclick="showProductModal('jumbo')">More Info</div>
-        </div>
-      </div>
-    </div>
-  </section>
+.hero-title {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
 
-  <!-- Testimonials Section -->
-  <section class="testimonials-section">
-    <h2 class="section-heading">What Our Customers Say</h2>
-    <div class="testimonials-container">
-      <div class="testimonial-card">
-        <p class="testimonial-text">"The eggs from EggXpress are absolutely amazing – fresh, delicious, and perfect for my morning omelettes!"</p>
-        <div class="testimonial-rating">★★★★★</div>
-        <p class="testimonial-author">- Maria D.</p>
-      </div>
-      <div class="testimonial-card">
-        <p class="testimonial-text">"I always trust EggXpress for my baking needs. The quality and freshness are unmatched."</p>
-        <div class="testimonial-rating">★★★★★</div>
-        <p class="testimonial-author">- Jose R.</p>
-      </div>
-      <div class="testimonial-card">
-        <p class="testimonial-text">"EggXpress delivers farm-fresh eggs every time. Their freshness guarantee is real – you can taste the difference!"</p>
-        <div class="testimonial-rating">★★★★★</div>
-        <p class="testimonial-author">- Angela S.</p>
-      </div>
-    </div>
-  </section>
+.hero-subtitle {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
 
-  <!-- Map & Gallery Section -->
-  <section class="side-by-side">
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d600.9901233769588!2d123.96652733953573!3d10.267689091462076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99a731d65ca11%3A0xb7c2fff72b347d93!2sSITIO%20SUBA%20PANAS%20Beside%20Pacific%20grand%20villa%20and%20back%20of%20Fairchild%20Villas!5e1!3m2!1sen!2sph!4v1743296151045!5m2!1sen!2sph" allowfullscreen></iframe>
-    </div>
-    <div class="gallery-container">
-      <img id="gallery-image" src="assets/images/gallery1.jpg" alt="Gallery Image" class="gallery-image">
-    </div>
-  </section>
+.hero-cta {
+  background: var(--primary-red);
+  color: var(--pure-white);
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
 
-  <!-- Product Info Modal -->
-  <div id="productModal" class="modal-overlay">
-    <div class="modal">
-      <div class="product-modal-content">
-        <h2 id="modalProductTitle">Product Title</h2>
-        <img id="modalProductImage" class="modal-product-image" src="" alt="Product Image">
-        <div class="modal-product-details">
-          <p class="price" id="modalProductPrice"></p>
-          <h3>Product Details</h3>
-          <ul id="modalProductDetails"></ul>
-          <div class="modal-actions">
-            <a href="https://m.me/EggXpress" target="_blank" class="cta-button" style="background: var(--primary-red); color: white; padding: 0.8rem 2rem; border-radius: 25px; text-decoration: none;">Order via Messenger</a>
-          </div>
-        </div>
-      </div>
-      <div class="actions">
-        <button class="btn-decline" onclick="closeProductModal()">Close</button>
-      </div>
-    </div>
-  </div>
+.hero-cta:hover {
+  background: #b00000;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
 
-  <!-- Privacy Modal -->
-  <div id="privacyModal" class="modal-overlay">
-    <div class="modal">
-      <h2>Privacy Policy &amp; Terms</h2>
-      <p>We protect your data in compliance with Philippine laws. Your information is never shared without consent.</p>
-      <p><strong>Freshness Guarantee:</strong> 24-hour returns for quality issues</p>
-      <p><strong>Age Requirement:</strong> Users must be 13+</p>
-      <div class="actions">
-        <button class="btn-decline" onclick="declinePrivacy()">Decline</button>
-        <button class="btn-agree" onclick="acceptPrivacy()">I Agree</button>
-      </div>
-    </div>
-  </div>
+/* Products Section */
+.products-section {
+  padding: 5rem 2rem;
+  background: #f9f9f9;
+}
 
-  <!-- Custom Footer Component -->
-  <my-footer></my-footer>
+.section-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--accent-black);
+}
 
-  <!-- Scripts -->
-  <script src="assets/js/components.js"></script>
-  <script>
-    // Product Modal Data
-    const products = {
-      small: {
-        title: "Small Eggs (30pcs)",
-        price: "₱210",
-        image: "assets/images/small.jpg",
-        details: [
-          "Weight: 45-50g per egg",
-          "Perfect for baking and everyday use",
-          "Freshly laid and refrigerated",
-          "30 eggs per tray"
-        ]
-      },
-      medium: {
-        title: "Medium Eggs (30pcs)",
-        price: "₱220",
-        image: "assets/images/medium.jpg",
-        details: [
-          "Weight: 50-55g per egg",
-          "Ideal for most recipes",
-          "Farm fresh and natural",
-          "30 eggs per tray"
-        ]
-      },
-      large: {
-        title: "Large Eggs (30pcs)",
-        price: "₱230",
-        image: "assets/images/large.jpg",
-        details: [
-          "Weight: 55-60g per egg",
-          "Great for cooking and baking",
-          "Free-range hens",
-          "30 eggs per tray"
-        ]
-      },
-      xl: {
-        title: "XL Eggs (30pcs)",
-        price: "₱240",
-        image: "assets/images/xl.jpg",
-        details: [
-          "Weight: 60-65g per egg",
-          "Premium recipes quality",
-          "Richer flavor and texture",
-          "30 eggs per tray"
-        ]
-      },
-      jumbo: {
-        title: "Jumbo Eggs (30pcs)",
-        price: "₱250",
-        image: "assets/images/jumbo.jpg",
-        details: [
-          "Weight: 65-70g per egg",
-          "Top quality selection",
-          "Exceptionally fresh",
-          "30 eggs per tray"
-        ]
-      }
-    };
+.product-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
 
-    function showProductModal(type) {
-      const product = products[type];
-      const modal = document.getElementById('productModal');
-      
-      document.getElementById('modalProductTitle').textContent = product.title;
-      document.getElementById('modalProductPrice').textContent = product.price;
-      document.getElementById('modalProductImage').src = product.image;
-      
-      const detailsList = document.getElementById('modalProductDetails');
-      detailsList.innerHTML = product.details.map(d => `<li>${d}</li>`).join('');
-      
-      modal.style.display = 'flex';
-    }
+.product-card {
+  background: var(--pure-white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
 
-    function closeProductModal() {
-      document.getElementById('productModal').style.display = 'none';
-    }
+.product-card:hover {
+  transform: translateY(-5px);
+}
 
-    // Handle clicks outside modal
-    window.onclick = function(event) {
-      const modal = document.getElementById('productModal');
-      if (event.target === modal) {
-        closeProductModal();
-      }
-    };
-  </script>
-</body>
-</html>
+.product-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 3px solid var(--primary-red);
+}
+
+.product-info {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.product-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: var(--accent-black);
+}
+
+.product-price {
+  color: var(--primary-red);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+
+.more-info-btn {
+  background: var(--primary-red);
+  color: var(--pure-white);
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.more-info-btn:hover {
+  background: #b00000;
+  transform: scale(1.05);
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  padding: 4rem 2rem;
+  background: #fffefa;
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background: var(--pure-white);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+  color: #555;
+}
+
+.testimonial-rating {
+  color: var(--primary-red);
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: var(--accent-black);
+}
+
+/* Side-by-Side Section */
+.side-by-side {
+  display: flex;
+  width: 100%;
+  height: 70vh;
+}
+
+.map-container,
+.gallery-container {
+  flex: 1;
+  height: 100%;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: var(--pure-white);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90%;
+  animation: modalSlide 0.3s ease;
+}
+
+@keyframes modalSlide {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.product-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modal-product-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.modal-product-details {
+  text-align: left;
+}
+
+.modal-product-details ul {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.modal-product-details li {
+  margin-bottom: 0.8rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.cta-button {
+  background: var(--primary-red);
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #b00000;
+}
+
+.btn-decline {
+  background: #ddd;
+  color: var(--accent-black);
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-decline:hover {
+  background: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .side-by-side {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .map-container,
+  .gallery-container {
+    height: 400px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .product-price {
+    font-size: 1.1rem;
+  }
+
+  .modal {
+    padding: 1.5rem;
+  }
+}
