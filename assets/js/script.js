@@ -1,5 +1,3 @@
-// assets/js/script.js
-
 // Toggle navigation for the hamburger menu
 function toggleNav() {
   const navLinks = document.getElementById('navLinks');
@@ -43,4 +41,4 @@ window.onclick = function(event) {
   if (event.target === privacyModal) {
     privacyModal.style.display = 'none';
   }
-}
+};
