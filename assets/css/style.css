@@ -19,11 +19,6 @@ body {
   background-color: #fdfdfd;
 }
 
-/* 
-  Header & Navigation styles removed from external CSS 
-  because the header component now manages its own styles.
-*/
-
 /* Hero Section */
 .hero-section {
   background: var(--primary-yellow) center/cover no-repeat;
@@ -172,10 +167,6 @@ body {
     height: 300px;
   }
 }
-
-/* Footer styles removed from external CSS 
-   because the footer component now manages its own styles.
-*/
 
 /* Modal Styles */
 .modal-overlay {
