@@ -1,5 +1,4 @@
 /* assets/css/style.css */
-
 :root {
   --primary-yellow: #f3bd3d;
   --primary-red: #D40511;
@@ -19,6 +18,9 @@ body {
   line-height: 1.6;
   color: var(--accent-black);
   background-color: #fdfdfd;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Hero Section */
@@ -183,7 +185,7 @@ body {
   color: var(--accent-black);
 }
 
-/* Side-by-Side Section */
+/* Map & Gallery Section */
 .side-by-side {
   display: flex;
   width: 100%;
@@ -246,21 +248,25 @@ body {
 .product-modal-content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
+  padding: 2rem;
 }
 
 .modal-product-image {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   border-radius: 8px;
   margin: 0 auto;
 }
 
 .modal-product-details {
   text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .modal-product-details ul {
+  list-style: disc;
   padding-left: 1.5rem;
   margin: 1rem 0;
 }
@@ -273,7 +279,8 @@ body {
   display: flex;
   gap: 1rem;
   justify-content: center;
-  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .cta-button {
@@ -283,10 +290,20 @@ body {
   border-radius: 25px;
   text-decoration: none;
   transition: background 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.messenger-btn {
+  background: #0084FF !important;
 }
 
 .cta-button:hover {
   background: #b00000;
+}
+
+.messenger-btn:hover {
+  background: #0069d9 !important;
 }
 
 .btn-decline {
@@ -330,6 +347,11 @@ body {
   .testimonials-container {
     grid-template-columns: 1fr;
   }
+
+  .modal-actions {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -343,5 +365,10 @@ body {
 
   .modal {
     padding: 1.5rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    text-align: center;
   }
 }
