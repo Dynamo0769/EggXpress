@@ -2,134 +2,165 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EggXpress! - Contact Us</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <style>
+    /* Contact Section Layout */
+    .contact-container {
+      display: flex;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 20px;
+    }
+
+    .contact-form {
+      flex: 1;
+      min-width: 400px;
+    }
+
+    .contact-info {
+      flex: 1;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      height: fit-content;
+    }
+
+    /* Form Styling */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--accent-black);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #eee;
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--primary-yellow);
+      outline: none;
+    }
+
+    /* Contact Info Styling */
+    .contact-details {
+      margin-top: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: #f8f8f8;
+      border-radius: 8px;
+    }
+
+    .contact-item img {
+      width: 24px;
+      margin-right: 1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+      }
+      
+      .contact-form {
+        min-width: auto;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-container">
-      <div class="logo">
-        <a href="index.html"><img src="assets/images/logo.png" alt="EggXpress Logo"></a>
-      </div>
-      <nav>
-        <div class="hamburger" onclick="toggleNav()">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <ul id="navLinks">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html" class="active">Contact</a></li>
-          <li><a href="javascript:void(0)" onclick="showPrivacyModal()">Privacy Policy</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- Header Component -->
+  <my-header></my-header>
 
   <!-- Contact Section -->
-  <section class="contact-section" id="contact">
+  <section class="contact-section">
     <div class="contact-container">
+      <!-- Contact Form -->
       <div class="contact-form">
         <h2>Contact Us</h2>
         <form id="contactForm">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
+          <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
           
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
           
-          <label for="phone">Phone Number:</label>
-          <input type="tel" id="phone" name="phone" required>
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
           
-          <label for="address">Delivery Address:</label>
-          <input type="text" id="address" name="address" required>
-          
-          <label for="deliveryTime">Preferred Delivery Time:</label>
-          <input type="text" id="deliveryTime" name="deliveryTime" placeholder="e.g. 9am - 12pm" required>
-          
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-          
-          <button type="submit" class="hero-cta">Send Message</button>
+          <button type="submit" class="cta-button">Send Message</button>
         </form>
       </div>
+
+      <!-- Contact Information -->
       <div class="contact-info">
-        <h3>Our Business</h3>
-        <p><strong>Phone:</strong> (0966) 700-4825</p>
-        <p><strong>Email:</strong> eggxpress4@gmail.com</p>
-        <p><strong>Address:</strong> Upper, Ground Floor, Alfredo Y. Lua (AYL) Premises,<br> Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
-        <p>Orders are processed via Messenger. Click <a href="https://m.me/EggXpress" target="_blank">here</a> to chat with us.</p>
+        <h3>Visit or Reach Us</h3>
+        <div class="contact-details">
+          <div class="contact-item">
+            <img src="assets/images/phone-icon.png" alt="Phone">
+            <div>
+              <h4>Phone</h4>
+              <p>(0966) 700-4825</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <img src="assets/images/email-icon.png" alt="Email">
+            <div>
+              <h4>Email</h4>
+              <p>eggxpress4@gmail.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <img src="assets/images/location-icon.png" alt="Address">
+            <div>
+              <h4>Address</h4>
+              <p>Upper, Ground Floor, Alfredo Y. Lua (AYL) Premises,<br>
+              Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Messenger Button -->
+        <a href="https://m.me/EggXpress" target="_blank" class="cta-button" 
+           style="display: flex; align-items: center; gap: 0.5rem; margin-top: 2rem;">
+          <img src="assets/images/messenger-icon.png" alt="Messenger" style="width: 24px;">
+          Chat on Messenger
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="main-footer">
-    <div class="footer-container">
-      <div class="footer-left">
-        <img src="assets/images/logo.png" alt="EggXpress Logo" class="footer-logo">
-      </div>
-      <div class="footer-right">
-        <div class="footer-section">
-          <h3>Contact Us</h3>
-          <p>📞 (0966) 700-4825</p>
-          <p>✉️ eggxpress4@gmail.com</p>
-          <p>📍 Upper, Ground Floor, Alfredo Y. Lua (AYL) Premises,<br> Sitio Suba Panas, Lapu-Lapu City, 6015 Cebu</p>
-        </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html" class="active">Contact</a></li>
-            <li><a href="javascript:void(0)" onclick="showPrivacyModal()">Privacy Policy &amp; Terms</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Follow Us</h3>
-          <div class="social-links">
-            <a href="https://www.facebook.com/eggxpressfarms"><img src="assets/images/facebook-logo.png" alt="Facebook" class="social-icon"></a>
-            <a href="https://www.instagram.com/xpressegg/"><img src="assets/images/instagram-logo.jpg" alt="Instagram" class="social-icon"></a>
-            <a href="https://x.com/XpressEgg"><img src="assets/images/twitter-logo.png" alt="Twitter" class="social-icon"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="copyright">© 2005 EggXpress. All rights reserved.</div>
-  </footer>
+  <!-- Footer Component -->
+  <my-footer></my-footer>
 
-  <!-- Privacy Policy & Terms Modal -->
-  <div id="privacyModal" class="modal-overlay">
-    <div class="modal">
-      <h2>Privacy Policy &amp; Terms &amp; Conditions</h2>
-      <p>
-        Welcome to EggXpress! We are committed to protecting your privacy and ensuring that your personal data is handled responsibly in compliance with Philippine laws.
-      </p>
-      <p>
-        <strong>Privacy Policy:</strong> We collect only the information necessary to provide our egg delivery services. All data is securely stored and will not be shared with third parties without your explicit consent, except as required by law.
-      </p>
-      <p>
-        <strong>Returns &amp; Freshness:</strong> Our eggs are farm-fresh and inspected daily for quality. Returns are accepted within 24 hours if the product fails to meet our strict quality standards.
-      </p>
-      <p>
-        <strong>Age Restriction:</strong> By using our website, you confirm that you are at least 13 years old.
-      </p>
-      <p>
-        <strong>Terms &amp; Conditions:</strong> Use of our website constitutes acceptance of these terms. We reserve the right to modify these policies as needed; your continued use of the site indicates your acceptance of any changes.
-      </p>
-      <div class="actions">
-        <button class="btn-decline" onclick="declinePrivacy()">Decline</button>
-        <button class="btn-agree" onclick="acceptPrivacy()">I Agree</button>
-      </div>
-    </div>
-  </div>
-
+  <!-- Scripts -->
+  <script src="assets/js/components.js"></script>
   <script src="assets/js/script.js"></script>
 </body>
 </html>
